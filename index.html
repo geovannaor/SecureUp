@@ -1085,6 +1085,474 @@ const LESSONS = {
   ]
 },
 
+'control-categories': {
+  title: 'Security Control Categories',
+  subtitle: 'Technical, Managerial, Operational, and Physical — the four ways controls are implemented',
+  domain: 1, domainName: '1.0 General Security Concepts',
+  content: [
+    { type:'analogy', label:'🏢 Think of securing an office building', text:'A building uses <strong>keycards</strong> (Technical), <strong>a security policy document</strong> (Managerial), <strong>a guard doing rounds</strong> (Operational), and <strong>a locked steel door</strong> (Physical). Each category is a different layer of protection — and the best security uses ALL of them.' },
+    { type:'section', title:'The Four Control Categories', icon:'📂', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Category','Who/What Implements It','Real-World Examples'], rows:[
+          ['Technical (Logical)','Technology — hardware and software systems','Firewalls, encryption, antivirus, MFA, IDS/IPS, access control lists'],
+          ['Managerial (Administrative)','People in leadership — policies and governance','Security policies, risk assessments, background checks, security audits'],
+          ['Operational','Day-to-day human activities and processes','Security awareness training, guard patrols, incident response drills, change management'],
+          ['Physical','Physical objects and barriers in the real world','Locks, fences, bollards, security cameras, badge readers, lighting, mantraps'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Why Multiple Categories Matter — Defense in Depth', icon:'🛡️', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Defense in Depth', text:'Using multiple layers of controls so that if one fails, others still protect the asset. An attacker who bypasses a firewall (Technical) still faces policies requiring MFA (Managerial + Technical), a guard checking badges (Operational + Physical), and a locked server room door (Physical).' },
+        { type:'text', text:'Categories and Types are independent axes. A <strong>camera</strong> is Physical + Detective. A <strong>firewall rule</strong> is Technical + Preventive. A <strong>security policy</strong> is Managerial + Directive. You must be able to identify BOTH the category AND the type for any control on the exam.' },
+      ]
+    },
+    { type:'tip', label:'🎯 Exam Strategy', text:'When a question describes a control, ask TWO questions: (1) <strong>HOW is it implemented?</strong> → Category. (2) <strong>WHAT does it do?</strong> → Type. A locked server room door = Physical (how) + Preventive (what it does — stops unauthorized entry).' },
+    { type:'terms', title:'Quick Reference', terms:[
+      { term:'Technical Control', def:'Implemented by technology — firewall, encryption, IDS, MFA, ACLs' },
+      { term:'Managerial Control', def:'Implemented via policy and administration — risk assessments, security policies' },
+      { term:'Operational Control', def:'Implemented by people in day-to-day processes — training, guard patrols' },
+      { term:'Physical Control', def:'Real-world tangible barriers — locks, fences, cameras, bollards' },
+      { term:'Defense in Depth', def:'Layered security — multiple controls so one failure doesn\'t equal total compromise' },
+    ]},
+  ],
+  quiz: [
+    { q:'An organization requires all employees to complete annual security awareness training covering phishing, password hygiene, and social engineering. What control category does this represent?', choices:['Technical','Managerial','Operational','Physical'], answer:2, explain:'Security awareness training is an <strong>Operational</strong> control — it\'s implemented through human activities and processes (training programs), not technology, policy documents, or physical barriers.' },
+    { q:'A company installs concrete bollards around the perimeter of its data center to prevent vehicles from ramming into the building. What control category is this?', choices:['Technical','Managerial','Operational','Physical'], answer:3, explain:'Bollards are physical objects in the real world — this is a <strong>Physical</strong> control. They prevent unauthorized vehicle access to the building.' },
+    { q:'A CISO develops a formal risk assessment process that requires all new IT projects to be evaluated for security risks before approval. This is BEST categorized as:', choices:['Technical, Preventive','Physical, Detective','Managerial, Preventive','Operational, Directive'], answer:2, explain:'A risk assessment process is a <strong>Managerial</strong> control (it\'s a governance/administrative process) and <strong>Preventive</strong> (it identifies risks before they become incidents, preventing problems from reaching production).' },
+  ]
+},
+
+'control-types': {
+  title: 'Security Control Types',
+  subtitle: 'Preventive, Deterrent, Detective, Corrective, Compensating, and Directive — what each control DOES',
+  domain: 1, domainName: '1.0 General Security Concepts',
+  content: [
+    { type:'analogy', label:'🏦 The bank robbery scenario', text:'A bank uses <strong>a sign saying "Smile, you\'re on camera"</strong> (Deterrent — discourages robbers), a <strong>locked vault</strong> (Preventive — stops the robbery), <strong>cameras recording everything</strong> (Detective — catches it happening), <strong>silent alarm to police</strong> (Corrective — responds to stop it), and <strong>a policy requiring two employees to open the vault</strong> (Directive — tells staff how to behave). Six types, one bank.' },
+    { type:'section', title:'All Six Control Types', icon:'🎯', bg:'#7c5cfc',
+      items:[
+        { type:'table', headers:['Type','When It Acts','Goal','Memory Hook'], rows:[
+          ['Preventive','BEFORE an attack','Stop the attack from happening at all','Lock on the door'],
+          ['Deterrent','BEFORE an attack','Discourage attackers from trying','Warning sign — no guarantee'],
+          ['Detective','DURING or AFTER','Find that an attack is/was occurring','Camera recording'],
+          ['Corrective','AFTER an attack','Fix damage, restore normal state','Restore from backup'],
+          ['Compensating','INSTEAD OF primary','Alternative when primary control isn\'t available','Extra monitoring on unpatched system'],
+          ['Directive','Anytime','Tell people what to do via policy/training','AUP, security training'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Deep Dives on Common Exam Traps', icon:'⚠️', bg:'#ff7b39',
+      items:[
+        { type:'definition', label:'Deterrent vs. Preventive — The Key Difference', text:'A <strong>Deterrent</strong> doesn\'t actually stop anything — it just makes the attacker think twice. A warning sign, a visible camera, a CAPTCHA. If a determined attacker ignores it, nothing happens. A <strong>Preventive</strong> control physically or technically BLOCKS the attack — a locked door stops entry regardless of whether the attacker is deterred.' },
+        { type:'definition', label:'Corrective — Often Misidentified', text:'Corrective controls FIX things after an incident. Antivirus quarantine (removes malware after detection), restoring from backup (recovers data after ransomware), patching a system after exploitation. Key: the damage already happened — corrective cleans it up.' },
+        { type:'definition', label:'Compensating — The Workaround Control', text:'When you can\'t implement the IDEAL control (usually because of a legacy system or budget), you use a compensating control. Example: A 20-year-old industrial system can\'t run antivirus — so you isolate it on its own network segment, add extra monitoring, and require physical key access. Those are compensating controls.' },
+      ]
+    },
+    { type:'tip', label:'🎯 Multi-Purpose Controls', text:'Controls can serve multiple types simultaneously. A firewall is both <strong>Preventive</strong> (blocks unauthorized traffic) and can be <strong>Detective</strong> (logs suspicious traffic). An IDS is <strong>Detective</strong>. An IPS is <strong>Preventive</strong> (it actually blocks). Know the PRIMARY function for exam purposes.' },
+    { type:'terms', title:'Control Type Examples to Memorize', terms:[
+      { term:'Preventive Examples', def:'Firewall, encryption, locked door, MFA, input validation, access control' },
+      { term:'Deterrent Examples', def:'Warning signs, login banners ("Unauthorized access is prohibited"), visible cameras, CAPTCHA' },
+      { term:'Detective Examples', def:'IDS, security logs, SIEM alerts, audit trails, security cameras (recording/reviewing)' },
+      { term:'Corrective Examples', def:'Antivirus quarantine, patching after exploit, restoring from backup, incident response' },
+      { term:'Compensating Examples', def:'Extra monitoring on unpatched legacy system, requiring manual approval for system without MFA' },
+      { term:'Directive Examples', def:'AUP, security awareness training, posted policies, standard operating procedures' },
+    ]},
+  ],
+  quiz: [
+    { q:'An IDS alert fires, and a security analyst reviews the logs to determine that a port scan occurred against the company\'s web server 30 minutes ago. The IDS functions as what type of control?', choices:['Preventive','Deterrent','Detective','Corrective'], answer:2, explain:'An IDS (Intrusion Detection System) is a <strong>Detective</strong> control — it identifies and alerts on suspicious activity. Unlike an IPS, it does NOT block anything. Finding the port scan after it happened is classic Detective control behavior.' },
+    { q:'A login banner that displays "Warning: Unauthorized access to this system is prohibited and will be prosecuted" is BEST classified as what type of control?', choices:['Preventive','Deterrent','Detective','Directive'], answer:1, explain:'A warning banner is a <strong>Deterrent</strong> control. It does not technically prevent anyone from attempting access — it warns and discourages. It psychologically deters attackers by communicating legal consequences.' },
+    { q:'After a ransomware attack encrypts company files, the IT team restores data from offline backups and brings systems back online. The backup restoration is what type of control?', choices:['Preventive','Detective','Directive','Corrective'], answer:3, explain:'Restoring from backup after an incident is a <strong>Corrective</strong> control — it addresses the damage AFTER an attack has occurred and restores normal operations. The incident already happened; corrective fixes the aftermath.' },
+  ]
+},
+
+'physical-security': {
+  title: 'Physical Security Controls',
+  subtitle: 'Protecting the physical layer — if someone can touch it, they can compromise it',
+  domain: 1, domainName: '1.0 General Security Concepts',
+  content: [
+    { type:'analogy', label:'🏰 Physical security = the castle walls', text:'All the cybersecurity in the world means nothing if an attacker can walk into your server room and pull the hard drive. Physical security is the FIRST line of defense — it protects the hardware that everything else runs on. No amount of encryption protects a stolen, unencrypted drive.' },
+    { type:'section', title:'Physical Barriers & Access Controls', icon:'🚧', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Control','What It Is','Control Type'], rows:[
+          ['Bollards','Reinforced concrete/steel posts preventing vehicle ramming attacks','Physical + Preventive'],
+          ['Fencing','Perimeter barrier controlling who can approach a facility','Physical + Preventive + Deterrent'],
+          ['Access Control Vestibule (Mantrap)','A small room between two doors — first door must close/lock before second opens. Prevents tailgating.','Physical + Preventive'],
+          ['Access Badge/Card Reader','Electronic badge required to open doors — logs who entered and when','Physical + Preventive + Detective'],
+          ['Security Guard','Human security monitoring access points, responding to incidents','Operational + Physical + Deterrent + Preventive'],
+          ['Lighting','Illuminating areas to deter criminal activity and support camera visibility','Physical + Deterrent'],
+          ['Fencing','Perimeter barrier controlling access approach','Physical + Preventive + Deterrent'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Video Surveillance', icon:'📹', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'CCTV / Video Surveillance', text:'Cameras serve as both <strong>Deterrent</strong> (visible cameras discourage attacks) and <strong>Detective</strong> controls (recordings provide evidence of incidents). PTZ cameras (Pan-Tilt-Zoom) allow remote repositioning. Footage must be stored securely and retained appropriately.' },
+        { type:'text', text:'Placement matters: cameras should cover all <strong>entry/exit points</strong>, server rooms, loading docks, and areas with sensitive equipment. Blind spots are a vulnerability.' },
+      ]
+    },
+    { type:'section', title:'Sensors', icon:'🔍', bg:'#ff7b39',
+      items:[
+        { type:'table', headers:['Sensor Type','How It Works','Best Use Case'], rows:[
+          ['Infrared','Detects heat signatures from people/animals moving through its field','Interior motion detection — after-hours monitoring of hallways, server rooms'],
+          ['Pressure','Detects weight/force on floor panels or mats','Specific high-security areas — under server racks, in vaults'],
+          ['Microwave','Emits microwave pulses and detects movement based on reflections','Large open areas — warehouses, parking garages (works through walls)'],
+          ['Ultrasonic','Emits high-frequency sound waves and detects disruptions','Small enclosed spaces — detects motion in rooms, works well indoors'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Tailgating & Piggybacking', icon:'🚶', bg:'#ff4d6d',
+      items:[
+        { type:'definition', label:'Tailgating', text:'An unauthorized person follows an authorized person through a secured door without the authorized person\'s knowledge. The mantrap/access control vestibule is the primary technical control against this.' },
+        { type:'definition', label:'Piggybacking', text:'Similar to tailgating, but the authorized person is AWARE and allows the unauthorized person through — often out of politeness ("hold the door"). Security awareness training addresses this.' },
+        { type:'tip', label:'🎯 Exam Tip', text:'The <strong>access control vestibule (mantrap)</strong> is the most-tested physical control for preventing tailgating. Know that it prevents multiple people from passing through with one badge scan.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'An attacker waits near a secured door of a data center and slips through behind an authorized employee who badges in, without the employee noticing. What physical security attack occurred?', choices:['Piggybacking','Tailgating','Shoulder surfing','Dumpster diving'], answer:1, explain:'<strong>Tailgating</strong> is when an unauthorized person follows an authorized person through a secured entrance WITHOUT their knowledge. The best countermeasure is an access control vestibule (mantrap), which requires each person to badge individually.' },
+    { q:'A data center installs a small enclosed room between the parking lot entrance and the main facility. The outer door must fully close and lock before the inner door can open, and only one person can be in the room at a time. What is this called?', choices:['A security operations center','An access control vestibule (mantrap)','A screened subnet','A cold aisle containment system'], answer:1, explain:'This is an <strong>access control vestibule</strong> (also called a mantrap). It prevents tailgating by ensuring only one person passes through at a time, with each person individually authenticating.' },
+    { q:'A company wants to prevent vehicles from being driven into the entrance of their headquarters as part of a physical attack. Which control would BEST address this?', choices:['Security cameras','Infrared sensors','Bollards','Access badges'], answer:2, explain:'<strong>Bollards</strong> are reinforced posts specifically designed to prevent vehicle ramming attacks. They physically block vehicles from reaching the building regardless of the driver\'s intent.' },
+  ]
+},
+
+'deception-tech': {
+  title: 'Deception & Disruption Technology',
+  subtitle: 'Honeypots, honeynets, honeyfiles, and honeytokens — using traps to catch attackers',
+  domain: 1, domainName: '1.0 General Security Concepts',
+  content: [
+    { type:'analogy', label:'🍯 Setting a trap with honey', text:'Imagine a museum that places a fake priceless painting in a room wired with alarms. A thief who targets it triggers every alarm, revealing themselves — while the real painting is safe elsewhere. Deception technology works the same way: fake assets that only an attacker would touch.' },
+    { type:'section', title:'Deception Technologies', icon:'🪤', bg:'#7c5cfc',
+      items:[
+        { type:'table', headers:['Technology','What It Is','What It Catches'], rows:[
+          ['Honeypot','A decoy system designed to look like a real, valuable target. Not used by legitimate users.','Attackers probing/attacking systems — any connection to a honeypot is suspicious by definition'],
+          ['Honeynet','A network of honeypots that simulates an entire network environment (servers, workstations, etc.)','Advanced attackers — gives them a fake environment to explore while security teams observe their TTPs'],
+          ['Honeyfile','A fake file with an enticing name (like "passwords.xlsx" or "salary_data.csv") that triggers an alert when opened','Insider threats and attackers who have already gained access and are searching for sensitive data'],
+          ['Honeytoken','A fake credential, API key, or piece of data embedded in real systems that will trigger an alert if used','Credential theft — if this token is ever used, someone stole it from your system'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Why Deception Tech Works', icon:'🧠', bg:'#4f8ef7',
+      items:[
+        { type:'definition', label:'High Signal, Low Noise', text:'Because legitimate users never interact with honeypots, ANY activity involving them is immediately suspicious. There are virtually no false positives — only an attacker (or extremely lost legitimate user) would trigger these systems.' },
+        { type:'definition', label:'Intelligence Gathering', text:'Honeynets let security teams observe attacker techniques, tools, and procedures (TTPs) in a controlled environment. You can watch exactly how attackers operate without risking real systems.' },
+        { type:'text', text:'<strong>Practical placement:</strong> Honeypots should look real but be isolated from actual systems. A honeypot that\'s too obviously fake won\'t attract sophisticated attackers. One that connects to real systems is dangerous.' },
+      ]
+    },
+    { type:'section', title:'Other Disruption Techniques', icon:'🔀', bg:'#ff7b39',
+      items:[
+        { type:'definition', label:'DNS Sinkholing', text:'Redirecting malicious domain requests to a controlled IP address. When malware tries to call home to a command-and-control server, DNS sinkholes intercept the request and send it to a dead end — disrupting the malware\'s operation.' },
+        { type:'definition', label:'Fake Telemetry', text:'Feeding false data to attackers who have compromised systems — misleading them about your environment\'s actual layout while you detect and respond.' },
+      ]
+    },
+    { type:'tip', label:'🎯 Exam Focus', text:'Know which "honey" tech does what: <strong>Honeypot = fake system</strong>, <strong>Honeynet = fake network</strong>, <strong>Honeyfile = fake file</strong>, <strong>Honeytoken = fake credential/data</strong>. All are Detective controls. They don\'t prevent attacks — they detect attackers who have already gotten in.' },
+  ],
+  quiz: [
+    { q:'A security team embeds a fake AWS access key into their code repository and configures an alert to fire if that key is ever used to make API calls. What type of deception technology is this?', choices:['Honeypot','Honeynet','Honeyfile','Honeytoken'], answer:3, explain:'A <strong>honeytoken</strong> is a fake piece of data (credential, API key, or other token) embedded in real systems. If it\'s ever used, it proves someone stole it — triggering an alert with almost zero false positives.' },
+    { q:'A security engineer sets up a server that appears to run outdated, vulnerable software and is listed in the internal network\'s DNS as "payroll-server-backup." The server has no legitimate users. What is the purpose of this system?', choices:['Load balancing production traffic','Providing a backup for payroll data','Acting as a honeypot to attract and detect attackers','Creating a warm standby for disaster recovery'], answer:2, explain:'This is a <strong>honeypot</strong> — a decoy system designed to look like a valuable target. Since no legitimate users connect to it, any activity is suspicious. The enticing name ("payroll-server-backup") makes it attractive to attackers searching the network.' },
+    { q:'Which deception technology would BEST help a security team understand the tools, techniques, and procedures (TTPs) used by advanced attackers over an extended period?', choices:['Honeytoken','Honeyfile','Honeypot','Honeynet'], answer:3, explain:'A <strong>honeynet</strong> — a network of multiple honeypots simulating a full environment — gives attackers an entire fake infrastructure to explore. Security teams can observe sophisticated, multi-stage attacks in full, learning the attacker\'s TTPs without risking real systems.' },
+  ]
+},
+
+'change-management': {
+  title: 'Change Management & Security',
+  subtitle: 'Why how you change things matters as much as what you change — 1.3',
+  domain: 1, domainName: '1.0 General Security Concepts',
+  content: [
+    { type:'analogy', label:'✈️ Airlines don\'t just change planes mid-flight', text:'Every change to an aircraft goes through approval, testing, documentation, and rollback plans. IT change management works the same way — uncontrolled changes are one of the top causes of security incidents and outages. "Just push the update" has caused countless breaches.' },
+    { type:'section', title:'Change Management Business Processes', icon:'📋', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Process Element','What It Means','Why It Matters for Security'], rows:[
+          ['Approval Process','Changes must be reviewed and approved by appropriate stakeholders before implementation','Prevents unauthorized changes that could introduce vulnerabilities or disable security controls'],
+          ['Ownership','Every system/asset has a defined owner responsible for it','Ensures accountability — someone is responsible for security of each asset'],
+          ['Stakeholders','All parties affected by a change are identified and consulted','Security team must be a stakeholder for any IT change'],
+          ['Impact Analysis','Assessment of what the change affects (dependencies, security implications)','Identifies security risks BEFORE the change goes live'],
+          ['Test Results','Changes are tested in a non-production environment first','Catches security problems before they hit production'],
+          ['Backout Plan','Step-by-step procedure to reverse the change if something goes wrong','Critical if a change introduces a vulnerability or breaks security controls'],
+          ['Maintenance Window','Scheduled time period when changes are implemented','Limits exposure — changes happen in controlled, monitored periods'],
+          ['Standard Operating Procedure','Documented steps for performing routine changes','Ensures consistency; prevents security steps from being skipped'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Technical Implications of Changes', icon:'⚙️', bg:'#ff7b39',
+      items:[
+        { type:'definition', label:'Allow Lists / Deny Lists', text:'Changes may require updating allow lists (what\'s permitted) or deny lists (what\'s blocked) in firewalls, email filters, and application controls. Adding a new application? Update the allow list. Blocking a new malware domain? Update the deny list.' },
+        { type:'definition', label:'Restricted Activities During Changes', text:'Certain actions are restricted during maintenance windows or change periods — no unrelated changes, strict access control, enhanced monitoring.' },
+        { type:'table', headers:['Technical Consideration','Security Implication'], rows:[
+          ['Downtime','Systems offline = potential availability incident; plan communications'],
+          ['Service/Application Restart','May reset security configurations; verify after restart'],
+          ['Legacy Applications','May not support modern security controls; changes carry extra risk'],
+          ['Dependencies','Changing one system may break security controls on dependent systems'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Documentation Requirements', icon:'📝', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Updating Diagrams', text:'Network diagrams, data flow diagrams, and architecture documents must be updated when changes occur. Outdated diagrams are a security risk — incident responders may make wrong decisions based on inaccurate maps.' },
+        { type:'definition', label:'Version Control', text:'All configuration files, scripts, and code should be version controlled. This enables rollback, provides audit trail, and shows exactly what changed and when. Git is the most common tool.' },
+        { type:'tip', label:'🎯 Exam Insight', text:'The exam loves questions about <strong>what happens when change management is skipped</strong>. Answer: unauthorized changes, security controls disabled by accident, no rollback path, undetected vulnerabilities introduced. Change management IS a security control.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A developer pushes an emergency patch to a production web server without going through the change management process, causing the web application firewall rules to be reset to default — exposing the application to SQL injection. What change management element would have MOST likely prevented this?', choices:['Maintenance window scheduling','Impact analysis and approval process','Version control of the WAF config','Stakeholder notification'], answer:1, explain:'An <strong>impact analysis and approval process</strong> would have required the developer to evaluate what the patch affected (including WAF rules) and get approval from security stakeholders before implementation. This is exactly why bypassing change management is dangerous.' },
+    { q:'After deploying a change that breaks a critical business application, the IT team needs to reverse all changes made during the deployment to restore normal operation. What change management element enables this?', choices:['Maintenance window','Backout plan','Impact analysis','Version control'], answer:1, explain:'A <strong>backout plan</strong> (also called rollback plan) is a pre-documented procedure for reversing a change if it causes problems. Every significant change should have one prepared BEFORE implementation.' },
+    { q:'A company maintains detailed records of all changes to its firewall configurations, with each change recorded as a new entry showing what changed, when, by whom, and why. This practice is BEST described as:', choices:['Change approval process','Backout planning','Version control','Impact analysis'], answer:2, explain:'<strong>Version control</strong> tracks the history of changes to files and configurations, showing what changed, who changed it, and when. This provides an audit trail, enables rollback, and is a fundamental security and change management practice.' },
+  ]
+},
+
+'encryption-types': {
+  title: 'Encryption Levels and Types',
+  subtitle: 'Full-disk, file, database, symmetric, asymmetric — knowing when to use each',
+  domain: 1, domainName: '1.0 General Security Concepts',
+  content: [
+    { type:'analogy', label:'🔒 Encryption is like a safe — but which kind?', text:'You wouldn\'t store your passport in the same safe as your grocery list. Different data needs different protection. A fireproof safe for documents at rest, a locked briefcase for documents in transit, a lockbox at the bank (HSM) for the most critical things. Encryption has the same tiers.' },
+    { type:'section', title:'Encryption by Level (What Gets Encrypted)', icon:'📊', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Level','What It Encrypts','Key Tool/Example','Best For'], rows:[
+          ['Full-Disk (FDE)','The entire storage drive — everything on it','BitLocker (Windows), FileVault (Mac), uses TPM','Laptops — if stolen, drive is unreadable without key'],
+          ['Partition','A specific partition/section of a disk','BitLocker on specific volumes','Separating sensitive data on a multi-use drive'],
+          ['File','Individual files only','VeraCrypt, EFS (Encrypted File System)','Specific sensitive files when full-disk isn\'t possible'],
+          ['Volume','A logical volume (like an encrypted container file)','VeraCrypt volumes, encrypted DMG on Mac','Portable encrypted containers; can be moved between systems'],
+          ['Database','Entire database or specific columns/records','Transparent Data Encryption (TDE), column-level encryption','Protecting customer PII, credit cards in databases'],
+          ['Record','Individual records or fields within a database','Column-level encryption, application-layer encryption','HIPAA-protected fields; credit card numbers; SSNs'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Encryption for Data in Transit', icon:'🔄', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Transport/Communication Encryption', text:'Encrypts data WHILE IT\'S MOVING between systems. <strong>TLS (Transport Layer Security)</strong> is the primary protocol — used for HTTPS, email (SMTP/S), and most network communication. <strong>IPSec</strong> encrypts at the network layer (used in VPNs). <strong>SSH</strong> encrypts terminal/admin sessions.' },
+        { type:'tip', label:'🎯 Data States on the Exam', text:'<strong>Data at rest</strong> = stored on disk → use FDE, database encryption, file encryption. <strong>Data in transit</strong> = moving across a network → use TLS, IPSec, HTTPS. <strong>Data in use</strong> = actively being processed in RAM → hardest to protect; secure enclaves help.' }
+      ]
+    },
+    { type:'section', title:'Algorithm Strength', icon:'🔢', bg:'#7c5cfc',
+      items:[
+        { type:'table', headers:['Algorithm','Type','Status','Key Length'], rows:[
+          ['AES (Advanced Encryption Standard)','Symmetric','Current gold standard','128, 192, or 256-bit'],
+          ['RSA','Asymmetric','Widely used for key exchange and signatures','2048-bit minimum (4096 preferred)'],
+          ['ECC (Elliptic Curve Cryptography)','Asymmetric','Modern, efficient — same security as RSA with smaller keys','256-bit ECC ≈ 3072-bit RSA'],
+          ['DES / 3DES','Symmetric','Deprecated — too weak','56-bit (DES), 112/168-bit (3DES)'],
+          ['RC4','Symmetric','Deprecated — broken','40-128 bit'],
+        ]}
+      ]
+    },
+    { type:'definition', label:'Key Length — Why It Matters', text:'Longer keys = more possible combinations = harder to brute force. A 128-bit key has 2^128 possible combinations. Doubling key length doesn\'t double security — it squares it. AES-256 is considered quantum-resistant for the foreseeable future.' },
+  ],
+  quiz: [
+    { q:'A company deploys laptops to field sales employees who travel frequently. The security team is concerned that a stolen laptop could expose customer data. Which encryption level would BEST protect ALL data on the laptop if it\'s stolen?', choices:['File-level encryption on sensitive folders','Database encryption for the CRM application','Full-disk encryption (FDE)','Volume encryption on the user profile folder'], answer:2, explain:'<strong>Full-disk encryption (FDE)</strong> encrypts the entire drive — the OS, all applications, all data files. If the laptop is stolen, the drive cannot be read without the encryption key/password, even if removed and placed in another computer.' },
+    { q:'A web application stores customer credit card numbers in a database. For PCI DSS compliance, the credit card numbers must be encrypted at rest. The rest of the customer record (name, address) does not require encryption. What encryption approach should be used?', choices:['Full-disk encryption on the database server','Record-level or column-level encryption on the credit card field','Volume encryption of the database files','Transport Layer Security (TLS) for database connections'], answer:1, explain:'<strong>Column-level (record-level) encryption</strong> encrypts only specific fields — like the credit card number column — leaving other fields readable for normal application function. This is the right-sized solution for PCI DSS compliance without encrypting more than necessary.' },
+    { q:'Which algorithm should a security architect choose to provide the strongest encryption for sensitive data at rest in 2024?', choices:['DES','RC4','AES-256','3DES'], answer:2, explain:'<strong>AES-256</strong> is the current industry standard for symmetric encryption. DES (56-bit) and RC4 are deprecated and broken. 3DES is being phased out. AES-256 is used by governments, militaries, and enterprises worldwide for the most sensitive data.' },
+  ]
+},
+
+'crypto-tools': {
+  title: 'Cryptographic Tools',
+  subtitle: 'TPM, HSM, key management systems, and secure enclaves — the hardware that protects your keys',
+  domain: 1, domainName: '1.0 General Security Concepts',
+  content: [
+    { type:'analogy', label:'🔑 The key to encryption is... the key', text:'Even AES-256 encryption is worthless if the encryption key is stored in a text file next to the encrypted data. Cryptographic tools are specialized hardware and software designed to protect keys — they\'re the lockboxes for your lockboxes.' },
+    { type:'section', title:'Hardware Cryptographic Tools', icon:'💾', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Tool','What It Is','Primary Use','Where You\'ll Find It'], rows:[
+          ['TPM (Trusted Platform Module)','A dedicated microchip soldered to the motherboard that stores cryptographic keys and performs crypto operations','Full-disk encryption key storage (BitLocker), platform integrity verification, secure boot','Built into most modern laptops and desktops (check Device Manager)'],
+          ['HSM (Hardware Security Module)','A dedicated external hardware device for high-assurance cryptographic operations. Much more powerful than TPM.','Certificate Authority private key protection, payment card processing, enterprise key management','Data centers, banks, Certificate Authorities — expensive specialized hardware'],
+          ['Secure Enclave','A isolated, secure processor within a main CPU that handles sensitive operations separately from the main OS','Biometric data processing (Face ID, fingerprint), secure key storage on mobile devices','Apple A-series chips, Intel SGX, ARM TrustZone'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Key Management', icon:'🗝️', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Key Management System (KMS)', text:'Software that manages the entire lifecycle of cryptographic keys: generation, distribution, storage, rotation, and destruction. Cloud providers offer KMS services (AWS KMS, Azure Key Vault). The principle: never store keys alongside encrypted data.' },
+        { type:'definition', label:'Key Escrow', text:'A copy of encryption keys is held by a trusted third party. Allows recovery if keys are lost, and may be required for law enforcement access. Controversial — some argue it creates a backdoor. Used in enterprise environments where data recovery is critical.' },
+        { type:'tip', label:'🎯 TPM vs. HSM — Know the Difference', text:'<strong>TPM</strong> = chip on your motherboard, consumer/enterprise laptops, used for BitLocker and secure boot. Relatively limited. <strong>HSM</strong> = dedicated external hardware appliance, used by Certificate Authorities and banks, extremely high-assurance. TPM is built-in and basic; HSM is dedicated and enterprise-grade.' }
+      ]
+    },
+    { type:'section', title:'Obfuscation Techniques', icon:'🌫️', bg:'#7c5cfc',
+      items:[
+        { type:'table', headers:['Technique','What It Does','Common Use'], rows:[
+          ['Steganography','Hides data inside other data — embedding a secret message inside an image file. The image looks normal.','Covert communication; watermarking; malware command delivery hidden in images'],
+          ['Tokenization','Replaces sensitive data with a non-sensitive placeholder (token). The token has no mathematical relationship to the original.','Credit card processing — merchants store tokens, not actual card numbers (PCI DSS)'],
+          ['Data Masking','Replaces real data with realistic but fake data for non-production environments','Giving developers realistic test data without exposing real customer SSNs/credit cards'],
+        ]}
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A company\'s Certificate Authority uses a dedicated hardware appliance to store its private root key, ensuring the key can never be extracted by software or an OS-level compromise. What technology is being used?', choices:['TPM','Secure Enclave','HSM (Hardware Security Module)','Key Management System'], answer:2, explain:'An <strong>HSM (Hardware Security Module)</strong> is specifically designed for high-assurance key protection in enterprise/CA environments. Private keys stored in an HSM cannot be extracted — all crypto operations happen inside the hardware.' },
+    { q:'A retailer processes credit cards but wants to minimize its PCI DSS scope by never storing actual card numbers in its systems. Instead, their payment processor returns a random string that the retailer stores and uses for future reference. What technique is this?', choices:['Encryption','Tokenization','Data masking','Steganography'], answer:1, explain:'<strong>Tokenization</strong> replaces sensitive data (the real credit card number) with a non-sensitive token (random string). The token has no mathematical relationship to the card number, so if stolen it\'s worthless. This is the foundation of payment security systems like Apple Pay.' },
+    { q:'A security analyst discovers an image file being exfiltrated from the network. Closer examination reveals that a secret text document is embedded invisibly within the image\'s pixel data. What technique was used?', choices:['Encryption','Tokenization','Steganography','Data masking'], answer:2, explain:'<strong>Steganography</strong> hides data within other data — in this case, hiding a document inside an image. Unlike encryption (which makes data unreadable but obvious it exists), steganography hides the very EXISTENCE of the secret data.' },
+  ]
+},
+
+'hashing-certs': {
+  title: 'Hashing, Salting & Digital Certificates',
+  subtitle: 'Proving data integrity and identity — the building blocks of trust on the internet',
+  domain: 1, domainName: '1.0 General Security Concepts',
+  content: [
+    { type:'analogy', label:'🖊️ Hashing is like a fingerprint for data', text:'Every human has a unique fingerprint. Every piece of data has a unique hash. If even ONE character in a file changes, the hash completely changes — like if a fingerprint suddenly had a different pattern. Hashes don\'t tell you what the data IS, just whether it\'s changed.' },
+    { type:'section', title:'Hashing Deep Dive', icon:'#️⃣', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Hash Algorithm','Output Length','Status','Use Today'], rows:[
+          ['MD5','128-bit (32 hex chars)','Broken — collision attacks possible','File checksums only (not security); NEVER passwords'],
+          ['SHA-1','160-bit','Deprecated — weak','Being phased out; avoid for new implementations'],
+          ['SHA-256 (SHA-2)','256-bit','Current standard','Certificates, file integrity, password hashing (with salt)'],
+          ['SHA-3','256/512-bit','Modern alternative to SHA-2','High-security applications; different internal design than SHA-2'],
+          ['bcrypt/scrypt/Argon2','Variable','Purpose-built for passwords','Password storage — deliberately SLOW to resist brute force'],
+        ]},
+        { type:'definition', label:'Collision Attack', text:'When two different inputs produce the same hash output. This breaks the uniqueness property of hashing. MD5 and SHA-1 are vulnerable to collision attacks — that\'s why they\'re deprecated for security use.' },
+      ]
+    },
+    { type:'section', title:'Salting & Key Stretching', icon:'🧂', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Salting', text:'A random value (salt) is added to a password BEFORE hashing. Each user gets a unique salt, stored alongside their hash. This means: (1) same password → different hash for each user, (2) rainbow tables are useless because they\'d need a table for every possible salt.' },
+        { type:'definition', label:'Key Stretching', text:'Running a password through a hashing function thousands or millions of times, making it computationally expensive to crack. Algorithms like <strong>bcrypt, PBKDF2, and Argon2</strong> are designed specifically for this. A function that takes 100ms to compute requires 100ms per guess — making brute force infeasible.' },
+        { type:'tip', label:'🎯 Password Storage Best Practice', text:'Correct password storage = <strong>bcrypt/Argon2 + unique per-user salt</strong>. NEVER store plaintext passwords. NEVER use unsalted MD5 or SHA-1 for passwords. If a site emails you your password, they stored it in plaintext — that\'s a red flag.' }
+      ]
+    },
+    { type:'section', title:'Digital Certificates — The Full Picture', icon:'📜', bg:'#7c5cfc',
+      items:[
+        { type:'definition', label:'What a Certificate Contains', text:'1) <strong>Subject</strong>: Who the cert belongs to (domain name, organization). 2) <strong>Public Key</strong>: The subject\'s public key. 3) <strong>Issuer</strong>: The CA that signed it. 4) <strong>Validity Period</strong>: Start and expiration dates. 5) <strong>CA\'s Digital Signature</strong>: Proves the CA verified the subject\'s identity.' },
+        { type:'table', headers:['Certificate Type','Description','When Used'], rows:[
+          ['Domain Validated (DV)','Only proves ownership of the domain. Quick and cheap.','Personal sites, blogs, basic HTTPS'],
+          ['Organization Validated (OV)','Verifies the organization\'s identity. More trust.','Business websites'],
+          ['Extended Validation (EV)','Most rigorous — thorough vetting of the organization','Banking, e-commerce, high-trust sites'],
+          ['Wildcard','Valid for *.domain.com — covers all subdomains','When you have many subdomains (mail.example.com, app.example.com)'],
+          ['Self-Signed','Signed by itself, not a CA. Browsers will warn users.','Internal systems, development environments'],
+        ]},
+        { type:'definition', label:'Certificate Revocation', text:'When a certificate must be invalidated before expiration (key compromise, employee departure). Two methods: <strong>CRL (Certificate Revocation List)</strong> — a downloadable list of revoked certs (can be stale). <strong>OCSP (Online Certificate Status Protocol)</strong> — real-time query to check if a cert is revoked (faster, more current).' }
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A security team downloads a software patch from a vendor\'s website. The vendor provides an MD5 hash of the file. After downloading, the team computes the hash of the downloaded file and it matches. However, a senior analyst says this is insufficient for security purposes. Why?', choices:['MD5 hashes are too short to be secure','MD5 is vulnerable to collision attacks, meaning a malicious file could produce the same hash','The team should use SHA-3 instead of SHA-256','MD5 cannot be computed on large files'], answer:1, explain:'<strong>MD5 is broken</strong> — it\'s vulnerable to collision attacks, meaning an attacker could craft a malicious file that produces the same MD5 hash as the legitimate file. For security integrity checking, use SHA-256 or SHA-3.' },
+    { q:'Two users have the same password ("Password123!"). After a database breach, an attacker notices their password hashes are completely different. What security measure caused this?', choices:['Key stretching','Key escrow','Salting','Tokenization'], answer:2, explain:'<strong>Salting</strong> adds a unique random value to each password before hashing. Even identical passwords produce completely different hashes because each user has a unique salt. This defeats rainbow table attacks and makes per-user cracking much harder.' },
+    { q:'A company\'s certificate authority private key is compromised. The company immediately needs to notify relying parties that all certificates issued by this CA should no longer be trusted. What mechanism allows them to do this in real-time?', choices:['Certificate Signing Request (CSR)','Certificate Revocation List (CRL)','Online Certificate Status Protocol (OCSP)','Root of Trust update'], answer:2, explain:'<strong>OCSP (Online Certificate Status Protocol)</strong> allows real-time certificate status checking. While CRLs work, they can be stale (only updated periodically). OCSP provides immediate revocation status, which is critical when a CA key is compromised.' },
+  ]
+},
+
+'threat-vectors': {
+  title: 'Threat Vectors & Attack Surfaces',
+  subtitle: 'Every path an attacker can use to reach your systems — 2.2',
+  domain: 2, domainName: '2.0 Threats, Vulnerabilities, and Mitigations',
+  content: [
+    { type:'analogy', label:'🏠 Think of your house\'s attack surface', text:'Every window, door, doggy door, and chimney is a potential entry point. The more entry points, the bigger your attack surface. Reducing attack surface means closing, removing, or securing every unnecessary way in.' },
+    { type:'section', title:'Message-Based Vectors', icon:'✉️', bg:'#ff7b39',
+      items:[
+        { type:'table', headers:['Vector','Description','Example Attack'], rows:[
+          ['Email','Most common attack vector — phishing, malicious attachments, malicious links','Fake invoice email with macro-enabled Excel attachment'],
+          ['SMS (Smishing)','Text messages with malicious links or urgent fake alerts','"Your bank account is locked — click here to verify"'],
+          ['Instant Messaging','Slack, Teams, Discord used to deliver malware or phishing links','Attacker joins Slack workspace, sends malicious file in DM'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Network & System Vectors', icon:'🌐', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Vector','Why It\'s Dangerous'], rows:[
+          ['Open Service Ports','Every open port is a potential entry point — only open what\'s necessary'],
+          ['Default Credentials','Devices shipped with "admin/admin" — attackers scan for these constantly'],
+          ['Unsupported Systems','OS past end-of-life gets no more patches — forever vulnerable to new exploits'],
+          ['Vulnerable Software','Unpatched applications with known CVEs — often the easiest way in'],
+          ['Removable Media','USB drives carry malware, bypass network controls entirely (Stuxnet used this)'],
+          ['Unsecured Wireless','Open/WEP Wi-Fi allows eavesdropping and injection attacks'],
+          ['Bluetooth','Short-range but real — bluejacking, bluesnarfing, blueborne attacks'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Supply Chain Vectors', icon:'⛓️', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Supply Chain Attack', text:'Instead of attacking you directly, attackers compromise a vendor, supplier, or MSP who has access to YOUR systems. The SolarWinds attack (2020) is the landmark example — attackers compromised SolarWinds\'s build process, pushing malicious updates to 18,000+ organizations including US government agencies.' },
+        { type:'table', headers:['Supply Chain Target','Attack Method'], rows:[
+          ['Managed Service Provider (MSP)','Compromise the MSP to gain access to all their clients at once'],
+          ['Software Vendor','Inject malware into a legitimate software update (SolarWinds, CCleaner)'],
+          ['Hardware Supplier','Implant hardware backdoors during manufacturing'],
+        ]}
+      ]
+    },
+    { type:'tip', label:'🎯 Attack Surface Reduction', text:'The exam loves this concept: <strong>disable unused ports/services</strong>, remove unnecessary software, change default credentials, segment networks, keep software patched. Every unnecessary feature is a potential attack vector.' },
+  ],
+  quiz: [
+    { q:'A company discovers an attacker gained access by compromising a third-party IT management firm that had remote access to their systems. What type of attack vector was used?', choices:['Phishing','Supply chain / MSP compromise','Removable media','Open service port'], answer:1, explain:'This is a <strong>supply chain attack via an MSP</strong>. Instead of attacking the company directly, the attacker compromised a trusted third party. MSPs are high-value targets because compromising one provides access to all their clients simultaneously.' },
+    { q:'A security audit reveals a network printer using the manufacturer\'s default username "admin" and password "admin." What threat vector does this represent?', choices:['Unsupported system','Vulnerable software','Default credentials','Open service port'], answer:2, explain:'<strong>Default credentials</strong> are a major threat vector — attackers actively scan for devices using factory-default usernames and passwords. Changing default credentials is one of the most basic hardening steps and should be done immediately on any new device.' },
+    { q:'An attacker drops USB drives labeled "Q3 Salary Review - Confidential" in a company parking lot, hoping employees will plug them in. What threat vector is being exploited?', choices:['Email phishing','Supply chain','Removable media','Bluetooth'], answer:2, explain:'This is a <strong>removable media</strong> attack — physical USB drives used to deliver malware. The social engineering element (enticing label) makes employees curious enough to plug them in. This technique bypasses all network-based security controls entirely.' },
+  ]
+},
+
+'vuln-types': {
+  title: 'Types of Vulnerabilities',
+  subtitle: 'Application, OS, hardware, cloud, mobile — every weakness category for 2.3',
+  domain: 2, domainName: '2.0 Threats, Vulnerabilities, and Mitigations',
+  content: [
+    { type:'analogy', label:'🧱 A vulnerability is a crack in the wall', text:'It doesn\'t mean the wall falls down — it means there\'s a weakness an attacker could exploit. Different walls have different cracks. Software has memory bugs. Hardware has firmware flaws. The cloud has misconfiguration problems. Know each type cold for the exam.' },
+    { type:'section', title:'Application Vulnerabilities', icon:'💻', bg:'#ff4d6d',
+      items:[
+        { type:'table', headers:['Vulnerability','What It Is','Impact'], rows:[
+          ['Buffer Overflow','Writing more data into a memory buffer than it can hold, overflowing into adjacent memory','Code execution, privilege escalation, crashes'],
+          ['Memory Injection','Injecting malicious code directly into a running process\'s memory space','Bypasses disk-based antivirus; hard to detect'],
+          ['Race Condition (TOC/TOU)','Time-of-Check to Time-of-Use: a condition changes between when it\'s checked and when it\'s used','Privilege escalation; authentication bypass'],
+          ['Malicious Update','A legitimate software update process is hijacked to deliver malware','Bypasses security because the update is "trusted"'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Hardware & System Vulnerabilities', icon:'🔧', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Type','Description'], rows:[
+          ['Firmware Vulnerability','Bugs in low-level hardware software (BIOS/UEFI, router firmware) — often persist through OS reinstalls'],
+          ['End-of-Life (EOL)','Hardware/software no longer supported — no more patches, forever vulnerable to newly discovered exploits'],
+          ['Legacy Systems','Older systems running outdated OS/software that cannot be updated — common in healthcare, manufacturing'],
+          ['VM Escape','Attacker breaks out of a virtual machine to access the hypervisor or other VMs on the same host'],
+          ['Resource Reuse','VM/container resources not properly cleared between uses — previous tenant\'s data may leak'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Cloud & Mobile Vulnerabilities', icon:'☁️', bg:'#7c5cfc',
+      items:[
+        { type:'definition', label:'Cloud Misconfiguration', text:'The #1 cloud vulnerability. S3 buckets left public, overly permissive IAM roles, security groups allowing 0.0.0.0/0. The cloud is secure — but only if configured correctly. Most cloud breaches are misconfigurations, not sophisticated hacks.' },
+        { type:'definition', label:'Side Loading', text:'Installing apps on mobile devices from outside the official app store (APK files on Android). Apps from unofficial sources aren\'t vetted and may contain malware.' },
+        { type:'definition', label:'Jailbreaking / Rooting', text:'Removing manufacturer restrictions from iOS (jailbreak) or Android (root). Bypasses security controls, removes app sandboxing, makes the device significantly more vulnerable.' },
+        { type:'definition', label:'Zero-Day', text:'A vulnerability unknown to the vendor — no patch exists. Called "zero-day" because the vendor has had zero days to fix it. Extremely valuable to attackers and nation-states.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A web developer creates a login form that directly concatenates user input into a SQL query without sanitization. An attacker enters specially crafted input to bypass authentication. What vulnerability is being exploited?', choices:['Cross-site scripting','Buffer overflow','SQL injection','Directory traversal'], answer:2, explain:'This is <strong>SQL injection</strong> — user input inserted directly into a SQL query allows attackers to manipulate the query. The fix is parameterized queries (prepared statements) that treat user input as data, never as executable code.' },
+    { q:'A hospital runs a medical device controlling patient monitors. The device runs Windows XP, which Microsoft stopped supporting in 2014. What type of vulnerability does this represent?', choices:['Zero-day','Misconfiguration','End-of-life / Legacy system','Jailbreaking'], answer:2, explain:'Running <strong>end-of-life software</strong> means no more security patches. Every new vulnerability discovered after EOL is a permanent, unpatched weakness. This is extremely common in healthcare with medical devices that have long lifecycles.' },
+    { q:'An attacker exploits a vulnerability in a virtualization platform that allows code running inside a guest VM to execute commands on the hypervisor, gaining access to other VMs on the same physical server. What is this called?', choices:['Resource reuse','VM escape','Side loading','Memory injection'], answer:1, explain:'<strong>VM escape</strong> is when an attacker breaks out of the VM boundary to access the hypervisor or other VMs. It\'s one of the most severe virtualization vulnerabilities because it compromises the isolation that makes VMs valuable as a security boundary.' },
+  ]
+},
+
+'vuln-app-web': {
+  title: 'Application & Web Attack Techniques',
+  subtitle: 'Injection, traversal, privilege escalation, forgery — the web attacker\'s toolkit',
+  domain: 2, domainName: '2.0 Threats, Vulnerabilities, and Mitigations',
+  content: [
+    { type:'analogy', label:'🔓 Web apps are the front door attackers love most', text:'Most organizations expose web applications directly to the internet. Every input field, URL parameter, and API endpoint is a potential attack surface. Web attacks are the top source of data breaches year after year — the OWASP Top 10 is required reading.' },
+    { type:'section', title:'Injection Attacks', icon:'💉', bg:'#ff4d6d',
+      items:[
+        { type:'table', headers:['Injection Type','How It Works','Prevention'], rows:[
+          ['SQL Injection (SQLi)','Malicious SQL inserted into input fields manipulates database queries','Parameterized queries, input validation, WAF'],
+          ['Command Injection','Attacker injects OS commands into an app that passes input to the shell','Input sanitization, avoid shell calls, use safe APIs'],
+          ['XSS (Cross-Site Scripting)','Malicious scripts injected into web pages run in other users\' browsers','Output encoding, Content Security Policy, input validation'],
+          ['LDAP Injection','Malicious LDAP statements injected to manipulate directory queries','Input validation, use safe LDAP libraries'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Other Critical Web Attacks', icon:'🌐', bg:'#ff7b39',
+      items:[
+        { type:'definition', label:'Directory Traversal (Path Traversal)', text:'Attacker uses "../../../" sequences in URLs or file parameters to navigate outside the intended directory and access files they shouldn\'t. Example: requesting <code>../../etc/passwd</code> to read the Linux password file.' },
+        { type:'definition', label:'Privilege Escalation', text:'Gaining higher permissions than originally granted. <strong>Vertical escalation</strong>: regular user → admin. <strong>Horizontal escalation</strong>: accessing another user\'s data at the same privilege level. Often follows initial compromise as attackers move toward high-value targets.' },
+        { type:'definition', label:'Replay Attack', text:'Intercepting and re-sending a valid authentication token or session to gain unauthorized access. Like copying someone\'s keycard swipe data and replaying it later. Prevented by timestamps, nonces, and session expiration.' },
+        { type:'definition', label:'CSRF (Cross-Site Request Forgery)', text:'A malicious website tricks a victim\'s authenticated browser into making requests to another site where they\'re logged in. If you\'re logged into your bank and visit a malicious site, that site can make your browser submit a bank transfer without you knowing. Prevention: CSRF tokens, SameSite cookies.' },
+        { type:'definition', label:'SSRF (Server-Side Request Forgery)', text:'Attacker makes the server itself send requests to internal resources. From the server\'s perspective, it\'s a local trusted request — bypassing firewalls that only check external traffic. Major cloud attack vector for accessing metadata endpoints.' },
+      ]
+    },
+    { type:'tip', label:'🎯 CSRF vs. XSS — The Key Difference', text:'<strong>XSS</strong>: attacker injects script into a website that runs in OTHER users\' browsers (attacks the site\'s users). <strong>CSRF</strong>: attacker\'s malicious site tricks your browser into making requests to a legitimate site you\'re already authenticated to (abuses your existing session). Different mechanism, different fix.' },
+  ],
+  quiz: [
+    { q:'An attacker crafts a URL: "https://app.com/view?file=../../etc/shadow" — if successful, they can read the Linux shadow password file. What attack is this?', choices:['SQL injection','Directory traversal','Command injection','CSRF'], answer:1, explain:'This is <strong>directory traversal</strong> (path traversal) — using "../" sequences to navigate outside the intended directory. The attacker is escaping the web root to read system files. Prevented by input validation and confining file access to allowed directories.' },
+    { q:'A logged-in bank customer visits a malicious website. The site contains hidden code that causes the customer\'s browser to automatically submit a $5,000 transfer to their bank using their existing session. What attack is this?', choices:['XSS','Phishing','CSRF (Cross-Site Request Forgery)','Session hijacking'], answer:2, explain:'This is <strong>CSRF</strong> — the attacker\'s site abuses the victim\'s existing authenticated session with another site. The bank sees a legitimate, authenticated request. Prevention: CSRF tokens, SameSite cookie attribute, re-authentication for sensitive transactions.' },
+    { q:'After exploiting a vulnerability to gain regular user access, an attacker finds a bug that lets them access the admin panel and create new administrator accounts. What type of attack did they perform second?', choices:['Horizontal privilege escalation','Vertical privilege escalation','Replay attack','SSRF'], answer:1, explain:'Moving from a regular user to administrator is <strong>vertical privilege escalation</strong> — gaining higher privileges than originally granted. Horizontal escalation would be accessing another user\'s data at the same privilege level (e.g., reading another customer\'s records).' },
+  ]
+},
+
 'threat-actors': {
   title: 'Threat Actors: Know Your Enemy',
   subtitle: 'Understanding who attacks systems and why — critical for 2.1',
@@ -1302,6 +1770,167 @@ const LESSONS = {
     { q:'A vulnerability scanner reports that a server is running a vulnerable version of software, but investigation reveals the server has additional controls that make the vulnerability unexploitable in this environment. This scan result is a:', choices:['True positive','False positive','True negative','False negative'], answer:1, explain:'A <strong>false positive</strong> is when a scanner reports a vulnerability that, upon investigation, isn\'t actually exploitable or doesn\'t exist in the tested context. The vulnerability was reported, but it\'s not real in this environment.' },
     { q:'A security researcher discovers a critical zero-day in a popular web framework and privately contacts the vendor, giving them 90 days to release a patch before public disclosure. This practice is called:', choices:['Bug bounty','Penetration testing','Responsible disclosure','OSINT gathering'], answer:2, explain:'<strong>Responsible disclosure</strong> (also called coordinated disclosure) is the practice of privately notifying a vendor about a vulnerability and giving them time to fix it before going public. This balances researcher credit with user protection.' },
     { q:'A CVE is assigned a CVSS base score of 9.8. How should this be treated in your vulnerability management process?', choices:['Low priority — schedule for next quarter\'s patch cycle','Medium priority — address within 30 days','High priority — address within 1-2 weeks','Critical — immediate remediation required'], answer:3, explain:'A CVSS score of 9.8 is in the <strong>Critical range (9.0-10.0)</strong>. Critical vulnerabilities require immediate attention, often within hours to days, not weeks. They represent near-maximum exploitability and impact.' },
+  ]
+},
+
+'network-attacks': {
+  title: 'Network Attacks',
+  subtitle: 'DDoS, DNS attacks, on-path, credential replay — attacks targeting your network infrastructure',
+  domain: 2, domainName: '2.0 Threats, Vulnerabilities, and Mitigations',
+  content: [
+    { type:'analogy', label:'🌊 Network attacks are floods, ambushes, and wrong road signs', text:'DDoS is a flood — overwhelming volume. On-path attacks are ambushes — intercepting traffic mid-journey. DNS attacks are like changing road signs — redirecting traffic to wrong destinations. Each requires a different defense strategy.' },
+    { type:'section', title:'Denial of Service Attacks', icon:'💥', bg:'#ff4d6d',
+      items:[
+        { type:'table', headers:['Attack Type','How It Works','Scale'], rows:[
+          ['DoS','Single attacker overwhelms a target with traffic or requests','Limited — one machine\'s bandwidth'],
+          ['DDoS','Thousands of compromised machines (botnet) attack simultaneously','Massive — can hit terabits per second'],
+          ['Amplified DDoS','Attacker sends small requests to open servers spoofing victim\'s IP — servers send large responses to victim','Amplified 100x+ with minimal attacker bandwidth'],
+          ['Reflected DDoS','Attack traffic bounces off legitimate third-party servers to victim — hides attacker origin','Hard to trace; looks like legitimate traffic'],
+        ]}
+      ]
+    },
+    { type:'section', title:'DNS Attacks', icon:'🌐', bg:'#ff7b39',
+      items:[
+        { type:'definition', label:'DNS Cache Poisoning', text:'Corrupting a DNS resolver\'s cache with false records. When users query for "bank.com", the poisoned DNS returns the attacker\'s IP. Users are silently redirected without knowing — the URL in their browser still looks correct.' },
+        { type:'definition', label:'DNS Hijacking', text:'Modifying DNS settings on routers or systems to point to attacker-controlled DNS servers. All DNS queries go through attacker infrastructure — full visibility into every domain queried.' },
+        { type:'definition', label:'Domain Hijacking', text:'Taking over a domain name registration by compromising the domain registrar account. Attacker then controls all DNS for that domain — can redirect mail, web traffic, and more.' },
+      ]
+    },
+    { type:'section', title:'On-Path & Credential Attacks', icon:'🕵️', bg:'#4f8ef7',
+      items:[
+        { type:'definition', label:'On-Path Attack (Man-in-the-Middle)', text:'Attacker positions themselves between communicating parties, intercepting and potentially modifying traffic. Both sides think they\'re talking directly to each other. Achieved via ARP spoofing, rogue AP, or compromised DNS.' },
+        { type:'definition', label:'Credential Replay / Pass-the-Hash', text:'Capturing authentication tokens or hashed credentials and replaying them without cracking. Pass-the-Hash works on Windows networks — the attacker needs only the hash, not the plaintext password. Prevented by session tokens with timestamps and nonces.' },
+        { type:'definition', label:'Evil Twin / Rogue Access Point', text:'Fake wireless access point mimicking a legitimate one — users connect to the attacker\'s AP instead of the real one. All their traffic is visible to the attacker. Deauthentication attacks forcibly disconnect clients from the real AP to force reconnection to the evil twin.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'An attacker sends DNS queries to thousands of open resolvers with the victim\'s IP as the source. The resolvers send large responses to the victim, overwhelming it. This is a:', choices:['Reflected DDoS','Amplified DDoS','DNS poisoning','On-path attack'], answer:1, explain:'This is an <strong>amplified DDoS</strong>. The attacker sends small queries but DNS responses are much larger — amplifying their effective bandwidth. Spoofing the victim\'s IP causes all those amplified responses to flood the victim, achieving massive traffic volume with minimal attacker resources.' },
+    { q:'A security analyst finds that when employees try to visit the company banking portal, they\'re silently redirected to a convincing fake login page. Investigation reveals the local DNS resolver has incorrect records for the bank\'s domain. What attack occurred?', choices:['Domain hijacking','On-path attack','DNS cache poisoning','Credential replay'], answer:2, explain:'<strong>DNS cache poisoning</strong> corrupts a resolver\'s cached records with false IPs. Legitimate domain queries return the attacker\'s IP, silently redirecting users to fake sites. The browser URL still shows the legitimate domain name — making it especially convincing.' },
+    { q:'During a penetration test, a tester captures NTLMv2 hashes from network traffic and uses them to authenticate to other systems without ever cracking the passwords. What technique is this?', choices:['Credential replay / Pass-the-Hash','Brute force','Rainbow table attack','Kerberoasting'], answer:0, explain:'<strong>Pass-the-Hash</strong> is a credential replay attack — captured password hashes are used directly for Windows NTLM authentication without needing the plaintext. NTLM accepts the hash directly, making this attack highly effective on Windows networks.' },
+  ]
+},
+
+'indicators': {
+  title: 'Indicators of Malicious Activity',
+  subtitle: 'Recognizing the signals that tell you you\'re under attack before it\'s too late',
+  domain: 2, domainName: '2.0 Threats, Vulnerabilities, and Mitigations',
+  content: [
+    { type:'analogy', label:'🚨 Indicators are the smoke before the fire', text:'A house fire gives off smoke before flames. A network attack gives off indicators before full compromise. Knowing what to look for — and acting on it — is the difference between catching an attack early and dealing with a full breach investigation months later.' },
+    { type:'section', title:'Account & Access Indicators', icon:'👤', bg:'#ff4d6d',
+      items:[
+        { type:'table', headers:['Indicator','What It Suggests','Example'], rows:[
+          ['Account Lockout','Repeated failed logins — possible brute force or password spraying','5 accounts locked simultaneously = spraying attack in progress'],
+          ['Concurrent Session Usage','Same account logged in from multiple locations at once','One account active in New York and Tokyo simultaneously'],
+          ['Impossible Travel','Login from location A, then location B within physically impossible timeframe','Login from LA at 9AM, login from London at 9:15AM'],
+          ['Time-of-Day Anomaly','Access during hours inconsistent with the user\'s normal behavior','Finance system accessed at 3AM by account that normally logs in 9-5'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Resource & Log Indicators', icon:'📊', bg:'#ff7b39',
+      items:[
+        { type:'table', headers:['Indicator','What It Suggests'], rows:[
+          ['Unexpected Resource Consumption','CPU/memory/bandwidth spike with no business explanation — possible cryptomining, DDoS participation, or data exfiltration'],
+          ['Resource Inaccessibility','Systems or files suddenly unavailable — possible ransomware or DoS attack'],
+          ['Blocked Content Alerts','Security tools blocking outbound connections — possible malware trying to call home to C2'],
+          ['Out-of-Cycle Logging','Log entries at unusual times or logs being modified — attacker may be covering tracks'],
+          ['Missing Logs','Logs that should exist are gone — attackers commonly delete logs to erase evidence'],
+          ['Data on Dark Web','Your organization\'s data appears in breach databases — you\'ve already been compromised'],
+        ]}
+      ]
+    },
+    { type:'definition', label:'IoC — Indicators of Compromise', text:'Evidence that a system has been compromised: malicious IP addresses, file hashes of known malware, suspicious registry keys, unusual outbound domains. IoCs are shared via threat intelligence feeds (STIX/TAXII format) so organizations can detect known threats across the industry.' },
+    { type:'tip', label:'🎯 Correlate — Don\'t Investigate in Isolation', text:'One locked account = probably a forgotten password. Five accounts locked in 30 seconds + impossible travel on one + outbound traffic to a suspicious IP = <strong>active attack</strong>. SIEM correlation rules chain these indicators together to reveal attacks that individual events would miss.' },
+  ],
+  quiz: [
+    { q:'A security analyst notices an employee\'s account authenticated successfully from Chicago at 8:00 AM, then from Singapore at 8:47 AM. What type of indicator is this?', choices:['Account lockout','Resource consumption anomaly','Impossible travel','Concurrent session usage'], answer:2, explain:'<strong>Impossible travel</strong> — it\'s physically impossible to travel from Chicago to Singapore in 47 minutes. This strongly indicates stolen credentials being used by a threat actor in a different location. Immediate response: force password reset, enable MFA, investigate the account\'s recent activity.' },
+    { q:'During a routine log review, an analyst notices that security logs from last Tuesday are completely missing, even though the logging system shows it was running all day. What does this most likely indicate?', choices:['A logging system misconfiguration','An attacker covering their tracks by deleting logs','Normal log rotation behavior','A storage capacity issue'], answer:1, explain:'<strong>Missing logs</strong> that should exist are a strong indicator of malicious activity. Attackers commonly delete logs to remove evidence of their intrusion. This is why logs should be shipped to a centralized, write-protected SIEM in real time — local log deletion doesn\'t erase the evidence.' },
+    { q:'A company receives a notification from a threat intelligence service that employee email addresses and password hashes from their domain are being sold on a dark web forum. What does this indicate?', choices:['An attempted but unsuccessful attack','A phishing simulation result','A confirmed breach has already occurred','An insider threat report'], answer:2, explain:'Credentials appearing on the dark web means a <strong>breach has already occurred</strong> — data was exfiltrated and is being monetized. Immediate response: force password resets for all affected accounts, enable MFA, investigate the breach source and timeline.' },
+  ]
+},
+
+'mitigation-basics': {
+  title: 'Mitigation Techniques: Securing the Enterprise',
+  subtitle: 'Segmentation, access control, patching, least privilege — the core defensive toolkit',
+  domain: 2, domainName: '2.0 Threats, Vulnerabilities, and Mitigations',
+  content: [
+    { type:'analogy', label:'🏦 Defense is about layers and zones', text:'A bank doesn\'t just lock the front door. It has zones — public lobby, teller area, manager offices, vault. Each zone requires higher clearance. If someone gets past the lobby, they hit the next locked door. That\'s segmentation + access control. Apply this thinking to your network.' },
+    { type:'section', title:'Network Segmentation', icon:'🏗️', bg:'#4f8ef7',
+      items:[
+        { type:'definition', label:'Segmentation', text:'Dividing a network into separate zones so compromise of one doesn\'t automatically give access to everything else. Ransomware in the finance VLAN shouldn\'t be able to reach HR or production servers.' },
+        { type:'table', headers:['Method','How It Works'], rows:[
+          ['VLANs','Logical separation at Layer 2 — different VLANs can\'t communicate without a router/firewall'],
+          ['DMZ (Screened Subnet)','Isolated zone for public-facing servers — sits between internet and internal network'],
+          ['Air Gap','Physical separation with no network connection — used for most sensitive systems'],
+          ['Microsegmentation','Granular segmentation down to individual workloads — each server has its own policy'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Access Control & Least Privilege', icon:'🔑', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Least Privilege', text:'Every user, service, and application should have only the minimum access needed to do their job. A marketing employee doesn\'t need access to the customer database. A web server process shouldn\'t run as root.' },
+        { type:'definition', label:'Application Allow List', text:'Only pre-approved applications can run on a system — everything else is blocked by default. Much more secure than a deny list (which only blocks known-bad, allowing everything unknown).' },
+        { type:'definition', label:'Access Control Lists (ACLs)', text:'Rules on firewalls and routers defining allowed or denied traffic. Processed top-to-bottom, first match wins. Always ends in an implicit deny all.' },
+      ]
+    },
+    { type:'section', title:'Core Mitigation Priorities', icon:'🛡️', bg:'#7c5cfc',
+      items:[
+        { type:'table', headers:['Mitigation','Priority','Why'], rows:[
+          ['Patching','Critical','Unpatched known vulnerabilities are the #1 attack vector — patch fast'],
+          ['Network Segmentation','High','Limits lateral movement — breach stays contained'],
+          ['Least Privilege','High','Reduces blast radius — compromised account has limited reach'],
+          ['Encryption','High','Stolen data is useless without the key'],
+          ['Monitoring','High','You can\'t respond to what you can\'t see'],
+          ['Decommissioning','Medium','Old forgotten systems are unpatched and forgotten — remove them'],
+        ]}
+      ]
+    },
+  ],
+  quiz: [
+    { q:'Ransomware spreads from one workstation across the entire flat network, encrypting every server it reaches. Which mitigation would have MOST limited the damage?', choices:['Application allow listing','Network segmentation','Increased logging','Stronger passwords'], answer:1, explain:'<strong>Network segmentation</strong> limits lateral movement. With proper segmentation, ransomware on a user workstation can\'t freely reach production servers in other VLANs. Flat networks allow unrestricted east-west movement — exactly what ransomware needs to spread.' },
+    { q:'A web server compromise occurs. Investigators find the web server process ran with root privileges, giving the attacker full system access. Which security principle was violated?', choices:['Defense in depth','Separation of duties','Least privilege','Need to know'], answer:2, explain:'<strong>Least privilege</strong> requires processes run with only minimum necessary permissions. A web server only needs to read web files and listen on ports 80/443 — never root. Running as root turns a web compromise into a full system compromise.' },
+    { q:'A company maintains a list of approved applications that employees can run on company laptops. Any unlisted application is automatically blocked from executing. What is this called?', choices:['Deny list (blacklist)','Application allow list','EDR policy','Configuration enforcement'], answer:1, explain:'An <strong>application allow list</strong> (whitelist) only permits pre-approved applications to execute. This is far more secure than a deny list, which only blocks known-bad applications while allowing everything unknown — including new malware that hasn\'t been seen before.' },
+  ]
+},
+
+'hardening': {
+  title: 'System Hardening Techniques',
+  subtitle: 'Reducing attack surface at the system level — from vulnerable defaults to secure baselines',
+  domain: 2, domainName: '2.0 Threats, Vulnerabilities, and Mitigations',
+  content: [
+    { type:'analogy', label:'🏠 A new house vs. a secured home', text:'A brand-new house has unlocked doors, no alarm, no cameras, and the spare key under the mat. Hardening is installing deadbolts, setting up the alarm, adding cameras, removing that spare key. Default system installs are the same — convenient but wide open.' },
+    { type:'section', title:'Core Hardening Techniques', icon:'⚙️', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Technique','What You Do','Why It Matters'], rows:[
+          ['Change Default Passwords','Replace all manufacturer default credentials immediately','Default creds are publicly known — attackers scan for them constantly'],
+          ['Disable Unused Services','Turn off services and roles not needed for the system\'s function','Every running service is an attack surface; minimize the footprint'],
+          ['Close Unused Ports','Block ports not required — only open what\'s necessary','Every open port is a potential entry point'],
+          ['Remove Unnecessary Software','Uninstall applications not required for the system\'s role','Less software = fewer vulnerabilities to patch and exploit'],
+          ['Host-Based Firewall','Enable and configure OS firewall on each system','Defense even if network firewall is bypassed'],
+          ['Endpoint Protection (EDR)','Deploy antivirus/EDR on all endpoints','Detects and blocks malware execution and malicious behavior'],
+          ['Encryption','Encrypt disk, sensitive files, network communications','Protects data even if physical access is gained'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Hardening by Device Type', icon:'🎯', bg:'#ff7b39',
+      items:[
+        { type:'table', headers:['Target','Key Hardening Steps'], rows:[
+          ['Workstations','Full-disk encryption, EDR, no local admin rights, screen lock, patch management, disable USB boot'],
+          ['Servers','Disable unnecessary roles/services, remove GUI if unneeded, host firewall, enable logging'],
+          ['Routers/Switches','Change defaults, disable Telnet → use SSH, disable unused interfaces, enable port security'],
+          ['Cloud Infrastructure','Disable public access by default, IAM least privilege, MFA for all accounts, enable logging'],
+          ['Mobile Devices','MDM enrollment, screen lock, encryption, remote wipe, disable sideloading'],
+          ['IoT Devices','Change default creds, update firmware, isolate on separate VLAN, disable unused features'],
+        ]}
+      ]
+    },
+    { type:'definition', label:'Secure Baseline / CIS Benchmarks', text:'A documented minimum security configuration all systems of a given type must meet. CIS (Center for Internet Security) publishes free hardening benchmarks for Windows, Linux, macOS, network devices, and cloud environments. These are the industry standard and referenced heavily in enterprise security.' },
+    { type:'tip', label:'🎯 Configuration Drift', text:'Systems that start secure become insecure over time — patches skipped, settings changed for convenience, new software installed. <strong>Configuration enforcement</strong> tools continuously monitor systems against their baseline and correct or alert on drift. Without this, hardened systems gradually become vulnerable again.' },
+  ],
+  quiz: [
+    { q:'A newly deployed Windows server has FTP, Telnet, and several other default services running that are not needed for its role as a web server. What hardening step should be performed first?', choices:['Install a host-based IPS','Disable unused services and close unnecessary ports','Enable full-disk encryption','Install antivirus software'], answer:1, explain:'<strong>Disabling unnecessary services and closing unused ports</strong> is the most impactful first hardening step — it eliminates attack surface immediately. Services like Telnet transmit in plaintext and FTP is unnecessary for a web server. Remove what you don\'t need before adding protective controls.' },
+    { q:'An organization applies a standardized minimum security configuration to all new laptops before distributing them, including disk encryption, screen lock, required antivirus, and disabled USB boot. What is this practice called?', choices:['Patch management','Security baseline deployment','Vulnerability assessment','Change management'], answer:1, explain:'This is <strong>security baseline deployment</strong> — applying a standardized minimum security configuration to systems before they enter production. CIS Benchmarks are the most widely used industry-standard baselines for different operating systems and device types.' },
+    { q:'A security team discovers that several previously hardened servers have had their host-based firewalls disabled and non-standard software installed over time. What security concept addresses this problem?', choices:['Vulnerability scanning','Configuration drift monitoring / enforcement','Incident response','Patch management'], answer:1, explain:'<strong>Configuration drift</strong> occurs when systems change from their approved secure baseline over time. <strong>Configuration enforcement</strong> tools (like SCAP scanners, Desired State Configuration, or Ansible) continuously monitor for drift and either alert or automatically remediate deviations.' },
   ]
 },
 

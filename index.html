@@ -7,6 +7,7 @@
 <title>SecureUp — CompTIA Security+ SY0-701 Mastery</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+/* v4.0 - Domain 4 complete - Force cache refresh */
 :root {
   --bg: #0a0b0f;
   --bg2: #111318;
@@ -1661,6 +1662,394 @@ const LESSONS = {
     { q:'A piece of malware spreads automatically through a company network by exploiting an unpatched vulnerability in the remote desktop protocol, without any user clicking on anything. This is BEST described as a:', choices:['Virus','Worm','Trojan','Ransomware'], answer:1, explain:'A <strong>worm</strong> self-replicates and spreads automatically without human interaction. Exploiting a network vulnerability to spread independently is the defining trait of a worm.' },
     { q:'A user downloads what appears to be a free game from an unofficial website. Once installed, it creates a hidden backdoor that gives an attacker remote access. This is a:', choices:['Logic Bomb','Worm','Trojan','Rootkit'], answer:2, explain:'This is a <strong>Trojan</strong> — malware that disguises itself as legitimate software. The user was tricked into installing it by the "free game" lure.' },
     { q:'An attacker compromises a bank\'s system. Their code sits dormant for six months and then, on January 1st, begins deleting all financial records. This is a:', choices:['Ransomware','Worm','Logic Bomb','Spyware'], answer:2, explain:'This is a <strong>Logic Bomb</strong> — code that lies dormant and triggers on a specific condition (in this case, a date: January 1st). Logic bombs are often planted by insiders.' },
+  ]
+},
+
+'baselines-hardening': {
+  title: 'Secure Baselines & Hardening Targets',
+  subtitle: 'Establish, deploy, maintain — securing every device type in the enterprise',
+  domain: 4, domainName: '4.0 Security Operations',
+  content: [
+    { type:'analogy', label:'🏗️ Building codes for IT systems', text:'A building code sets minimum standards — ceiling height, fire exits, electrical requirements. Security baselines are building codes for IT systems — minimum security requirements every system must meet before production.' },
+    { type:'section', title:'Secure Baseline Lifecycle', icon:'🔄', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Phase','Activities'], rows:[
+          ['Establish','Define what the baseline should be — use CIS Benchmarks, NIST guides, vendor hardening guides as starting points. Document specific settings for each OS/device type.'],
+          ['Deploy','Apply the baseline to new systems before they go to production. Automated tools (Group Policy, Ansible, SCCM) enforce baseline settings at deployment.'],
+          ['Maintain','Continuously monitor for configuration drift — systems changing from baseline over time. Re-apply settings. Update baseline when new vulnerabilities are discovered.'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Hardening by Device Type', icon:'🖥️', bg:'#22d06b',
+      items:[
+        { type:'table', headers:['Target','Key Hardening Steps'], rows:[
+          ['Workstations','Full-disk encryption (BitLocker), EDR agent, standard user accounts (no local admin), screen lock policy, patch management, disable USB boot'],
+          ['Servers','Disable unnecessary services/roles, remove GUI if not needed, configure host firewall, enable comprehensive logging, regular patching, principle of least function'],
+          ['Switches','Change default credentials, disable unused ports, enable port security (802.1X), disable Telnet → use SSH only, configure VLAN segmentation, update firmware'],
+          ['Routers','Change default credentials, disable unnecessary services (SNMP v1/v2, finger), enable SSH, implement ACLs, update firmware, disable HTTP management → HTTPS only'],
+          ['Cloud Infrastructure','Disable public access by default, IAM least privilege policies, MFA for all accounts, enable CloudTrail/logging, encrypt all storage by default, monitor for misconfigurations'],
+          ['ICS/SCADA','Network isolation (air gap or strict segmentation), application whitelisting, remove internet connectivity, strict physical access, compensating controls for systems that cannot be patched'],
+          ['Mobile Devices','MDM enrollment mandatory, screen lock + PIN, full-device encryption, remote wipe capability, disable sideloading (unauthorized app installation), certificate-based Wi-Fi'],
+          ['IoT Devices','Change default credentials immediately, update firmware, isolate on dedicated VLAN, disable unused features, monitor for anomalous traffic patterns'],
+        ]}
+      ]
+    },
+    { type:'definition', label:'CIS Benchmarks', text:'The Center for Internet Security publishes free, consensus-driven hardening benchmarks for most operating systems, network devices, cloud platforms, and applications. These are the industry standard baselines referenced in audits and compliance frameworks. Know that they exist and what they\'re for.' },
+    { type:'tip', label:'🎯 Configuration Drift', text:'Systems that start secure become insecure over time — patches skipped, settings changed for convenience, software installed. <strong>Configuration enforcement</strong> (continuous baseline monitoring via SCAP scanners, DSC, Ansible) catches drift before attackers can exploit it.' },
+  ],
+  quiz: [
+    { q:'A security team discovers several previously hardened servers have had their host-based firewalls disabled over time, deviating from the approved baseline. What process monitors and corrects this?', choices:['Patch management','Vulnerability scanning','Configuration enforcement / drift detection','Incident response'], answer:2, explain:'<strong>Configuration enforcement</strong> (configuration drift detection) continuously monitors systems against their approved baseline and alerts on or automatically corrects deviations. Systems naturally drift from baselines over time as changes accumulate — this process keeps them compliant.' },
+    { q:'A new industrial control system cannot be patched due to vendor restrictions, and antivirus cannot be installed without voiding the warranty. What is the BEST security approach?', choices:['Accept the risk and document an exception','Isolate it on a dedicated network segment with strict access controls and enhanced monitoring','Demand the vendor allow patching before installation','Replace it with a modern system that supports patching'], answer:1, explain:'When traditional controls can\'t be applied to ICS/SCADA systems, <strong>network isolation plus compensating controls</strong> is the correct approach. Isolate on its own network segment, restrict all communication to only necessary systems, add enhanced monitoring for anomalous behavior, and formally document the compensating controls.' },
+  ]
+},
+
+'mobile-wireless': {
+  title: 'Mobile & Wireless Security',
+  subtitle: 'MDM, BYOD models, WPA2/WPA3, site surveys — securing the mobile attack surface',
+  domain: 4, domainName: '4.0 Security Operations',
+  content: [
+    { type:'analogy', label:'📱 Mobile devices are pocket computers with massive attack surfaces', text:'Your phone has your email, corporate apps, location data, camera, microphone, and VPN credentials. Losing it is worse than losing a laptop in many cases. MDM is how organizations maintain control over devices they don\'t physically own.' },
+    { type:'section', title:'Mobile Deployment Models', icon:'📱', bg:'#7c5cfc',
+      items:[
+        { type:'table', headers:['Model','Who Owns Device','IT Control Level','Privacy Concern'], rows:[
+          ['BYOD (Bring Your Own Device)','Employee','Limited — only corporate data/apps can be managed','High — employee has personal data on same device'],
+          ['COPE (Corporate-Owned, Personally Enabled)','Company','Full device control','Medium — company owns device but allows personal use'],
+          ['CYOD (Choose Your Own Device)','Company','Full device control','Low — employee chooses from approved list; company owned'],
+          ['Company-Owned, Business Only','Company','Full device control','None — no personal use permitted'],
+        ]}
+      ]
+    },
+    { type:'section', title:'MDM — Mobile Device Management', icon:'🔧', bg:'#4f8ef7',
+      items:[
+        { type:'definition', label:'What MDM Controls', text:'Enforces security policies on mobile devices: screen lock and PIN requirements, encryption enforcement, remote wipe capability (lost/stolen device), app management (push/remove apps), VPN configuration, certificate distribution, compliance checking (blocks jailbroken/rooted devices).' },
+        { type:'definition', label:'Connection Security', text:'<strong>Cellular</strong>: encrypted by carrier; risk of IMSI catchers (fake cell towers). <strong>Wi-Fi</strong>: must use WPA3 or WPA2-Enterprise; open Wi-Fi is dangerous. <strong>Bluetooth</strong>: disable when not in use; vulnerable to bluejacking (spam), bluesnarfing (data theft), bluebee attacks.' },
+      ]
+    },
+    { type:'section', title:'Wireless Security Protocols', icon:'📡', bg:'#22d06b',
+      items:[
+        { type:'table', headers:['Protocol','Security Level','Authentication','Notes'], rows:[
+          ['WEP','Broken — do NOT use','Shared key','RC4 with fatal flaws — cracked in minutes with aircrack-ng'],
+          ['WPA2-Personal','Acceptable for home','PSK (Pre-Shared Key)','Shared passphrase; vulnerable to offline dictionary attacks if weak password'],
+          ['WPA2-Enterprise','Good','802.1X + RADIUS','Individual user credentials; compromising one user doesn\'t compromise all'],
+          ['WPA3-Personal','Better','SAE (Simultaneous Authentication of Equals)','Eliminates offline dictionary attacks; forward secrecy'],
+          ['WPA3-Enterprise','Best','192-bit security mode + 802.1X','Highest security; required for government/classified environments'],
+        ]},
+        { type:'definition', label:'Site Survey', text:'Physical wireless assessment of signal coverage, interference, and access point placement before or after deployment. Identifies dead zones, overlap areas, and rogue access points. Heat maps visualize signal strength across a physical space. Essential for both performance and security planning.' },
+        { type:'definition', label:'AAA/RADIUS for Wireless', text:'Enterprise Wi-Fi uses 802.1X with a RADIUS server — each user authenticates with their own credentials, not a shared password. Compromised credentials affect only that one user and can be revoked individually without changing the network password for everyone.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A company allows employees to use personal smartphones for work email and calendar. The IT policy requires remote wipe capability, encryption, and screen lock enforcement. What technology enables this?', choices:['802.1X network access control','MDM (Mobile Device Management)','VPN split tunneling','WPA3-Enterprise'], answer:1, explain:'<strong>MDM</strong> allows organizations to enforce security policies (encryption, screen lock, remote wipe) on mobile devices — including personal BYOD devices. The MDM profile is installed on the device, giving IT the ability to enforce policies and remotely wipe corporate data if the device is lost.' },
+    { q:'A company\'s wireless network uses a shared Wi-Fi password known by all 500 employees. When an employee is terminated, what is the primary security concern?', choices:['The terminated employee could still connect until the password is changed for everyone','WPA2-Personal is not encrypted','The password might expire','MDM cannot manage this configuration'], answer:0, explain:'With a shared PSK, every employee knows the same password. A terminated employee retains access until the password is changed — which forces ALL 500 employees to update their devices simultaneously. WPA2/WPA3-Enterprise with 802.1X solves this — each user has individual credentials that can be revoked without affecting others.' },
+  ]
+},
+
+'asset-mgmt': {
+  title: 'Asset Management',
+  subtitle: 'Acquisition, assignment, tracking, and secure disposal — lifecycle management',
+  domain: 4, domainName: '4.0 Security Operations',
+  content: [
+    { type:'analogy', label:'📦 You can\'t secure what you don\'t know you have', text:'A hospital that doesn\'t know it has 50 networked infusion pumps can\'t patch them. A company that doesn\'t track its laptops can\'t know if one goes missing. Asset management is the foundation — without it, every other security control has blind spots.' },
+    { type:'section', title:'Asset Lifecycle', icon:'🔄', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Phase','Key Activities','Security Importance'], rows:[
+          ['Acquisition/Procurement','Purchasing hardware, software, cloud services through approved vendor process','Security review before purchase; vet vendors; enforce approved software lists'],
+          ['Assignment/Accounting','Assigning assets to owners; classifying assets by criticality and data sensitivity','Establishes who is responsible; determines what level of protection is required'],
+          ['Monitoring/Tracking','Inventory database; asset tags; automated discovery tools; location tracking','Know what you have; detect unauthorized devices; track physical location'],
+          ['Disposal/Decommissioning','Secure end-of-life process for retiring hardware and destroying data','Prevent data from leaving the organization on retired hardware — the forgotten phase that causes breaches'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Secure Disposal — Critical and Often Overlooked', icon:'🗑️', bg:'#ff4d6d',
+      items:[
+        { type:'table', headers:['Method','Description','Use When'], rows:[
+          ['Data Sanitization','Overwriting data with zeros/random patterns (DoD 5220.22-M standard = 7-pass overwrite)','HDDs being reused or donated — makes data unrecoverable while preserving hardware'],
+          ['Degaussing','Exposing magnetic media to a powerful magnetic field, destroying the magnetic pattern completely','HDDs/tapes that won\'t be reused — makes the device permanently unusable'],
+          ['Physical Destruction','Shredding, crushing, pulverizing, or incinerating the storage media','Classified data; media where any risk of recovery is unacceptable'],
+          ['Cryptographic Erasure','If the drive was fully encrypted, destroying the encryption key renders all data permanently unrecoverable','SSDs (difficult to physically overwrite all cells); encrypted cloud storage'],
+        ]},
+        { type:'definition', label:'Certificate of Destruction', text:'A formal document from a certified media destruction vendor proving that hardware/data was disposed of properly according to standards. Required for compliance (HIPAA, PCI DSS) and provides legal protection in the event of a data breach investigation.' },
+        { type:'definition', label:'Data Retention Policy', text:'How long different types of data must be kept before deletion. Legal requirements vary: HIPAA = 6 years, PCI DSS = 1 year for certain logs, SOX = 7 years for financial records. Keeping data longer than required increases risk and storage costs without benefit.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A company is decommissioning 200 old laptops. Some will be donated to a local school; some will be physically destroyed. For the laptops being donated, which disposal method is MOST appropriate?', choices:['Physical destruction (shredding)','Degaussing','Data sanitization (secure overwrite)','Simply formatting the drives'], answer:2, explain:'For hardware being reused/donated, <strong>data sanitization</strong> (secure overwrite per DoD 5220.22-M or similar) is appropriate — it destroys the data while leaving the hardware functional. Physical destruction works but destroys usable hardware wastefully. Standard formatting does NOT securely erase data — it only removes file system pointers.' },
+    { q:'An organization retires a fleet of SSDs that stored classified government data. Standard data overwriting may not reach all memory cells on SSDs due to wear-leveling. What is the BEST disposal method?', choices:['Standard 7-pass overwrite','Degaussing','Cryptographic erasure if encrypted, or physical destruction','Formatting and reuse'], answer:2, explain:'SSDs have wear-leveling and over-provisioning that make complete software overwriting unreliable — some cells may be unreachable. If the SSD was <strong>encrypted, cryptographic erasure</strong> (destroying the encryption key) renders all data permanently unrecoverable. Otherwise, <strong>physical destruction</strong> is required. Degaussing doesn\'t work on SSDs (they\'re not magnetic storage).' },
+  ]
+},
+
+'firewall-ids': {
+  title: 'Firewalls, IDS/IPS & Web Filtering',
+  subtitle: 'Rules, signatures, anomaly detection, URL filtering, NAC — defense in depth',
+  domain: 4, domainName: '4.0 Security Operations',
+  content: [
+    { type:'analogy', label:'🔍 Security tools work like different types of security staff', text:'A bouncer checks IDs at the door (firewall). A detective reviews camera footage for suspicious behavior (IDS). An undercover officer stops crimes in real time (IPS). A content moderator filters what comes through the mail room (web filter). All different jobs, all necessary for complete security.' },
+    { type:'section', title:'Firewall Rule Management', icon:'🔥', bg:'#ff4d6d',
+      items:[
+        { type:'definition', label:'Firewall Rules & ACLs', text:'Rules processed top-to-bottom, first match wins. Best practice: specific rules first, broad rules last, implicit deny all at bottom. Each rule specifies: source IP, destination IP, protocol, port, action (permit/deny). Regularly audit and remove stale rules — rule sprawl creates security gaps.' },
+        { type:'definition', label:'Screened Subnet (DMZ)', text:'A network segment between the internet and internal network, protected by two firewalls. Public-facing servers (web, email, DNS) live here. If a DMZ server is compromised, the attacker still faces the inner firewall protecting the internal network. Also called a three-legged firewall architecture.' },
+      ]
+    },
+    { type:'section', title:'IDS vs. IPS Configuration', icon:'🛡️', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Aspect','IDS','IPS'], rows:[
+          ['Action','Alert only — cannot block traffic','Can actively block/drop malicious traffic'],
+          ['Network Placement','Tap/SPAN port (out of band) — sees copy of traffic','Inline — all traffic flows through it'],
+          ['Failure Mode','Fail-open (traffic continues flowing)','Should fail-closed (blocks all if it fails — safer but impacts availability)'],
+          ['Detection Methods','Signature-based AND anomaly-based','Same as IDS'],
+          ['False Positive Impact','Analyst gets alert (nuisance but no business impact)','Traffic is BLOCKED (business impact if false positive!)'],
+        ]},
+        { type:'definition', label:'Signatures vs. Anomaly Detection', text:'<strong>Signature-based</strong>: matches known attack patterns from a signature database — excellent against known threats, completely blind to new ones. <strong>Anomaly-based</strong>: detects deviation from normal baseline behavior — catches zero-days but higher false positive rate. Most modern IDS/IPS use both methods together for comprehensive coverage.' },
+      ]
+    },
+    { type:'section', title:'Web & DNS Filtering', icon:'🌐', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Web Filter / URL Filter', text:'Blocks access to websites by category (gambling, adult content, malware, phishing) or specific URL/domain. Can be agent-based (software on each endpoint) or centralized proxy (all traffic routed through filter). Reputation-based filtering blocks sites known to host malware or participate in phishing campaigns.' },
+        { type:'definition', label:'DNS Filtering', text:'Blocking malicious domains at the DNS level — if you can\'t resolve a malicious domain name to an IP, you can\'t connect to it. Faster than URL filtering and works for all protocols (not just HTTP/HTTPS). Services like Cloudflare for Teams, Cisco Umbrella operate at this layer.' },
+        { type:'definition', label:'NAC (Network Access Control)', text:'Checks device health and compliance before granting network access. A device that lacks antivirus, isn\'t patched, or is jailbroken can be quarantined to a remediation VLAN or granted limited guest-only access. Often works with 802.1X for enforcement. NAC is the bouncer checking credentials AND vaccination card.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A security team configures their IPS with very sensitive signature rules. The IPS begins blocking legitimate business application traffic that matches broad attack signatures. What problem occurred, and what should be done?', choices:['The IPS signatures need updating; reinstall from scratch','High false positive rate; tune signatures to be more specific and reduce blocking of legitimate traffic','The IPS should be replaced with an IDS','Increase IPS sensitivity further'], answer:1, explain:'This is a <strong>high false positive rate</strong> — the IPS is blocking legitimate traffic. The solution is <strong>signature tuning</strong>: refining rules to be more specific so they catch real attacks without blocking legitimate business traffic. This is why IPS deployment requires careful testing in monitor mode before going live with blocking enabled.' },
+    { q:'An organization wants to prevent employees from accessing known malware distribution sites and C2 domains without inspecting HTTPS traffic or deploying endpoint agents. What is the most efficient solution?', choices:['Proxy-based URL filtering requiring SSL inspection','DNS filtering — block resolution of known malicious domains','Host-based firewall rules on each endpoint','IDS signature-based detection'], answer:1, explain:'<strong>DNS filtering</strong> blocks at the DNS resolution level — before a connection is even attempted. It works for all protocols (not just HTTP/S), requires no SSL inspection, and needs no endpoint agents. If malware can\'t resolve its C2 domain, it can\'t phone home regardless of protocol or encryption.' },
+  ]
+},
+
+'email-security': {
+  title: 'Email Security: SPF, DKIM, DMARC',
+  subtitle: 'The authentication trio that protects against email spoofing at the protocol level',
+  domain: 4, domainName: '4.0 Security Operations',
+  content: [
+    { type:'analogy', label:'✉️ Email was designed with zero authentication', text:'The original SMTP protocol has no built-in sender authentication — anyone can send email claiming to be from anyone. SPF, DKIM, and DMARC were added LATER to fix this fundamental design flaw. Think of them as adding a return address verification system to a postal service that originally had none.' },
+    { type:'section', title:'The Email Authentication Trio', icon:'🔐', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Protocol','What It Does','How It Works','What It Stops'], rows:[
+          ['SPF (Sender Policy Framework)','Verifies sending mail server is authorized for this domain','Domain owner publishes list of authorized sending server IPs in DNS TXT record. Receiving server checks if sender IP is on the list.','Domain spoofing from unauthorized mail servers'],
+          ['DKIM (DomainKeys Identified Mail)','Cryptographically signs outgoing email to verify authenticity and integrity','Sending server adds digital signature to email headers using private key. Receiver verifies signature against public key published in DNS.','Email tampering in transit; verifies email came from claimed domain and wasn\'t modified'],
+          ['DMARC (Domain-based Message Authentication, Reporting & Conformance)','Policy for what to do when SPF/DKIM fail + reporting on authentication failures','Domain owner publishes policy in DNS: "If SPF/DKIM fail, reject/quarantine/do nothing." Also specifies where to send authentication failure reports.','Domain impersonation; provides visibility into spoofing attempts against your domain'],
+        ]}
+      ]
+    },
+    { type:'section', title:'How They Work Together', icon:'🔄', bg:'#22d06b',
+      items:[
+        { type:'text', text:'SPF and DKIM operate independently — you can have one without the other. DMARC uses the results of BOTH to make a final policy decision. A properly protected domain has: <strong>SPF</strong> to verify the sending server is authorized, <strong>DKIM</strong> to cryptographically verify message integrity and origin, <strong>DMARC</strong> with "reject" policy to tell receivers to block authentication failures and send you aggregate reports of all authentication attempts.' },
+        { type:'tip', label:'🎯 The Key Differences', text:'<strong>SPF</strong>: Is this server IP allowed to send email for this domain? (IP-based check). <strong>DKIM</strong>: Was this email actually sent by this domain and not modified in transit? (Cryptographic signature). <strong>DMARC</strong>: What should receiving servers do if SPF or DKIM fail, and please send me reports on all authentication attempts against my domain.' },
+      ]
+    },
+    { type:'section', title:'Email Gateway & Defense', icon:'🛡️', bg:'#7c5cfc',
+      items:[
+        { type:'definition', label:'Email Security Gateway', text:'Inline security appliance or cloud service that filters email before it reaches users\' inboxes. Provides: spam filtering, malware scanning (attachments and links), phishing detection, content filtering (DLP), sandboxing of suspicious attachments. Acts as the first line of defense before mail reaches the user.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'An attacker sends emails spoofed to appear from "ceo@company.com" requesting wire transfers. The company has an SPF record listing their authorized mail servers. Why might the spoofed emails still get through?', choices:['SPF records only work on inbound email','SPF only checks the envelope sender (technical SMTP sender), not the From header visible to users — attackers can spoof the display From while sending from an authorized server','SPF requires DKIM to function','SPF records expire after 30 days'], answer:1, explain:'SPF checks the <strong>envelope sender</strong> (technical SMTP sender) against authorized IPs, but email clients display the <strong>header From</strong> field which can be different. Attackers can send through an authorized server with a spoofed display From header. DMARC with alignment checking helps close this gap by requiring the header From to match the authenticated domain.' },
+    { q:'An organization wants to receive reports about which servers are sending email claiming to be from their domain, and instruct receiving mail servers to reject unauthenticated email from their domain. Which protocol should be configured?', choices:['SPF with hardfail (~all)','DKIM with strong key length','DMARC with reject policy and aggregate reporting (RUA)','Email gateway with anti-spoofing rules'], answer:2, explain:'<strong>DMARC</strong> does both: enforces what happens when authentication fails (p=reject) and provides reporting (rua= tag) so the domain owner receives aggregate reports of authentication results. Start with p=none (monitoring only), analyze reports, then move to p=quarantine, then p=reject as confidence increases.' },
+  ]
+},
+
+'iam-basics': {
+  title: 'Identity & Access Management Fundamentals',
+  subtitle: 'Provisioning, federation, SSO, LDAP, SAML, OAuth — managing digital identities',
+  domain: 4, domainName: '4.0 Security Operations',
+  content: [
+    { type:'analogy', label:'🪪 IAM is the HR department for digital identity', text:'HR hires people, gives them a badge, defines what offices they can access, and revokes everything when they leave. IAM does exactly this for digital systems — creates accounts, assigns permissions, federates identity across systems, and deprovisions when someone leaves.' },
+    { type:'section', title:'Identity Lifecycle', icon:'🔄', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Phase','Activities','Security Consideration'], rows:[
+          ['Provisioning','Creating user accounts, assigning roles and permissions','Follow least privilege; use role templates; require approval workflow'],
+          ['Identity Proofing','Verifying the person is who they claim to be before issuing credentials','Critical for privileged accounts; use government ID verification for high-risk access'],
+          ['Attestation','Regular review of user accounts and permissions — do they still need this access?','Quarterly access reviews minimum; remove stale permissions; catch privilege creep'],
+          ['De-provisioning','Disabling/deleting accounts when employees leave or change roles','Day-zero process — revoke access immediately on termination; most critical IAM phase'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Federation & SSO', icon:'🔗', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Federation', text:'Allowing users from one organization to access resources in another using their home organization\'s credentials. Example: Using your Google account to log into a third-party app — Google is the Identity Provider (IdP), the app is the Service Provider (SP). The user never creates a new account with the app.' },
+        { type:'definition', label:'SSO (Single Sign-On)', text:'Authenticate once, access many systems without re-entering credentials. Users log in once and access all authorized applications during that session. Benefits: reduces password fatigue, centralizes authentication, simplifies deprovisioning (disable one account = revoke access everywhere).' },
+        { type:'table', headers:['Protocol','What It\'s Used For','Key Fact'], rows:[
+          ['LDAP','Directory services — looking up user accounts, group membership, organizational structure','Used internally; Active Directory uses LDAP; LDAP queries find users and their attributes'],
+          ['SAML (Security Assertion Markup Language)','Enterprise SSO for web applications — passes authentication assertions between IdP and SP','XML-based; used for enterprise SSO; exam favorite for web app federation'],
+          ['OAuth 2.0','Authorization framework — "this app can access X on your behalf"','NOT authentication by itself — authorization only; grants limited access to resources'],
+          ['OIDC (OpenID Connect)','Authentication layer built on top of OAuth 2.0','Used for "Sign in with Google/Facebook"; adds identity to OAuth; modern consumer SSO'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Access Control Models', icon:'🔑', bg:'#7c5cfc',
+      items:[
+        { type:'table', headers:['Model','How Access is Determined','Used In'], rows:[
+          ['MAC (Mandatory)','System enforces security labels — users cannot change their own access levels','Military/government classified systems with clearance levels'],
+          ['DAC (Discretionary)','Resource owners decide who gets access — can delegate permissions','File system permissions; sharing a document with specific people'],
+          ['RBAC (Role-Based)','Access based on job role — "Nurse" role grants access to patient records','Enterprise systems; most common model in business'],
+          ['Rule-Based','Access based on rules/conditions — time of day, location, device type','Firewalls, network access control, conditional access policies'],
+          ['ABAC (Attribute-Based)','Access based on attributes of user, resource, and environment','Fine-grained access; cloud IAM policies; context-aware access'],
+        ]}
+      ]
+    },
+  ],
+  quiz: [
+    { q:'When an employee is terminated, which IAM process is MOST time-critical to perform on the same day?', choices:['Attestation review','Identity proofing','De-provisioning (account revocation)','Role assignment audit'], answer:2, explain:'<strong>De-provisioning</strong> — disabling all accounts immediately on termination — is the most time-critical IAM process. A disgruntled former employee with active credentials can cause significant damage. Best practice: security team is notified simultaneously with HR, and accounts are disabled before or as the employee is informed of termination.' },
+    { q:'A user clicks "Sign in with Google" on a third-party SaaS application. Google verifies the user and passes a token to the SaaS app confirming authentication. Which protocol is handling this?', choices:['LDAP','SAML','RADIUS','OAuth 2.0 with OpenID Connect (OIDC)'], answer:3, explain:'"Sign in with Google" uses <strong>OAuth 2.0 + OIDC</strong>. OAuth 2.0 handles authorization (permission to access resources); OIDC adds the identity/authentication layer on top (who is this person). SAML is typically used in enterprise B2B federation, not consumer "Sign in with..." flows.' },
+    { q:'A hospital implements a system where nursing staff automatically receive access to patient records in their assigned unit based on their job title and department. Doctors receive access to different systems based on their specialty. What access control model is this?', choices:['MAC','DAC','RBAC','ABAC'], answer:2, explain:'<strong>RBAC (Role-Based Access Control)</strong> grants access based on job role — nurses get nurse permissions, doctors get doctor permissions. Access is determined by the role assignment, not by individual identity decisions (DAC) or system-enforced labels (MAC).' },
+  ]
+},
+
+'mfa-passwords': {
+  title: 'MFA, Passwords & Privileged Access Management',
+  subtitle: 'Authentication factors, passwordless, PAM tools, just-in-time permissions',
+  domain: 4, domainName: '4.0 Security Operations',
+  content: [
+    { type:'analogy', label:'🔐 A password alone is like a single lock on a treasure chest', text:'One lock can be picked. Add a fingerprint scanner AND a time-locked mechanism — now all three must be defeated simultaneously. MFA does this for authentication: even if your password is stolen, the attacker still can\'t get in without your second factor.' },
+    { type:'section', title:'MFA Deep Dive', icon:'🔑', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Factor Type','Examples','Strength / Weakness'], rows:[
+          ['Something You Know','Password, PIN, security question','Weakest — can be stolen, guessed, phished'],
+          ['Something You Have','Hardware token (YubiKey), TOTP app (Google Authenticator), smart card, SMS code','Medium-Strong — can be lost or stolen; SMS vulnerable to SIM swapping'],
+          ['Something You Are','Fingerprint, facial recognition, iris scan, voice recognition','Strong — difficult to replicate; but biometrics can\'t be changed if compromised'],
+          ['Somewhere You Are','Geolocation, IP address restriction','Supplemental — used in conjunction with other factors, not standalone'],
+        ]},
+        { type:'tip', label:'🎯 SMS vs. Authenticator App vs. Hardware Token', text:'<strong>SMS codes</strong>: weakest MFA — vulnerable to SIM swapping (attacker transfers your number to their SIM). <strong>Authenticator app (TOTP)</strong>: much better — codes generated locally on device, no network dependency. <strong>Hardware token (FIDO2/WebAuthn)</strong>: strongest — phishing-resistant, physical possession required, cryptographic proof.' },
+      ]
+    },
+    { type:'section', title:'Password Best Practices (NIST SP 800-63B)', icon:'🔒', bg:'#22d06b',
+      items:[
+        { type:'table', headers:['Practice','Current NIST Guidance'], rows:[
+          ['Length','Minimum 8 characters; encourage long passphrases — length matters more than complexity'],
+          ['Complexity Requirements','Don\'t force special characters/numbers/uppercase — they lead to predictable patterns like "Password1!"'],
+          ['Expiration','Do NOT require periodic rotation UNLESS there\'s evidence of compromise — forced rotation leads to weak incremental passwords'],
+          ['Password Reuse','Prevent reuse of last N passwords; check against known-breached password databases (Have I Been Pwned)'],
+          ['Password Managers','Strongly recommended — enables unique, long, random passwords for every site without memorization'],
+          ['Passwordless','The future: biometric + device-based authentication replacing passwords entirely — FIDO2/WebAuthn'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Privileged Access Management (PAM)', icon:'👑', bg:'#ff7b39',
+      items:[
+        { type:'definition', label:'What PAM Does', text:'Specialized systems managing, monitoring, and controlling privileged (admin) accounts. Privileged accounts are the keys to the kingdom — PAM ensures they\'re used appropriately, access is logged, and sessions are recorded for audit.' },
+        { type:'definition', label:'Just-in-Time (JIT) Permissions', text:'Privileged access is granted ONLY when needed and automatically revoked after the task is complete or a time limit expires. Admins don\'t have standing admin rights — they request them, get approved, do the work, and access expires. Eliminates persistent privileged sessions that attackers target.' },
+        { type:'definition', label:'Password Vaulting', text:'Privileged account passwords are stored in a secure vault, rotated automatically by the PAM system, and checked out for use. The admin may not even see the actual password — they access the system through the vault, which logs the entire session. Prevents password sharing and ensures accountability.' },
+        { type:'definition', label:'Ephemeral Credentials', text:'Temporary credentials that exist for a short time and are automatically destroyed. One-time passwords, short-lived certificates, temporary cloud IAM credentials. Even if stolen, they expire before the attacker can use them effectively.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'An attacker social-engineers a mobile carrier into transferring a victim\'s phone number to a new SIM card controlled by the attacker. The attacker can now receive all SMS messages including MFA codes. What attack defeated SMS-based MFA?', choices:['SIM jacking / SIM swapping','Phishing for OTP codes','Credential stuffing','Man-in-the-middle'], answer:0, explain:'<strong>SIM swapping (SIM jacking)</strong> is when an attacker convinces a mobile carrier to transfer a victim\'s phone number to an attacker-controlled SIM. This allows them to receive all SMS messages — including MFA codes. This is why hardware tokens and TOTP apps are superior to SMS for MFA.' },
+    { q:'A company implements a PAM system where database administrators must request access to production databases, receive a time-limited token that expires in 2 hours, and all session activity is recorded. What PAM feature is the time-limited token?', choices:['Password vaulting','Ephemeral credentials / Just-in-time permissions','Privileged session management','Mandatory access control'], answer:1, explain:'Time-limited access that automatically expires describes <strong>Just-in-Time (JIT) permissions</strong> with <strong>ephemeral credentials</strong>. The admin gets access only when needed, only for as long as needed, and the credentials automatically expire. This eliminates standing privileged access which is a major attack target.' },
+  ]
+},
+
+'automation-soar': {
+  title: 'Automation, Orchestration & SOAR',
+  subtitle: 'Security automation that makes your team faster than any attacker',
+  domain: 4, domainName: '4.0 Security Operations',
+  content: [
+    { type:'analogy', label:'🤖 Automation is like a well-trained response team', text:'When a fire alarm goes off, the sprinkler system activates automatically — it doesn\'t wait for someone to push a button. Security automation does the same: when a phishing email is detected, it automatically quarantines it, blocks the domain, and creates a ticket — in seconds, not minutes.' },
+    { type:'section', title:'SOAR — Security Orchestration, Automation & Response', icon:'⚙️', bg:'#7c5cfc',
+      items:[
+        { type:'definition', label:'What SOAR Platforms Do', text:'SOAR orchestrates security tools and automates response workflows (playbooks). When an alert fires, the SOAR playbook automatically: collects additional context via threat intel APIs, performs triage steps, takes containment actions, creates tickets, notifies stakeholders — all without human intervention until analyst review is needed.' },
+        { type:'table', headers:['Automation Use Case','What Gets Automated'], rows:[
+          ['User Provisioning','New employee → auto-create AD account, assign to groups, provision email, send welcome email with credentials'],
+          ['Resource Provisioning','New server request → auto-provision cloud instance, apply security baseline, enroll in monitoring, configure backups'],
+          ['Incident Response','SIEM alert → SOAR queries threat intel, checks if IP is known-bad, quarantines host if confirmed malicious, creates priority ticket'],
+          ['Security Group Management','New department → auto-create appropriate security groups, assign permissions based on role templates'],
+          ['Ticket Creation & Escalation','Alert threshold exceeded → auto-create ticket, page on-call if SLA breach imminent'],
+          ['Continuous Integration Security','Code commit → auto-run SAST security scan, fail pipeline and notify developer if critical vulnerabilities found'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Benefits & Considerations', icon:'⚖️', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Benefits','Considerations/Risks'], rows:[
+          ['Efficiency — analysts focus on decisions, not repetitive tasks','Complexity — automation can be harder to troubleshoot than manual processes'],
+          ['Enforcing Baselines — automated config enforcement catches drift instantly','Cost — SOAR platforms and integration work are expensive'],
+          ['Reaction Time — response in seconds vs. hours for known threat patterns','Single Point of Failure — if automation fails, manual processes may not be documented'],
+          ['Workforce Multiplier — small team can handle large scale with automation','Technical Debt — automations must be maintained as environment changes'],
+          ['Consistency — automation doesn\'t forget steps or get fatigued','Supportability — who maintains playbooks when the expert leaves?'],
+        ]}
+      ]
+    },
+    { type:'tip', label:'🎯 APIs — The Glue of Automation', text:'Automation works by connecting different security tools via <strong>APIs (Application Programming Interfaces)</strong>. The SIEM calls the threat intel API for reputation data, the SOAR calls the firewall API to add a block rule, calls the ticketing API to create a ticket. APIs make orchestration across different vendor products possible.' },
+  ],
+  quiz: [
+    { q:'A SOAR platform is configured so that when the SIEM detects more than 5 failed logins from the same IP in 60 seconds, it automatically blocks that IP at the firewall, disables the targeted account temporarily, and creates a high-priority incident ticket. What is this automated workflow called?', choices:['A SIEM correlation rule','A SOAR playbook','An IPS signature','A vulnerability scan policy'], answer:1, explain:'This is a <strong>SOAR playbook</strong> — an automated response workflow that orchestrates multiple security tools (SIEM detection → firewall block → account disable → ticket creation) in response to a security event. Playbooks define the automated response steps for different incident types.' },
+    { q:'A security team implements automation for their alert triage process. A junior analyst points out that the automation sometimes incorrectly blocks legitimate user activity. What is the MOST important consideration when deploying security automation?', choices:['Automation should be trusted completely once deployed','False positives in automation have greater business impact than in manual processes — careful tuning is critical','Automation cannot produce false positives by definition','Manual processes should be eliminated entirely once automation is running'], answer:1, explain:'Automation amplifies both correct actions and mistakes. A <strong>false positive in an automated block</strong> immediately impacts legitimate users — unlike an IDS false positive that just creates an alert for analyst review. Automation requires careful tuning, testing, and maintained manual override capabilities. Over-automation without human oversight creates operational risk.' },
+  ]
+},
+
+'digital-forensics': {
+  title: 'Digital Forensics',
+  subtitle: 'Legal hold, chain of custody, acquisition, e-discovery — collecting and preserving evidence',
+  domain: 4, domainName: '4.0 Security Operations',
+  content: [
+    { type:'analogy', label:'🔍 Digital forensics is crime scene investigation for computers', text:'Every detective show gets this right: don\'t touch anything, photograph everything before moving it, document who had custody of every piece of evidence, and ensure the chain of custody is unbroken. Digital forensics follows the same principles — except the "crime scene" is a hard drive or RAM.' },
+    { type:'section', title:'The Forensic Process', icon:'🔬', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Step','What It Means','Why It Matters'], rows:[
+          ['Legal Hold','Immediately preserve all potentially relevant data — stop deletion, stop log rotation, freeze retention policies','Failure to preserve evidence after litigation notice = spoliation — can result in severe legal sanctions'],
+          ['Identification','Determine what systems, devices, and data are relevant to the incident or investigation','Scope the investigation before collecting — collect too little = gaps; too much = unmanageable data volume'],
+          ['Collection / Acquisition','Create forensically sound copies of evidence before any analysis','Never work on originals — always work from forensic images; document hash values at collection time'],
+          ['Preservation','Maintain integrity of evidence — proper storage, write blockers for drives, tamper-evident packaging','Any modification to evidence destroys its legal admissibility in court'],
+          ['Analysis','Examine collected evidence for artifacts, timelines, attacker activities','Done on forensic copies using specialized tools (Autopsy, FTK, EnCase, Volatility for memory)'],
+          ['Reporting','Formal documentation of findings, methodology, and conclusions','Must withstand legal scrutiny; explain technical findings to non-technical audience (jury)'],
+          ['E-Discovery','Electronically stored information provided in legal proceedings','Specific formats required, metadata preservation, privileged material review'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Chain of Custody', icon:'📋', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'What Chain of Custody Requires', text:'A documented, unbroken record of: who collected the evidence, when it was collected, how it was stored, who accessed it and when, and how it was transported. A gap in chain of custody makes evidence potentially inadmissible — the defense can argue evidence was tampered with during the gap.' },
+        { type:'definition', label:'Write Blockers', text:'Hardware or software devices that allow reading a storage device without writing anything to it. Used during forensic acquisition to ensure the original evidence is not modified in any way. Required for admissible evidence — any write to the original could be challenged as tampering.' },
+        { type:'definition', label:'Forensic Image & Hashing', text:'A bit-for-bit exact copy of a storage device — including empty space, deleted files, and filesystem metadata. Hash values (SHA-256) are computed for both original and image immediately at acquisition time. Matching hashes prove the copy is identical and unmodified. The hash becomes the integrity proof for the entire investigation.' },
+      ]
+    },
+    { type:'tip', label:'🎯 Order of Volatility — Collect Volatile First', text:'Before touching ANYTHING: <strong>capture the most volatile data first</strong>. CPU registers → RAM → Network connections → Running processes → Disk → Logs. RAM is lost when the system powers off — if you shut down before capturing RAM, you\'ve permanently lost running processes, open network connections, and potentially encryption keys in memory.' },
+  ],
+  quiz: [
+    { q:'A forensic investigator receives a hard drive from a compromised server. Before analyzing it, they connect it through a device that allows reading but prevents any writes to the drive. What device is this?', choices:['RAID controller','Write blocker','Chain of custody logger','Forensic workstation'], answer:1, explain:'A <strong>write blocker</strong> is a hardware (or software) device that allows reading a storage device while preventing any writes whatsoever. This ensures the original evidence is not modified during examination, preserving its forensic integrity and legal admissibility. Any write to original evidence can be challenged in court.' },
+    { q:'A company receives a lawsuit notification on Monday morning. What must happen IMMEDIATELY regarding their data retention and deletion processes?', choices:['Notify all employees to preserve their emails','Implement a legal hold — suspend all routine data deletion, log rotation, and retention policy enforcement for potentially relevant data','Contact law enforcement to handle evidence collection','Perform a complete backup of all systems'], answer:1, explain:'A <strong>legal hold</strong> must be implemented immediately when litigation is reasonably anticipated. This suspends all normal data deletion, log rotation, and retention purging for potentially relevant data. Failing to preserve evidence after notice (spoliation) can result in severe legal sanctions, including adverse inference instructions (judge tells jury to assume the destroyed evidence was harmful to your case).' },
+  ]
+},
+
+'logs-data-sources': {
+  title: 'Log Data & Investigation Sources',
+  subtitle: 'Firewall logs, endpoint logs, metadata, packet captures — the data sources that tell the story',
+  domain: 4, domainName: '4.0 Security Operations',
+  content: [
+    { type:'analogy', label:'📖 Logs are the security camera footage of your network', text:'When a crime is committed, detectives review camera footage, visitor logs, and access records. When a security incident occurs, analysts do the same — but with firewall logs, endpoint logs, and network traffic data. The quality of your investigation depends entirely on the quality and completeness of your logs.' },
+    { type:'section', title:'Critical Log Sources', icon:'📋', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Log Source','What It Captures','Investigative Value'], rows:[
+          ['Firewall Logs','Allowed/denied traffic — source IP, destination IP, port, protocol, action, timestamp','Detecting port scans, unauthorized connection attempts, C2 communication, policy violations, lateral movement patterns'],
+          ['Application Logs','Application-specific events — logins, errors, transactions, user actions, database queries','Detecting brute force attacks, unauthorized access, application errors, data access patterns, privilege abuse'],
+          ['Endpoint / OS Logs','Process creation, file access, registry changes, network connections on individual hosts','Detecting malware execution, lateral movement, persistence mechanisms, data exfiltration from compromised endpoints'],
+          ['Windows Security Event Log','Event ID 4624=logon success, 4625=failed logon, 4688=process created, 4720=user created','Account usage patterns, privilege escalation attempts, policy changes, unauthorized account creation'],
+          ['IDS/IPS Logs','Alert events, matched signatures, blocked connections, attack attempts','Attack detection, signature matches, blocked attack attempts, threat intelligence'],
+          ['Network Flow Logs','NetFlow/IPFIX data — source/dest IPs, ports, bytes transferred, duration (no payload content)','Lateral movement detection, C2 communication patterns, data exfiltration volume, network mapping'],
+          ['DNS Query Logs','DNS queries made — what domains were requested, when, by whom','DNS tunneling detection, C2 domain lookups, malware beacon detection, data exfiltration via DNS'],
+          ['Metadata','Data about data — file timestamps, email headers, document properties, GPS EXIF data','Timeline reconstruction, attribution, detecting anomalies without inspecting content'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Investigation Data Sources', icon:'🔍', bg:'#22d06b',
+      items:[
+        { type:'table', headers:['Source','What It Provides'], rows:[
+          ['Vulnerability Scans','Known vulnerabilities on systems — helps explain HOW the attacker got in'],
+          ['Automated Reports','SIEM-generated reports on security events, trends, compliance status, recurring patterns'],
+          ['Dashboards','Visual real-time and historical representation of security data — see patterns at a glance'],
+          ['Packet Captures (PCAP)','Full network traffic content including payload — the absolute "ground truth" for network forensics'],
+        ]},
+        { type:'definition', label:'Metadata — Often More Valuable Than Content', text:'Metadata (data about data) can reveal: who created a document and when, where a photo was taken (GPS EXIF data), email routing path and all recipients (email headers), network connection timing and volume. Metadata can prove actions even when content is encrypted or deleted. Email headers show the entire routing path even if the body is encrypted.' },
+      ]
+    },
+    { type:'tip', label:'🎯 Log Management Best Practices', text:'<strong>Centralize immediately</strong>: ship logs to SIEM in real time — local logs can be deleted by attackers. <strong>Time synchronization</strong>: NTP is critical — logs from different systems must have synchronized timestamps to build accurate timelines. <strong>Retention</strong>: must meet compliance (PCI DSS = 1 year, HIPAA = 6 years). Encrypted transmission and storage for sensitive logs.' },
+  ],
+  quiz: [
+    { q:'During a breach investigation, a forensic analyst needs to determine the exact content of network packets exchanged between a compromised workstation and an external IP last Tuesday. What data source provides this?', choices:['NetFlow data','Firewall logs','Packet capture (PCAP) files','IDS alert logs'], answer:2, explain:'<strong>Packet capture (PCAP)</strong> files contain the full content of network packets including payload data. NetFlow only captures metadata (source, destination, port, byte count) without payload content. Firewall logs show allow/deny decisions. Only PCAP provides the actual packet payload — the "ground truth" for network forensics.' },
+    { q:'A security analyst investigates a potential insider threat. The suspect\'s laptop was encrypted, preventing access to files. However, email server logs show the suspect\'s account sent 47 emails with large attachments to a personal Gmail account over 3 weeks. What type of data provided this intelligence?', choices:['Packet capture payload data','Endpoint antivirus logs','Email server application logs and metadata','IDS signatures'], answer:2, explain:'<strong>Email server application logs and metadata</strong> capture email activity — sender, recipient, timestamp, attachment size, routing path — without necessarily containing the email content itself. This metadata tells the story of data exfiltration even without decrypting the laptop or reading the actual emails. Metadata is powerful evidence that often survives encryption and deletion.' },
   ]
 },
 

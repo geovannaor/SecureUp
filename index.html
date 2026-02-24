@@ -2904,6 +2904,264 @@ const LESSONS = {
   ]
 },
 
+'risk-process': {
+  title: 'Risk Management Process',
+  subtitle: 'Identify, assess, treat, monitor — the continuous cycle of managing risk',
+  domain: 5, domainName: '5.0 Security Program Management & Oversight',
+  content: [
+    { type:'analogy', label:'⚖️ Risk management is like personal health decisions', text:'You identify risks (family history of heart disease), assess them (how likely, how bad?), decide how to treat them (eat healthier, exercise, or accept the risk), and monitor (annual checkups). Security risk management follows the same process for organizational threats.' },
+    { type:'section', title:'Risk Management Process', icon:'🔄', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Step','What It Means','Example'], rows:[
+          ['1. Identify','Find the risks — what could go wrong?','Unpatched servers, lack of MFA, insider threats'],
+          ['2. Assess','Determine likelihood and impact','Critical server exploit: High likelihood × High impact = Critical risk'],
+          ['3. Prioritize','Focus on the biggest risks first','Fix critical vulns before low-priority hardening'],
+          ['4. Treat','Choose a risk response strategy','Avoid, Transfer, Mitigate, or Accept — see below'],
+          ['5. Monitor','Continuously track risk levels and effectiveness of controls','Quarterly risk reviews, KRI dashboards, control effectiveness testing'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Risk Treatment Strategies', icon:'🎯', bg:'#ff7b39',
+      items:[
+        { type:'table', headers:['Strategy','What You Do','Example'], rows:[
+          ['Avoid','Eliminate the activity that creates the risk','Stop storing credit cards if you don\'t need to — no PCI DSS compliance required'],
+          ['Transfer','Shift financial risk to someone else','Buy cyber insurance; outsource high-risk processing to a vendor'],
+          ['Mitigate','Reduce likelihood or impact with controls','Patch the vulnerability, add MFA, segment the network'],
+          ['Accept','Acknowledge the risk and accept the potential consequences','Document risk acceptance with formal exception or exemption'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Risk Assessment Concepts', icon:'📊', bg:'#22d06b',
+      items:[
+        { type:'table', headers:['Term','Definition','How It\'s Used'], rows:[
+          ['Threat','A potential cause of an unwanted incident','Ransomware, insider threat, natural disaster'],
+          ['Vulnerability','A weakness that can be exploited','Unpatched software, weak password, misconfigured firewall'],
+          ['Likelihood','Probability the threat will occur','Low, Medium, High or percentage (20% chance per year)'],
+          ['Impact','Damage if the threat occurs','Financial loss, reputation damage, downtime, data breach'],
+          ['Risk','Combination of likelihood × impact','High likelihood + high impact = critical risk requiring immediate action'],
+        ]}
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A company discovers a critical vulnerability in a public-facing web server. They immediately apply the vendor patch to eliminate the vulnerability. Which risk treatment strategy is this?', choices:['Avoid','Transfer','Mitigate','Accept'], answer:2, explain:'Patching the vulnerability is <strong>Mitigation</strong> — reducing the risk by implementing a control. The company didn\'t eliminate the web server (avoid), didn\'t buy insurance (transfer), and didn\'t leave it unpatched (accept). They reduced the risk to an acceptable level.' },
+    { q:'After conducting a risk assessment, a small business decides not to purchase cyber insurance because the premiums exceed the expected annual loss from potential incidents. What risk strategy is this?', choices:['Avoid','Transfer','Mitigate','Accept'], answer:3, explain:'Choosing not to buy insurance after assessing the cost-benefit is <strong>Accept</strong> — the organization acknowledges the risk exists and consciously accepts the potential consequences. Acceptance should always be a documented, informed decision — never neglect masquerading as strategy.' },
+  ]
+},
+
+'risk-quantitative': {
+  title: 'Quantitative Risk Analysis',
+  subtitle: 'SLE, ALE, ARO, risk registers — mastering the math of risk',
+  domain: 5, domainName: '5.0 Security Program Management & Oversight',
+  content: [
+    { type:'analogy', label:'📊 Insurance companies live by risk math', text:'Insurers don\'t know if YOUR car will crash — but they know statistically that X% of drivers in your demographic will crash this year, costing Y dollars on average. That math determines your premium. Quantitative risk analysis does the same for security decisions — turning gut feelings into numbers.' },
+    { type:'section', title:'Quantitative Risk Formulas', icon:'🧮', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Term','Formula','What It Answers'], rows:[
+          ['Asset Value (AV)','(No formula — assessed value)','How much is this asset worth in dollars?'],
+          ['Exposure Factor (EF)','% of asset value lost in one incident','If this threat occurs, what percentage of the asset value is lost?'],
+          ['Single Loss Expectancy (SLE)','SLE = AV × EF','How much does ONE occurrence of this threat cost?'],
+          ['Annualized Rate of Occurrence (ARO)','Incidents per year (e.g., 0.1 = once per 10 years, 3 = three times per year)','How often does this threat occur annually?'],
+          ['Annualized Loss Expectancy (ALE)','ALE = SLE × ARO','How much does this threat cost PER YEAR on average?'],
+          ['Value of Safeguard','ALE(before) - ALE(after) - Cost of Safeguard','Is this security control worth buying?'],
+        ]},
+        { type:'tip', label:'💡 Worked Example', text:'Server worth $200,000 (AV). Ransomware could affect 80% of it (EF=0.8). Ransomware hits 3 times per year (ARO=3). <strong>SLE = $200,000 × 0.8 = $160,000</strong>. <strong>ALE = $160,000 × 3 = $480,000/year</strong>. An EDR solution costs $50,000/year and reduces ARO to 0.5: New ALE = $160,000 × 0.5 = $80,000. Savings: $480K - $80K - $50K = <strong>$350,000/year net benefit</strong>. Buy the EDR.' },
+      ]
+    },
+    { type:'section', title:'Risk Registers & Governance', icon:'📋', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Risk Register', text:'A formal document tracking all identified risks: description, likelihood, impact, risk score, risk owner (person accountable), current controls, and treatment plan. It\'s a living document updated continuously — every significant organizational risk should be in the register with an assigned owner.' },
+        { type:'table', headers:['Risk Register Element','Description'], rows:[
+          ['Key Risk Indicators (KRIs)','Metrics that signal a risk is increasing — early warning system (e.g., patch compliance dropping below 90%)'],
+          ['Risk Owners','Specific individual accountable for managing each risk — not a committee, a named person'],
+          ['Risk Threshold','The maximum acceptable risk level — risks above threshold require escalation and immediate action'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Risk Appetite vs. Risk Tolerance', icon:'🎯', bg:'#7c5cfc',
+      items:[
+        { type:'definition', label:'Risk Appetite', text:'The AMOUNT of risk an organization is WILLING to accept in pursuit of its objectives. A startup might have high risk appetite (move fast, accept more risk for growth). A bank has very low risk appetite (preserve capital and trust above all). Three styles: <strong>Expansionary</strong> (aggressive, high risk for high reward), <strong>Conservative</strong> (risk-averse), <strong>Neutral</strong> (balanced).' },
+        { type:'definition', label:'Risk Tolerance', text:'The SPECIFIC MEASURABLE amount of variation from the risk appetite that is acceptable. Appetite = "we accept some cybersecurity risk to enable business agility." Tolerance = "but never more than $5M annual loss exposure or 2 hours of acceptable downtime." Tolerance is the boundary line.' },
+        { type:'definition', label:'Qualitative vs. Quantitative Analysis', text:'<strong>Quantitative</strong>: uses numbers — SLE, ALE, ARO. More precise but requires good data and actuarial assumptions. <strong>Qualitative</strong>: uses descriptors — High/Medium/Low likelihood × High/Medium/Low impact = risk rating. Faster and works when you lack precise data. Most organizations use both — qualitative for initial triage, quantitative for major decisions.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A database server is valued at $500,000. A SQL injection attack could compromise 60% of the data. SQL injection attacks occur approximately 4 times per year against this server. What is the Annualized Loss Expectancy (ALE)?', choices:['$300,000','$120,000','$1,200,000','$500,000'], answer:2, explain:'SLE = AV × EF = $500,000 × 0.6 = <strong>$300,000</strong>. ALE = SLE × ARO = $300,000 × 4 = <strong>$1,200,000 per year</strong>. This database is losing an expected $1.2M annually to SQL injection — justifying significant investment in a WAF, parameterized queries, and input validation.' },
+    { q:'An organization states: "We prioritize rapid growth and market expansion over minimizing security risk — we\'re willing to accept higher risk in exchange for faster innovation." What best describes this organization\'s risk posture?', choices:['Conservative risk appetite','Neutral risk appetite','Expansionary risk appetite','Zero risk tolerance'], answer:2, explain:'This is an <strong>expansionary risk appetite</strong> — the organization actively accepts higher risk in pursuit of business objectives (growth, speed, innovation). Startups and high-growth companies often have expansionary risk appetite. Banks and healthcare organizations typically have conservative risk appetite.' },
+    { q:'A CISO presents two security controls. Control A costs $100,000/year and reduces ALE from $800,000 to $200,000. Control B costs $150,000/year and reduces ALE from $800,000 to $100,000. Which provides better value?', choices:['Control A — lower cost','Control B — achieves lower ALE','Control A — net benefit is $500K vs $550K for B, so B provides $50K more value despite higher cost','They provide equal value'], answer:2, explain:'Control A: Saves $800K-$200K=$600K in ALE, costs $100K → <strong>net benefit $500K</strong>. Control B: Saves $800K-$100K=$700K in ALE, costs $150K → <strong>net benefit $550K</strong>. Control B provides $50K more net value despite being more expensive. Choose B if budget allows — it delivers greater risk reduction per dollar invested.' },
+  ]
+},
+
+'vendor-risk': {
+  title: 'Third-Party Risk & Vendor Management',
+  subtitle: 'Due diligence, SLAs, right-to-audit, agreement types — securing the supply chain',
+  domain: 5, domainName: '5.0 Security Program Management & Oversight',
+  content: [
+    { type:'analogy', label:'🤝 Your security is only as strong as your weakest vendor', text:'Target\'s 2013 breach started through an HVAC vendor with network access. SolarWinds compromised 18,000+ organizations through a software update. Your vendors are extensions of your attack surface — their security failures become YOUR security incidents. Vendor risk management isn\'t optional.' },
+    { type:'section', title:'Vendor Assessment Process', icon:'🔍', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Assessment Method','What It Does','When Used'], rows:[
+          ['Security Questionnaires','Standardized questions about vendor security controls, policies, incident history','Initial vendor evaluation; annual reassessment; lightweight ongoing monitoring'],
+          ['Independent Assessments','Third-party audit or certification of vendor security (SOC 2 Type II, ISO 27001)','Higher-risk vendors; validates questionnaire answers with audited evidence'],
+          ['Penetration Testing','Ethical hacking of vendor systems or their integration points with your environment','High-risk integrations where vendor has privileged access; requires right-to-audit clause'],
+          ['Evidence of Internal Audits','Review vendor\'s own internal audit results and remediation tracking','Validates vendor has active security program and fixes issues; look for recurring findings'],
+          ['Supply Chain Analysis','Map all vendors within your vendors — understanding nth-party risk dependencies','Critical for high-value suppliers; understanding full dependency chain'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Agreement Types You Must Know', icon:'📋', bg:'#22d06b',
+      items:[
+        { type:'table', headers:['Agreement','Abbreviation','Purpose'], rows:[
+          ['Service-Level Agreement','SLA','Defines performance commitments — uptime guarantees, response times, support levels. Security SLAs: breach notification timelines (24-72hr), vulnerability patching windows, incident response cooperation.'],
+          ['Non-Disclosure Agreement','NDA','Protects confidential information shared during business relationship. Required before sharing sensitive system details, network diagrams, or security architectures with vendors.'],
+          ['Master Service Agreement','MSA','Overarching contract governing the entire relationship — terms, conditions, payment, liability, legal framework. All other agreements (SOWs, SLAs) operate under the MSA.'],
+          ['Statement of Work','SOW / Work Order','Specific deliverables, timelines, and scope for a particular project or engagement within the MSA.'],
+          ['Memorandum of Understanding','MOU','Informal agreement of intent — less binding than a contract; used for partnerships, information sharing, cooperative arrangements.'],
+          ['Memorandum of Agreement','MOA','More formal than MOU — both parties agree to specific actions and responsibilities; often precedes a full contract.'],
+          ['Business Partners Agreement','BPA','Defines security and operational responsibilities between business partners with ongoing data sharing or integrated systems.'],
+          ['Right-to-Audit Clause','(Embedded in MSA/contract)','Gives you the legal right to audit the vendor\'s security controls, request SOC reports, or send auditors to vendor facilities. Critical for high-risk vendors — without this, vendor can refuse access.'],
+        ]}
+      ]
+    },
+    { type:'tip', label:'🎯 Due Diligence vs. Due Care', text:'<strong>Due diligence</strong>: doing the research BEFORE making a decision — vetting a vendor before signing the contract, reviewing their security posture, checking references. <strong>Due care</strong>: ongoing maintenance of reasonable precautions AFTER the decision — monitoring vendor security posture throughout the relationship, reviewing audit reports, responding to vendor incidents. Both are legal obligations for organizations handling sensitive data.' },
+  ],
+  quiz: [
+    { q:'A company wants to ensure it can verify a critical cloud provider\'s security controls are being maintained as promised, including the ability to send auditors to the provider\'s data centers. What contract element must be included?', choices:['Service-level agreement','Non-disclosure agreement','Right-to-audit clause','Master service agreement'], answer:2, explain:'A <strong>right-to-audit clause</strong> in the contract gives the customer the legal right to inspect vendor security controls, request audit reports, and send auditors to vendor facilities. Without this clause, the vendor can refuse access even if you suspect non-compliance with security requirements.' },
+    { q:'An organization signs an informal document with a partner organization agreeing to share threat intelligence data, but the document is not a binding legal contract. What type of agreement is this?', choices:['SLA','BPA','NDA','MOU'], answer:3, explain:'A <strong>MOU (Memorandum of Understanding)</strong> is a non-binding agreement expressing mutual intent and understanding. Used for partnerships and information-sharing arrangements where a formal contract isn\'t yet in place. An MOA (Memorandum of Agreement) is more formal and closer to binding, but still short of a full contract.' },
+  ]
+},
+
+'compliance': {
+  title: 'Security Compliance & Privacy',
+  subtitle: 'Compliance reporting, consequences of non-compliance, GDPR, HIPAA, PCI DSS',
+  domain: 5, domainName: '5.0 Security Program Management & Oversight',
+  content: [
+    { type:'analogy', label:'⚖️ Compliance is the legal minimum; security is the goal', text:'A 55 mph speed limit is the legal minimum — it doesn\'t mean driving 55 in a blizzard is actually safe. Compliance frameworks set legal minimums. Security programs should exceed them. But failing the legal minimum has real consequences — fines, sanctions, business shutdown.' },
+    { type:'section', title:'Key Compliance Frameworks', icon:'📋', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Framework','What It Governs','Who Must Comply','Key Requirements'], rows:[
+          ['HIPAA','Protected Health Information (PHI)','Healthcare providers, insurers, business associates','Encryption, access controls, breach notification within 60 days, BAAs'],
+          ['PCI DSS','Payment card data security','Any organization that processes, stores, or transmits credit card data','Network segmentation, encryption, access logging, quarterly scans, annual audits'],
+          ['GDPR','EU personal data protection and privacy rights','Any organization handling EU residents\' data — global reach','72-hour breach notification, right to be forgotten, data portability, massive fines'],
+          ['SOX','Financial reporting integrity and IT controls','Publicly traded US companies','IT control audits, change management documentation, access controls for financial systems'],
+          ['CCPA','California Consumer Privacy Act','Businesses meeting thresholds handling California residents\' data','Similar to GDPR for California — disclosure, deletion, opt-out rights'],
+          ['GLBA','Financial data protection','Financial institutions — banks, insurance, brokers','Safeguard customer financial data; privacy notices'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Consequences of Non-Compliance', icon:'⚠️', bg:'#ff4d6d',
+      items:[
+        { type:'table', headers:['Consequence','Examples'], rows:[
+          ['Financial Fines','GDPR: up to €20M or 4% of global revenue (whichever is higher). PCI DSS: $5,000-$100,000/month. HIPAA: up to $1.9M/year per violation category. SOX violations: criminal charges for executives.'],
+          ['Sanctions','Restrictions on processing certain data types; required remediation programs; government oversight; monitoring by regulators'],
+          ['Reputational Damage','Public disclosure of breaches and non-compliance; customer trust loss; media coverage; stock price impact'],
+          ['Loss of License/Ability to Operate','Payment processors can revoke ability to process credit cards (PCI DSS). Healthcare licenses can be suspended (HIPAA). Banks can lose operating licenses (GLBA).'],
+          ['Contractual Impacts','Breach of contract with customers/partners who required compliance; termination of business agreements; loss of major customers'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Privacy Concepts — GDPR Focus', icon:'🔏', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'GDPR Key Principles', text:'<strong>Data Subject</strong>: the individual whose data is collected. <strong>Right to Be Forgotten</strong>: data subjects can request deletion of their personal data (with some exceptions). <strong>Data Portability</strong>: subjects can request their data in a portable, machine-readable format. <strong>72-Hour Breach Notification</strong>: must notify supervisory authority within 72 hours of discovering a breach affecting personal data. Fines for non-compliance are severe — designed to hurt even the largest companies.' },
+        { type:'definition', label:'Data Controller vs. Data Processor', text:'<strong>Controller</strong>: decides WHY and HOW data is processed — the organization with the business purpose (your company collecting customer data). <strong>Processor</strong>: processes data on controller\'s behalf following controller\'s instructions (your cloud provider, your CRM vendor). Controllers have greater legal responsibility. Processors must implement appropriate security and only process per controller instructions.' },
+        { type:'definition', label:'Data Inventory & Retention', text:'Know what personal data you collect, where it\'s stored, how long you keep it, and the legal basis for processing it. Keeping data longer than necessary increases risk AND may violate GDPR (data minimization principle). Every organization handling EU data must maintain a data inventory — a record of processing activities.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A European company discovers that a data breach exposed 10,000 EU customers\' personal data on a Saturday. Under GDPR, by when must they notify their supervisory authority?', choices:['Within 24 hours','Within 72 hours of becoming aware of the breach','Within 30 days','Within 7 business days'], answer:1, explain:'GDPR Article 33 requires notification to the supervisory authority <strong>within 72 hours of becoming aware</strong> of a personal data breach — weekends count. If notification is delayed beyond 72 hours, the organization must explain the reasons for the delay. High-risk breaches also require notification to affected individuals without undue delay.' },
+    { q:'A marketing company collects EU residents\' email addresses for advertising campaigns and uses a third-party email platform to send campaigns. Under GDPR, what is the marketing company\'s role?', choices:['Data Processor — they process data on behalf of customers','Data Controller — they determine why and how the data is processed','Data Subject — they are the individuals whose data is collected','Data Custodian — they manage technical storage'], answer:1, explain:'The marketing company is the <strong>Data Controller</strong> — they determine the purpose (advertising campaigns) and means of processing EU residents\' personal data. The third-party email platform is the <strong>Data Processor</strong> — they process data on the controller\'s behalf per the controller\'s instructions. Controllers have primary legal responsibility under GDPR.' },
+  ]
+},
+
+'audits-pentest': {
+  title: 'Audits, Assessments & Penetration Testing',
+  subtitle: 'Internal vs external audits, black/gray/white box testing, reconnaissance types',
+  domain: 5, domainName: '5.0 Security Program Management & Oversight',
+  content: [
+    { type:'analogy', label:'🔍 Audits vs. pen tests are like inspectors vs. burglars', text:'A building inspector reviews fire exits, checks electrical panels, and verifies code compliance (audit). A security consultant tries to actually BREAK IN to find vulnerabilities the inspector would miss (penetration test). Both are necessary — one checks compliance, one checks actual security effectiveness.' },
+    { type:'section', title:'Types of Audits & Assessments', icon:'📋', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Type','Who Conducts It','Purpose','Independence Level'], rows:[
+          ['Internal Audit','Your own audit team','Check compliance with internal policies; identify control gaps for management','Low — same organization; potential bias toward management'],
+          ['External Regulatory Audit','Regulatory body (SEC, OCC, FTC, state regulators)','Verify compliance with laws and regulations; enforce penalties for non-compliance','High — independent government authority with enforcement power'],
+          ['Independent Third-Party Audit','Hired external audit firm (Big 4, specialized security auditors)','SOC 2, ISO 27001 certification; provide customer assurance; objective assessment','High — independent from both you and regulators; reputation-driven'],
+          ['Self-Assessment','Department/team assesses themselves','Quick internal check; identify issues before formal audits; continuous improvement','Lowest — no independence; useful for process improvement, not assurance'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Penetration Testing Types', icon:'🎯', bg:'#ff7b39',
+      items:[
+        { type:'table', headers:['Test Type','Tester Knowledge','Simulates','Also Called'], rows:[
+          ['Black Box','No prior knowledge of environment','External attacker with zero inside information — must do all reconnaissance from scratch','Unknown environment test'],
+          ['White Box','Full knowledge — network diagrams, source code, credentials, architecture documentation','Thorough security audit or insider threat with complete access — finds maximum vulnerabilities','Known environment / Crystal box'],
+          ['Gray Box','Partial knowledge — basic user credentials, some network info, limited documentation','Compromised employee; partner with partial access; realistic middle ground','Partially known environment'],
+          ['Physical Pen Test','N/A (focuses on physical security)','Physical intrusion — social engineering, lock picking, tailgating, badge cloning','Physical security assessment'],
+        ]},
+        { type:'definition', label:'Offensive vs Defensive vs Integrated', text:'<strong>Offensive (Red Team)</strong>: active attack simulation trying to achieve specific goals (exfiltrate data, gain domain admin). <strong>Defensive (Blue Team)</strong>: monitors and responds to attacks — tests detection and response capability. <strong>Integrated (Purple Team)</strong>: red team attacks while blue team responds simultaneously — collaborative learning exercise where both sides improve.' },
+      ]
+    },
+    { type:'section', title:'Reconnaissance Types', icon:'🔭', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Passive Reconnaissance', text:'Gathering information WITHOUT directly interacting with the target — OSINT (open-source intelligence), public records, social media scraping, job postings (reveal internal tools), DNS lookups (public records), WHOIS queries. Target CANNOT detect passive recon. Examples: LinkedIn employee scraping, Shodan searches for exposed services, reading public financial filings for vendor information.' },
+        { type:'definition', label:'Active Reconnaissance', text:'Directly interacting with the target to gather information — port scanning, service enumeration, vulnerability scanning, sending packets to the target. Target MAY detect active recon (appears in firewall logs, IDS alerts, security monitoring). Examples: Nmap port scans, banner grabbing from services, web application spidering, DNS zone transfer attempts.' },
+        { type:'tip', label:'🎯 Rules of Engagement — Absolutely Critical', text:'Before ANY penetration test, a <strong>Rules of Engagement (RoE)</strong> document must be signed by both parties defining: scope (what systems are in/out of scope), testing windows (when can you test?), emergency contacts (who to call if something breaks), allowed techniques (can you test DoS? social engineering?), and explicit written authorization signed by someone with authority. Testing without proper authorization = federal crime (CFAA violations). The RoE protects both parties legally.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A company hires an external firm to perform a penetration test. The testers are given no information about the company\'s network, systems, or architecture before beginning. They must discover everything from scratch like a real attacker. What type of test is this?', choices:['White box test','Gray box test','Black box test','Physical penetration test'], answer:2, explain:'A <strong>black box</strong> test (unknown environment) provides the tester with no prior knowledge of the target. They must perform full reconnaissance and enumeration just as a real external attacker would. This most closely simulates an external threat actor with zero insider knowledge or documentation.' },
+    { q:'Before beginning a penetration test engagement, a security firm and their client must define which systems can be tested, what testing methods are allowed, testing time windows, and emergency contacts. What document establishes these parameters?', choices:['Statement of Work (SOW)','Non-Disclosure Agreement (NDA)','Rules of Engagement (RoE)','Master Service Agreement (MSA)'], answer:2, explain:'The <strong>Rules of Engagement</strong> document defines the specific boundaries and conditions for a penetration test: scope, allowed techniques, testing timeframes, emergency procedures, and authorization. Without this legally, testing could be considered unauthorized access (CFAA violation) and could disrupt business operations. The RoE protects both the tester and the client.' },
+  ]
+},
+
+'awareness-training': {
+  title: 'Security Awareness & Training Programs',
+  subtitle: 'Phishing simulations, anomalous behavior recognition, building the human firewall',
+  domain: 5, domainName: '5.0 Security Program Management & Oversight',
+  content: [
+    { type:'analogy', label:'👥 Technology can\'t fix human behavior — only training can', text:'You can have the most expensive firewall in the world and an employee will still click the phishing email with "URGENT: YOUR ACCOUNT WILL BE CLOSED" in the subject line. The human layer is always the weakest link — and the most frequently targeted. A strong security awareness program turns your employees from a liability into a defensive layer.' },
+    { type:'section', title:'Phishing Awareness Programs', icon:'🎣', bg:'#ff4d6d',
+      items:[
+        { type:'definition', label:'Phishing Simulation Campaigns', text:'Controlled simulated phishing attacks sent to employees to measure click rates and train recognition. Employees who click are immediately shown educational content about what indicators they missed. Metrics tracked: click-through rate, credential submission rate, reporting rate. Well-run programs reduce real phishing click rates from 30%+ to under 5% over 6-12 months of training.' },
+        { type:'table', headers:['Training Element','What to Teach'], rows:[
+          ['Recognizing Phishing','Urgency language, suspicious sender domains, unexpected requests, mismatched URLs, generic greetings, grammatical errors — always hover before clicking links'],
+          ['Reporting Suspicious Messages','How to report (phish alert button, forward to security@, IT ticketing system) — importance of reporting even if they clicked (early detection)'],
+          ['Vishing Recognition','IT will never call asking for your password or MFA code; always verify caller identity through independently looked-up phone numbers, not numbers provided by caller'],
+          ['Smishing Recognition','Don\'t click SMS links from unknown numbers; legitimate organizations don\'t ask for credentials via text; banks never text asking to verify your account urgently'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Anomalous Behavior Recognition', icon:'👁️', bg:'#ff7b39',
+      items:[
+        { type:'definition', label:'Risky Behavior', text:'Actions that knowingly or unknowingly increase security risk: using personal email for work files, disabling VPN to improve performance, sharing passwords with coworkers for convenience, connecting to unsecured public Wi-Fi for work tasks, storing credentials in plaintext documents.' },
+        { type:'definition', label:'Unexpected Behavior', text:'Actions outside normal patterns: large data downloads outside normal work hours, accessing systems they\'ve never used before, attempting to access restricted areas physically, visiting facilities at unusual times, taking excessive interest in systems outside their role.' },
+        { type:'definition', label:'Unintentional Behavior', text:'Accidental security violations: emailing the wrong person (sending confidential data externally), attaching the wrong file, misconfiguring a cloud storage bucket to public, leaving documents visible on desk in open office. Training helps users recognize and report these mistakes quickly before they become incidents.' },
+      ]
+    },
+    { type:'section', title:'Training Program Elements', icon:'📚', bg:'#22d06b',
+      items:[
+        { type:'table', headers:['Element','Description'], rows:[
+          ['Policies & Handbooks','Acceptable use policy, security policies, clear written guidelines employees acknowledge signing during onboarding'],
+          ['Situational Awareness','Teaching employees to notice suspicious activity — tailgating attempts, shoulder surfing, unexpected visitors, people in restricted areas, unusual questions'],
+          ['Insider Threat Awareness','Recognize indicators in colleagues — financial stress, unusual data access patterns, resentment toward employer, attempts to bypass controls'],
+          ['Password Management','Best practices, password manager usage, recognizing credential theft attempts (phishing, vishing), never reusing passwords'],
+          ['Removable Media','Don\'t plug in unknown USB drives found in parking lots or sent unsolicited; treat all found media as potentially malicious until verified'],
+          ['Operational Security (OPSEC)','Don\'t post work details on social media (infrastructure, vendors, schedules); be careful about conversations in public; travel security for executives'],
+          ['Remote Work Security','Home Wi-Fi security, VPN usage requirements, physical security of home office, public Wi-Fi dangers, video call security (virtual backgrounds for confidential spaces)'],
+        ]},
+        { type:'tip', label:'🎯 Training Program Lifecycle', text:'Effective programs are continuous, not one-time events: <strong>Initial</strong> training during onboarding when employees join. <strong>Recurring</strong> annual (minimum) refresher training for all employees. <strong>Targeted</strong> training triggered by policy violations, role changes, or security incidents. <strong>Measured</strong> via phishing simulation metrics, incident rates, and pre/post-training assessments. Training without measurement is just compliance theater.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'An employee receives a simulated phishing email as part of the company\'s security awareness program and clicks the link. What should happen next according to best practices?', choices:['The employee should be immediately disciplined','The employee should be immediately shown targeted educational content about the phishing indicators they missed','Their account should be locked pending security review','The simulation should be re-sent until they pass'], answer:1, explain:'Phishing simulations are training tools, not punishment mechanisms. Best practice: <strong>immediately show the employee educational content</strong> explaining what phishing indicators they missed (suspicious sender, urgency language, mismatched URL). Punishment-based approaches reduce reporting rates — employees fear reporting real phishing if they\'ll be punished for clicking. The goal is behavior change through education, not fear.' },
+    { q:'A company trains employees annually and after security incidents. They also send monthly simulated phishing emails and track click rates over time. What type of training element are the monthly simulations?', choices:['Initial training','Recurring/ongoing training','Reactive training','Compliance-only training'], answer:1, explain:'Monthly phishing simulations are <strong>recurring (ongoing) training</strong> — continuously reinforcing awareness rather than providing it once at hire and never again. Regular simulations keep security awareness top-of-mind, provide ongoing measurement of program effectiveness, and maintain muscle memory for recognizing threats. Annual training alone has been proven ineffective — humans forget without reinforcement.' },
+    { q:'An employee notices that a coworker has been staying late every night for the past month, accessing the customer database outside their normal job responsibilities, and seems very stressed about personal finances. The employee reports this to security. What type of threat indicator is being identified?', choices:['External threat actor reconnaissance','Hacktivist threat','Potential insider threat indicators','Supply chain compromise'], answer:2, explain:'The described behaviors — unusual system access outside normal role, behavioral changes (stress, financial issues), irregular work hours — are classic <strong>insider threat indicators</strong>. Security awareness training specifically covers recognizing these patterns in colleagues and encourages confidential reporting to security teams for investigation. Insider threats are detected through observant employees as often as through technical controls.' },
+  ]
+},
+
 };
 
 // ══════════════════════════════════════════════
@@ -3169,7 +3427,7 @@ function renderLearnSidebar(){
         </div>
         <div class="sidebar-topics ${openDomainId===d.id?'open':''}" id="dt-${d.id}">
           ${d.topics.map(t=>{
-            const showHeader = d.id<=4;
+            const showHeader = d.id<=5;
             const header = showHeader ? `<div class="sidebar-topic-header"><span class="topic-obj-id">${t.id}</span><span class="topic-obj-name">${t.name}</span></div>` : '';
             const items = t.lessons.map(lid=>{
               const lesson = LESSONS[lid];

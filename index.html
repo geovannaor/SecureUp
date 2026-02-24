@@ -585,6 +585,8 @@ tr:nth-child(even) td { background:rgba(255,255,255,0.02); }
   font-size:14px; color:var(--text); line-height:1.5;
 }
 .choice-btn:hover:not(:disabled) { border-color:var(--accent); background:rgba(79,142,247,0.07); }
+.choice-btn.selected { border-color:#f59e0b; background:rgba(245,158,11,0.12); }
+.choice-btn.selected .choice-letter { background:#f59e0b; color:#fff; border-color:#f59e0b; }
 .choice-btn .choice-letter {
   min-width:26px; height:26px; border-radius:6px;
   background:var(--surface); border:1px solid var(--border2);
@@ -889,7 +891,9 @@ let state = JSON.parse(localStorage.getItem('secureup_state') || 'null') || {
   questionStats: { correct:0, total:0, byDomain:{1:{c:0,t:0},2:{c:0,t:0},3:{c:0,t:0},4:{c:0,t:0},5:{c:0,t:0}} },
   difficulty: 1, // 1=easy, 2=medium, 3=hard, 4=expert
   currentLesson: null,
-  questionsSeen: []
+  questionsSeen: [],
+  incorrectAnswers: [], // { qHash, lessonId, domain, domainName, question, choices, correctAnswer, userAnswer, timestamp }
+  correctAnswers: []  // { qHash, lessonId, domain, domainName, question, choices, correctAnswer, timestamp }
 };
 
 function saveState(){localStorage.setItem('secureup_state',JSON.stringify(state));}
@@ -3714,8 +3718,8 @@ function selectAnswer(ci){
   if(quizSession.answered) return;
   quizSession.selected = ci;
   document.querySelectorAll('.choice-btn').forEach((b,i)=>{
-    b.style.borderColor = i===ci ? 'var(--accent)' : '';
-    b.style.background = i===ci ? 'rgba(79,142,247,0.1)' : '';
+    if(i===ci) b.classList.add('selected'); 
+    else b.classList.remove('selected');
   });
   document.getElementById('submit-btn').disabled = false;
 }
@@ -3730,7 +3734,7 @@ function submitAnswer(){
   // Update choices
   document.querySelectorAll('.choice-btn').forEach((b,i)=>{
     b.disabled = true;
-    b.style.borderColor = ''; b.style.background = '';
+    b.classList.remove('selected');
     if(i===q.answer) b.classList.add('correct');
     if(i===sel && !correct) b.classList.add('incorrect');
   });

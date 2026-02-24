@@ -3173,7 +3173,7 @@ function renderLearnSidebar(){
         </div>
         <div class="sidebar-topics ${openDomainId===d.id?'open':''}" id="dt-${d.id}">
           ${d.topics.map(t=>{
-            const showHeader = d.id<=3;
+            const showHeader = d.id<=4;
             const header = showHeader ? `<div class="sidebar-topic-header"><span class="topic-obj-id">${t.id}</span><span class="topic-obj-name">${t.name}</span></div>` : '';
             const items = t.lessons.map(lid=>{
               const lesson = LESSONS[lid];

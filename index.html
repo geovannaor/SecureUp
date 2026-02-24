@@ -3653,6 +3653,11 @@ function setQCount(n){
 function startProveMode(mode){
   let pool = [...QUESTIONS];
   if(mode==='domain' && selectedDomain) pool = pool.filter(q=>q.domain===selectedDomain);
+  
+  // Remove recently seen questions (last 50) to prevent immediate duplicates
+  const recentlySeen = state.questionsSeen.slice(-50);
+  pool = pool.filter(q => !recentlySeen.includes(q.id));
+  
   // Adaptive: weight by difficulty level
   if(mode==='adaptive'){
     pool.sort((a,b)=>{
@@ -3663,7 +3668,9 @@ function startProveMode(mode){
   } else {
     pool.sort(()=>Math.random()-.5);
   }
-  const num = Math.min(selectedQCount, pool.length);
+  
+  // Full Sim Exam = 90 questions, others use selectedQCount
+  const num = mode === 'exam' ? Math.min(90, pool.length) : Math.min(selectedQCount, pool.length);
   quizSession = { qs: pool.slice(0,num), idx:0, score:0, selected:null, answered:false, mode };
   showProveQuiz();
 }
@@ -3765,6 +3772,11 @@ function submitAnswer(){
   state.questionStats.byDomain[q.domain].t++;
   state.questionStats.total++;
   if(correct){ state.questionStats.byDomain[q.domain].c++; state.questionStats.correct++; }
+  
+  // Track question as seen to prevent duplicates
+  if(!state.questionsSeen.includes(q.id)) state.questionsSeen.push(q.id);
+  if(state.questionsSeen.length > 100) state.questionsSeen = state.questionsSeen.slice(-100); // Keep last 100
+  
   saveState();
 
   // Update button

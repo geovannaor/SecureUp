@@ -1,5 +1,5 @@
-
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -27,20 +27,20 @@
   --glow: 0 0 30px rgba(79,142,247,0.15);
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+- { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  min-height: 100vh;
-  overflow-x: hidden;
+background: var(–bg);
+color: var(–text);
+font-family: ‘Inter’, sans-serif;
+min-height: 100vh;
+overflow-x: hidden;
 }
 
 /* ──── PARTICLES BG ──── */
 #canvas-bg {
-  position: fixed; top:0; left:0; width:100%; height:100%;
-  pointer-events:none; z-index:0; opacity:0.4;
+position: fixed; top:0; left:0; width:100%; height:100%;
+pointer-events:none; z-index:0; opacity:0.4;
 }
 
 /* ──── APP SHELL ──── */
@@ -48,61 +48,61 @@ body {
 
 /* ──── HEADER ──── */
 header {
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 16px 32px;
-  border-bottom: 1px solid var(--border);
-  background: rgba(10,11,15,0.9);
-  backdrop-filter: blur(20px);
-  position: sticky; top:0; z-index:100;
+display:flex; align-items:center; justify-content:space-between;
+padding: 16px 32px;
+border-bottom: 1px solid var(–border);
+background: rgba(10,11,15,0.9);
+backdrop-filter: blur(20px);
+position: sticky; top:0; z-index:100;
 }
 
 .logo {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800; font-size: 22px;
-  background: linear-gradient(135deg, var(--accent), var(--accent3));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  letter-spacing: -0.5px;
+font-family: ‘Syne’, sans-serif;
+font-weight: 800; font-size: 22px;
+background: linear-gradient(135deg, var(–accent), var(–accent3));
+-webkit-background-clip: text; -webkit-text-fill-color: transparent;
+letter-spacing: -0.5px;
 }
-.logo span { color: var(--text2); -webkit-text-fill-color: var(--text2); font-weight:400; font-size:13px; margin-left:8px; }
+.logo span { color: var(–text2); -webkit-text-fill-color: var(–text2); font-weight:400; font-size:13px; margin-left:8px; }
 
 .header-right { display:flex; align-items:center; gap:16px; }
 
 .xp-pill {
-  display:flex; align-items:center; gap:8px;
-  background: var(--surface); border:1px solid var(--border);
-  border-radius: 20px; padding: 6px 14px;
-  font-size: 13px; font-family: 'JetBrains Mono', monospace;
+display:flex; align-items:center; gap:8px;
+background: var(–surface); border:1px solid var(–border);
+border-radius: 20px; padding: 6px 14px;
+font-size: 13px; font-family: ‘JetBrains Mono’, monospace;
 }
-.xp-pill .xp-val { color: var(--accent3); font-weight:600; }
-.xp-pill .lvl { color: var(--text2); }
+.xp-pill .xp-val { color: var(–accent3); font-weight:600; }
+.xp-pill .lvl { color: var(–text2); }
 
 .streak-pill {
-  display:flex; align-items:center; gap:6px;
-  background: var(--surface); border:1px solid var(--border);
-  border-radius: 20px; padding: 6px 14px;
-  font-size: 13px;
+display:flex; align-items:center; gap:6px;
+background: var(–surface); border:1px solid var(–border);
+border-radius: 20px; padding: 6px 14px;
+font-size: 13px;
 }
 .streak-pill .fire { font-size:16px; }
-.streak-pill span { color: var(--warn); font-weight:600; font-family: 'JetBrains Mono', monospace; }
+.streak-pill span { color: var(–warn); font-weight:600; font-family: ‘JetBrains Mono’, monospace; }
 
 /* ──── NAV ──── */
 nav {
-  display:flex; gap:4px;
-  background: var(--bg2);
-  border-bottom: 1px solid var(--border);
-  padding: 0 32px;
+display:flex; gap:4px;
+background: var(–bg2);
+border-bottom: 1px solid var(–border);
+padding: 0 32px;
 }
 
 .nav-btn {
-  padding: 14px 24px;
-  background: none; border: none; cursor:pointer;
-  color: var(--text2); font-family:'Syne',sans-serif;
-  font-weight:600; font-size:14px; letter-spacing:0.3px;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s;
+padding: 14px 24px;
+background: none; border: none; cursor:pointer;
+color: var(–text2); font-family:‘Syne’,sans-serif;
+font-weight:600; font-size:14px; letter-spacing:0.3px;
+border-bottom: 2px solid transparent;
+transition: all 0.2s;
 }
-.nav-btn:hover { color: var(--text); }
-.nav-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.nav-btn:hover { color: var(–text); }
+.nav-btn.active { color: var(–accent); border-bottom-color: var(–accent); }
 
 /* ──── MAIN CONTENT ──── */
 main { padding: 32px; max-width: 1200px; margin: 0 auto; }
@@ -112,107 +112,107 @@ main { padding: 32px; max-width: 1200px; margin: 0 auto; }
 #view-home.active { display:block; }
 
 .dashboard-hero {
-  background: linear-gradient(135deg, rgba(79,142,247,0.1) 0%, rgba(124,92,252,0.1) 100%);
-  border: 1px solid var(--border2);
-  border-radius: 20px;
-  padding: 40px;
-  margin-bottom: 32px;
-  position: relative;
-  overflow: hidden;
+background: linear-gradient(135deg, rgba(79,142,247,0.1) 0%, rgba(124,92,252,0.1) 100%);
+border: 1px solid var(–border2);
+border-radius: 20px;
+padding: 40px;
+margin-bottom: 32px;
+position: relative;
+overflow: hidden;
 }
 .dashboard-hero::before {
-  content:'';
-  position:absolute; top:-50%; right:-10%;
-  width:400px; height:400px;
-  background: radial-gradient(circle, rgba(79,142,247,0.08) 0%, transparent 70%);
-  pointer-events:none;
+content:’’;
+position:absolute; top:-50%; right:-10%;
+width:400px; height:400px;
+background: radial-gradient(circle, rgba(79,142,247,0.08) 0%, transparent 70%);
+pointer-events:none;
 }
 
 .hero-title {
-  font-family:'Syne',sans-serif;
-  font-size:36px; font-weight:800;
-  line-height:1.2; margin-bottom:8px;
+font-family:‘Syne’,sans-serif;
+font-size:36px; font-weight:800;
+line-height:1.2; margin-bottom:8px;
 }
-.hero-sub { color: var(--text2); font-size:16px; margin-bottom:28px; line-height:1.6; }
+.hero-sub { color: var(–text2); font-size:16px; margin-bottom:28px; line-height:1.6; }
 
 .progress-container { margin-top:24px; }
 .progress-label {
-  display:flex; justify-content:space-between;
-  font-size:13px; color: var(--text2); margin-bottom:8px;
+display:flex; justify-content:space-between;
+font-size:13px; color: var(–text2); margin-bottom:8px;
 }
 .progress-bar {
-  height:8px; background:var(--bg3);
-  border-radius:99px; overflow:hidden;
+height:8px; background:var(–bg3);
+border-radius:99px; overflow:hidden;
 }
 .progress-fill {
-  height:100%;
-  background: linear-gradient(90deg, var(--accent), var(--accent3));
-  border-radius:99px;
-  transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+height:100%;
+background: linear-gradient(90deg, var(–accent), var(–accent3));
+border-radius:99px;
+transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
 }
 
 .domain-grid {
-  display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap:16px; margin-bottom:32px;
+display:grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+gap:16px; margin-bottom:32px;
 }
 
 .domain-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius:16px; padding:24px;
-  cursor:pointer;
-  transition: all 0.25s;
-  position:relative; overflow:hidden;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius:16px; padding:24px;
+cursor:pointer;
+transition: all 0.25s;
+position:relative; overflow:hidden;
 }
 .domain-card::before {
-  content:'';
-  position:absolute; top:0; left:0; right:0; height:3px;
-  background: var(--domain-color, var(--accent));
+content:’’;
+position:absolute; top:0; left:0; right:0; height:3px;
+background: var(–domain-color, var(–accent));
 }
 .domain-card:hover {
-  border-color: var(--border2);
-  background: var(--surface2);
-  transform: translateY(-2px);
-  box-shadow: var(--glow);
+border-color: var(–border2);
+background: var(–surface2);
+transform: translateY(-2px);
+box-shadow: var(–glow);
 }
 
 .domain-badge {
-  display:inline-flex; align-items:center; gap:6px;
-  background: rgba(255,255,255,0.06);
-  border-radius:8px; padding:4px 10px;
-  font-size:11px; font-family:'JetBrains Mono',monospace;
-  color: var(--text2); margin-bottom:12px;
+display:inline-flex; align-items:center; gap:6px;
+background: rgba(255,255,255,0.06);
+border-radius:8px; padding:4px 10px;
+font-size:11px; font-family:‘JetBrains Mono’,monospace;
+color: var(–text2); margin-bottom:12px;
 }
 
 .domain-name {
-  font-family:'Syne',sans-serif;
-  font-weight:700; font-size:17px;
-  margin-bottom:6px; line-height:1.3;
+font-family:‘Syne’,sans-serif;
+font-weight:700; font-size:17px;
+margin-bottom:6px; line-height:1.3;
 }
 
 .domain-meta {
-  display:flex; align-items:center; gap:12px;
-  font-size:12px; color: var(--text2); margin-bottom:16px;
+display:flex; align-items:center; gap:12px;
+font-size:12px; color: var(–text2); margin-bottom:16px;
 }
 
 .domain-pct {
-  font-family:'JetBrains Mono',monospace;
-  font-size:11px;
-  background: var(--bg);
-  border:1px solid var(--border);
-  border-radius:6px; padding:2px 8px;
-  color: var(--accent3);
+font-family:‘JetBrains Mono’,monospace;
+font-size:11px;
+background: var(–bg);
+border:1px solid var(–border);
+border-radius:6px; padding:2px 8px;
+color: var(–accent3);
 }
 
 .domain-progress {
-  height:4px; background:var(--bg);
-  border-radius:99px; overflow:hidden;
+height:4px; background:var(–bg);
+border-radius:99px; overflow:hidden;
 }
 .domain-progress-fill {
-  height:100%;
-  border-radius:99px;
-  background: var(--domain-color, var(--accent));
-  transition: width 0.6s;
+height:100%;
+border-radius:99px;
+background: var(–domain-color, var(–accent));
+transition: width 0.6s;
 }
 
 /* ──── LEARN VIEW ──── */
@@ -220,390 +220,419 @@ main { padding: 32px; max-width: 1200px; margin: 0 auto; }
 #view-learn.active { display:block; }
 
 .learn-layout {
-  display:grid; grid-template-columns: 280px 1fr;
-  gap:24px; align-items:start;
+display:grid; grid-template-columns: 280px 1fr;
+gap:24px; align-items:start;
 }
 
 .sidebar {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius:16px;
-  overflow:hidden;
-  position:sticky; top:90px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius:16px;
+overflow:hidden;
+position:sticky; top:90px;
 }
 
 .sidebar-header {
-  padding:20px; border-bottom:1px solid var(--border);
-  font-family:'Syne',sans-serif; font-weight:700;
-  font-size:14px; color: var(--text2);
-  text-transform:uppercase; letter-spacing:0.8px;
+padding:20px; border-bottom:1px solid var(–border);
+font-family:‘Syne’,sans-serif; font-weight:700;
+font-size:14px; color: var(–text2);
+text-transform:uppercase; letter-spacing:0.8px;
 }
 
 .sidebar-domain {
-  padding: 4px 0;
+padding: 4px 0;
 }
 .sidebar-domain-header {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:12px 20px; cursor:pointer;
-  font-family:'Syne',sans-serif; font-weight:600; font-size:13px;
-  transition:background 0.15s;
+display:flex; align-items:center; justify-content:space-between;
+padding:12px 20px; cursor:pointer;
+font-family:‘Syne’,sans-serif; font-weight:600; font-size:13px;
+transition:background 0.15s;
 }
-.sidebar-domain-header:hover { background: var(--surface2); }
+.sidebar-domain-header:hover { background: var(–surface2); }
 .sidebar-domain-header .d-num {
-  font-family:'JetBrains Mono',monospace; font-size:11px;
-  color: var(--domain-color, var(--accent));
-  background: rgba(255,255,255,0.05);
-  border-radius:4px; padding:2px 6px;
+font-family:‘JetBrains Mono’,monospace; font-size:11px;
+color: var(–domain-color, var(–accent));
+background: rgba(255,255,255,0.05);
+border-radius:4px; padding:2px 6px;
 }
 .sidebar-domain-header .chevron {
-  color: var(--text3); font-size:10px;
-  transition:transform 0.2s;
+color: var(–text3); font-size:10px;
+transition:transform 0.2s;
 }
 .sidebar-domain-header.open .chevron { transform:rotate(90deg); }
 
 .sidebar-topics { display:none; }
 .sidebar-topics.open { display:block; }
-.sidebar-topic {
-  display:flex; align-items:center; gap:10px;
-  padding:9px 20px 9px 36px;
-  font-size:12px; color:var(--text2); cursor:pointer;
-  transition:all 0.15s;
-  border-left: 2px solid transparent;
+.sidebar-topic-header {
+display: flex;
+align-items: center;
+gap: 8px;
+padding: 10px 16px 4px;
+margin-top: 6px;
 }
-.sidebar-topic:hover { background: var(--surface2); color:var(--text); }
-.sidebar-topic.active { color:var(--accent); border-left-color:var(--accent); background:rgba(79,142,247,0.07); }
-.sidebar-topic .check { width:14px; height:14px; border-radius:50%; background:var(--bg3); border:1px solid var(--border); flex-shrink:0; display:flex;align-items:center;justify-content:center;font-size:8px; }
-.sidebar-topic.done .check { background:var(--success); border-color:var(--success); color:#fff; }
+.topic-obj-id {
+font-family: ‘JetBrains Mono’, monospace;
+font-size: 10px;
+font-weight: 600;
+color: var(–accent);
+background: rgba(79,142,247,0.12);
+border: 1px solid rgba(79,142,247,0.25);
+border-radius: 4px;
+padding: 2px 6px;
+white-space: nowrap;
+flex-shrink: 0;
+}
+.topic-obj-name {
+font-size: 10px;
+font-weight: 600;
+color: var(–text3);
+text-transform: uppercase;
+letter-spacing: 0.05em;
+}
+.sidebar-topic.indented {
+padding-left: 28px;
+}
+.sidebar-topic {
+display:flex; align-items:center; gap:10px;
+padding:9px 20px 9px 36px;
+font-size:12px; color:var(–text2); cursor:pointer;
+transition:all 0.15s;
+border-left: 2px solid transparent;
+}
+.sidebar-topic:hover { background: var(–surface2); color:var(–text); }
+.sidebar-topic.active { color:var(–accent); border-left-color:var(–accent); background:rgba(79,142,247,0.07); }
+.sidebar-topic .check { width:14px; height:14px; border-radius:50%; background:var(–bg3); border:1px solid var(–border); flex-shrink:0; display:flex;align-items:center;justify-content:center;font-size:8px; }
+.sidebar-topic.done .check { background:var(–success); border-color:var(–success); color:#fff; }
 
 /* ──── LESSON CONTENT ──── */
 .lesson-pane {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius:16px;
-  overflow:hidden;
-  min-height: 600px;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius:16px;
+overflow:hidden;
+min-height: 600px;
 }
 
 .lesson-header {
-  padding:28px 36px 24px;
-  border-bottom:1px solid var(--border);
-  background: linear-gradient(135deg, rgba(79,142,247,0.05), transparent);
+padding:28px 36px 24px;
+border-bottom:1px solid var(–border);
+background: linear-gradient(135deg, rgba(79,142,247,0.05), transparent);
 }
 
 .lesson-domain-badge {
-  display:inline-flex; align-items:center; gap:6px;
-  padding:4px 12px; border-radius:20px;
-  font-size:11px; font-family:'JetBrains Mono',monospace;
-  border:1px solid; margin-bottom:12px;
+display:inline-flex; align-items:center; gap:6px;
+padding:4px 12px; border-radius:20px;
+font-size:11px; font-family:‘JetBrains Mono’,monospace;
+border:1px solid; margin-bottom:12px;
 }
 
 .lesson-title {
-  font-family:'Syne',sans-serif;
-  font-size:26px; font-weight:800; line-height:1.3;
-  margin-bottom:8px;
+font-family:‘Syne’,sans-serif;
+font-size:26px; font-weight:800; line-height:1.3;
+margin-bottom:8px;
 }
-.lesson-subtitle { color:var(--text2); font-size:14px; line-height:1.6; }
+.lesson-subtitle { color:var(–text2); font-size:14px; line-height:1.6; }
 
 .lesson-body { padding:36px; }
 
 /* Content blocks */
 .concept-block {
-  margin-bottom:32px;
+margin-bottom:32px;
 }
 .concept-title {
-  font-family:'Syne',sans-serif;
-  font-weight:700; font-size:18px;
-  margin-bottom:16px;
-  display:flex; align-items:center; gap:10px;
+font-family:‘Syne’,sans-serif;
+font-weight:700; font-size:18px;
+margin-bottom:16px;
+display:flex; align-items:center; gap:10px;
 }
 .concept-title .icon {
-  width:32px; height:32px; border-radius:8px;
-  display:flex; align-items:center; justify-content:center;
-  font-size:16px; flex-shrink:0;
+width:32px; height:32px; border-radius:8px;
+display:flex; align-items:center; justify-content:center;
+font-size:16px; flex-shrink:0;
 }
 
 .analogy-box {
-  background: rgba(0,229,197,0.06);
-  border:1px solid rgba(0,229,197,0.2);
-  border-radius:12px; padding:20px;
-  margin-bottom:16px;
+background: rgba(0,229,197,0.06);
+border:1px solid rgba(0,229,197,0.2);
+border-radius:12px; padding:20px;
+margin-bottom:16px;
 }
 .analogy-box .label {
-  font-size:11px; font-family:'JetBrains Mono',monospace;
-  color: var(--accent3); font-weight:600;
-  text-transform:uppercase; letter-spacing:0.8px;
-  margin-bottom:8px;
+font-size:11px; font-family:‘JetBrains Mono’,monospace;
+color: var(–accent3); font-weight:600;
+text-transform:uppercase; letter-spacing:0.8px;
+margin-bottom:8px;
 }
-.analogy-box p { font-size:14px; line-height:1.7; color:var(--text2); }
-.analogy-box p strong { color:var(--text); }
+.analogy-box p { font-size:14px; line-height:1.7; color:var(–text2); }
+.analogy-box p strong { color:var(–text); }
 
 .definition-box {
-  background: rgba(79,142,247,0.06);
-  border:1px solid rgba(79,142,247,0.2);
-  border-radius:12px; padding:20px;
-  margin-bottom:16px;
+background: rgba(79,142,247,0.06);
+border:1px solid rgba(79,142,247,0.2);
+border-radius:12px; padding:20px;
+margin-bottom:16px;
 }
 .definition-box .label {
-  font-size:11px; font-family:'JetBrains Mono',monospace;
-  color: var(--accent); font-weight:600;
-  text-transform:uppercase; letter-spacing:0.8px;
-  margin-bottom:8px;
+font-size:11px; font-family:‘JetBrains Mono’,monospace;
+color: var(–accent); font-weight:600;
+text-transform:uppercase; letter-spacing:0.8px;
+margin-bottom:8px;
 }
-.definition-box p { font-size:14px; line-height:1.7; color:var(--text2); }
-.definition-box p strong { color:var(--text); }
+.definition-box p { font-size:14px; line-height:1.7; color:var(–text2); }
+.definition-box p strong { color:var(–text); }
 
 .tip-box {
-  background: rgba(255,123,57,0.07);
-  border:1px solid rgba(255,123,57,0.2);
-  border-radius:12px; padding:20px;
-  margin-bottom:16px;
+background: rgba(255,123,57,0.07);
+border:1px solid rgba(255,123,57,0.2);
+border-radius:12px; padding:20px;
+margin-bottom:16px;
 }
 .tip-box .label {
-  font-size:11px; font-family:'JetBrains Mono',monospace;
-  color: var(--warn); font-weight:600;
-  text-transform:uppercase; letter-spacing:0.8px;
-  margin-bottom:8px;
+font-size:11px; font-family:‘JetBrains Mono’,monospace;
+color: var(–warn); font-weight:600;
+text-transform:uppercase; letter-spacing:0.8px;
+margin-bottom:8px;
 }
-.tip-box p { font-size:14px; line-height:1.7; color:var(--text2); }
-.tip-box p strong { color:var(--text); }
+.tip-box p { font-size:14px; line-height:1.7; color:var(–text2); }
+.tip-box p strong { color:var(–text); }
 
-.concept-text { font-size:14px; line-height:1.8; color:var(--text2); margin-bottom:12px; }
-.concept-text strong { color:var(--text); }
+.concept-text { font-size:14px; line-height:1.8; color:var(–text2); margin-bottom:12px; }
+.concept-text strong { color:var(–text); }
 
 .term-grid {
-  display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap:10px; margin-bottom:16px;
+display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+gap:10px; margin-bottom:16px;
 }
 .term-card {
-  background: var(--bg);
-  border:1px solid var(--border);
-  border-radius:10px; padding:14px;
-  transition: all 0.2s;
+background: var(–bg);
+border:1px solid var(–border);
+border-radius:10px; padding:14px;
+transition: all 0.2s;
 }
-.term-card:hover { border-color:var(--border2); }
-.term-card .term { font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; color:var(--accent); margin-bottom:6px; }
-.term-card .def { font-size:12px; color:var(--text2); line-height:1.5; }
+.term-card:hover { border-color:var(–border2); }
+.term-card .term { font-family:‘JetBrains Mono’,monospace; font-size:13px; font-weight:600; color:var(–accent); margin-bottom:6px; }
+.term-card .def { font-size:12px; color:var(–text2); line-height:1.5; }
 
 .table-wrap { overflow-x:auto; margin-bottom:16px; }
 table { width:100%; border-collapse:collapse; font-size:13px; }
-th { background:var(--bg); color:var(--text2); font-family:'JetBrains Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; padding:10px 14px; text-align:left; border:1px solid var(--border); }
-td { padding:10px 14px; border:1px solid var(--border); color:var(--text2); line-height:1.5; }
-td strong { color:var(--text); }
+th { background:var(–bg); color:var(–text2); font-family:‘JetBrains Mono’,monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; padding:10px 14px; text-align:left; border:1px solid var(–border); }
+td { padding:10px 14px; border:1px solid var(–border); color:var(–text2); line-height:1.5; }
+td strong { color:var(–text); }
 tr:nth-child(even) td { background:rgba(255,255,255,0.02); }
 
 .lesson-nav {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:24px 36px;
-  border-top:1px solid var(--border);
-  background: var(--bg2);
+display:flex; justify-content:space-between; align-items:center;
+padding:24px 36px;
+border-top:1px solid var(–border);
+background: var(–bg2);
 }
 
 .btn {
-  display:inline-flex; align-items:center; gap:8px;
-  padding:10px 22px; border-radius:10px;
-  font-family:'Syne',sans-serif; font-weight:600; font-size:14px;
-  cursor:pointer; border:none; transition:all 0.2s;
+display:inline-flex; align-items:center; gap:8px;
+padding:10px 22px; border-radius:10px;
+font-family:‘Syne’,sans-serif; font-weight:600; font-size:14px;
+cursor:pointer; border:none; transition:all 0.2s;
 }
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  color:#fff;
-  box-shadow: 0 4px 16px rgba(79,142,247,0.3);
+background: linear-gradient(135deg, var(–accent), var(–accent2));
+color:#fff;
+box-shadow: 0 4px 16px rgba(79,142,247,0.3);
 }
 .btn-primary:hover { transform:translateY(-1px); box-shadow: 0 6px 20px rgba(79,142,247,0.4); }
 .btn-secondary {
-  background: var(--surface2); color:var(--text);
-  border:1px solid var(--border);
+background: var(–surface2); color:var(–text);
+border:1px solid var(–border);
 }
-.btn-secondary:hover { background:var(--bg3); border-color:var(--border2); }
+.btn-secondary:hover { background:var(–bg3); border-color:var(–border2); }
 .btn-success {
-  background: linear-gradient(135deg, var(--success), #1ab05a);
-  color:#fff;
-  box-shadow: 0 4px 16px rgba(34,208,107,0.3);
+background: linear-gradient(135deg, var(–success), #1ab05a);
+color:#fff;
+box-shadow: 0 4px 16px rgba(34,208,107,0.3);
 }
 .btn-warn {
-  background: linear-gradient(135deg, var(--warn), #e56020);
-  color:#fff;
+background: linear-gradient(135deg, var(–warn), #e56020);
+color:#fff;
 }
 .btn-danger {
-  background: linear-gradient(135deg, var(--danger), #c9193e);
-  color:#fff;
+background: linear-gradient(135deg, var(–danger), #c9193e);
+color:#fff;
 }
 .btn:disabled { opacity:0.4; cursor:not-allowed; transform:none !important; }
 
 /* ──── MID-SECTION QUIZ ──── */
 .quiz-section {
-  background: rgba(124,92,252,0.06);
-  border:1px solid rgba(124,92,252,0.2);
-  border-radius:16px;
-  padding:28px; margin-top:32px;
+background: rgba(124,92,252,0.06);
+border:1px solid rgba(124,92,252,0.2);
+border-radius:16px;
+padding:28px; margin-top:32px;
 }
 .quiz-section-header {
-  display:flex; align-items:center; gap:12px;
-  margin-bottom:24px;
+display:flex; align-items:center; gap:12px;
+margin-bottom:24px;
 }
 .quiz-section-header .qs-icon {
-  width:40px; height:40px; border-radius:10px;
-  background: rgba(124,92,252,0.2);
-  display:flex; align-items:center; justify-content:center;
-  font-size:18px;
+width:40px; height:40px; border-radius:10px;
+background: rgba(124,92,252,0.2);
+display:flex; align-items:center; justify-content:center;
+font-size:18px;
 }
 .quiz-section-header h3 {
-  font-family:'Syne',sans-serif; font-weight:700; font-size:18px;
+font-family:‘Syne’,sans-serif; font-weight:700; font-size:18px;
 }
-.quiz-section-header p { font-size:12px; color:var(--text2); margin-top:2px; }
+.quiz-section-header p { font-size:12px; color:var(–text2); margin-top:2px; }
 
 /* ──── PROVE VIEW ──── */
 #view-prove { display:none; }
 #view-prove.active { display:block; }
 
 .prove-header {
-  display:flex; align-items:center; justify-content:space-between;
-  margin-bottom:28px;
+display:flex; align-items:center; justify-content:space-between;
+margin-bottom:28px;
 }
 .prove-title {
-  font-family:'Syne',sans-serif; font-weight:800; font-size:28px;
+font-family:‘Syne’,sans-serif; font-weight:800; font-size:28px;
 }
-.prove-meta { color:var(--text2); font-size:14px; margin-top:4px; }
+.prove-meta { color:var(–text2); font-size:14px; margin-top:4px; }
 
 .prove-modes {
-  display:grid; grid-template-columns: repeat(3, 1fr);
-  gap:16px; margin-bottom:32px;
+display:grid; grid-template-columns: repeat(3, 1fr);
+gap:16px; margin-bottom:32px;
 }
 .mode-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius:16px; padding:24px;
-  cursor:pointer; transition:all 0.25s;
-  text-align:center;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius:16px; padding:24px;
+cursor:pointer; transition:all 0.25s;
+text-align:center;
 }
-.mode-card:hover { border-color:var(--border2); background:var(--surface2); transform:translateY(-2px); }
-.mode-card.selected { border-color:var(--accent); background:rgba(79,142,247,0.08); }
+.mode-card:hover { border-color:var(–border2); background:var(–surface2); transform:translateY(-2px); }
+.mode-card.selected { border-color:var(–accent); background:rgba(79,142,247,0.08); }
 .mode-card .mode-icon { font-size:32px; margin-bottom:12px; }
-.mode-card .mode-name { font-family:'Syne',sans-serif; font-weight:700; font-size:16px; margin-bottom:6px; }
-.mode-card .mode-desc { font-size:12px; color:var(--text2); line-height:1.5; }
+.mode-card .mode-name { font-family:‘Syne’,sans-serif; font-weight:700; font-size:16px; margin-bottom:6px; }
+.mode-card .mode-desc { font-size:12px; color:var(–text2); line-height:1.5; }
 
 /* ──── QUESTION UI ──── */
 .question-ui {
-  background: var(--surface);
-  border:1px solid var(--border);
-  border-radius:16px;
-  overflow:hidden;
+background: var(–surface);
+border:1px solid var(–border);
+border-radius:16px;
+overflow:hidden;
 }
 
 .q-header {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:16px 24px;
-  background:var(--bg2);
-  border-bottom:1px solid var(--border);
+display:flex; align-items:center; justify-content:space-between;
+padding:16px 24px;
+background:var(–bg2);
+border-bottom:1px solid var(–border);
 }
 .q-progress-track {
-  flex:1; height:6px; background:var(--bg3);
-  border-radius:99px; overflow:hidden; margin:0 16px;
+flex:1; height:6px; background:var(–bg3);
+border-radius:99px; overflow:hidden; margin:0 16px;
 }
 .q-progress-fill {
-  height:100%;
-  background: linear-gradient(90deg, var(--accent), var(--accent3));
-  border-radius:99px;
-  transition: width 0.4s;
+height:100%;
+background: linear-gradient(90deg, var(–accent), var(–accent3));
+border-radius:99px;
+transition: width 0.4s;
 }
 .q-counter {
-  font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--text2);
-  white-space:nowrap;
+font-family:‘JetBrains Mono’,monospace; font-size:13px; color:var(–text2);
+white-space:nowrap;
 }
 .q-difficulty {
-  padding:3px 10px; border-radius:20px;
-  font-size:10px; font-family:'JetBrains Mono',monospace; font-weight:600;
-  text-transform:uppercase; letter-spacing:0.5px;
+padding:3px 10px; border-radius:20px;
+font-size:10px; font-family:‘JetBrains Mono’,monospace; font-weight:600;
+text-transform:uppercase; letter-spacing:0.5px;
 }
-.diff-easy { background:rgba(34,208,107,0.15); color:var(--success); }
-.diff-medium { background:rgba(79,142,247,0.15); color:var(--accent); }
-.diff-hard { background:rgba(255,123,57,0.15); color:var(--warn); }
-.diff-expert { background:rgba(255,77,109,0.15); color:var(--danger); }
+.diff-easy { background:rgba(34,208,107,0.15); color:var(–success); }
+.diff-medium { background:rgba(79,142,247,0.15); color:var(–accent); }
+.diff-hard { background:rgba(255,123,57,0.15); color:var(–warn); }
+.diff-expert { background:rgba(255,77,109,0.15); color:var(–danger); }
 
 .q-body { padding:32px; }
 .q-domain-tag {
-  display:inline-flex; align-items:center; gap:6px;
-  padding:4px 12px; border-radius:20px;
-  font-size:11px; font-family:'JetBrains Mono',monospace;
-  border:1px solid; margin-bottom:20px;
+display:inline-flex; align-items:center; gap:6px;
+padding:4px 12px; border-radius:20px;
+font-size:11px; font-family:‘JetBrains Mono’,monospace;
+border:1px solid; margin-bottom:20px;
 }
 
 .q-text {
-  font-size:17px; line-height:1.7; color:var(--text);
-  margin-bottom:28px; font-weight:400;
+font-size:17px; line-height:1.7; color:var(–text);
+margin-bottom:28px; font-weight:400;
 }
 
 .q-scenario {
-  background:var(--bg);
-  border:1px solid var(--border);
-  border-left:3px solid var(--accent);
-  border-radius:8px; padding:16px;
-  font-size:13px; line-height:1.7;
-  font-family:'JetBrains Mono',monospace; color:var(--text2);
-  margin-bottom:20px;
+background:var(–bg);
+border:1px solid var(–border);
+border-left:3px solid var(–accent);
+border-radius:8px; padding:16px;
+font-size:13px; line-height:1.7;
+font-family:‘JetBrains Mono’,monospace; color:var(–text2);
+margin-bottom:20px;
 }
 
 .choices { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
 
 .choice-btn {
-  display:flex; align-items:flex-start; gap:14px;
-  padding:16px 18px; border-radius:12px;
-  background:var(--bg2); border:1.5px solid var(--border);
-  cursor:pointer; text-align:left; transition:all 0.2s;
-  font-size:14px; color:var(--text); line-height:1.5;
+display:flex; align-items:flex-start; gap:14px;
+padding:16px 18px; border-radius:12px;
+background:var(–bg2); border:1.5px solid var(–border);
+cursor:pointer; text-align:left; transition:all 0.2s;
+font-size:14px; color:var(–text); line-height:1.5;
 }
-.choice-btn:hover:not(:disabled) { border-color:var(--accent); background:rgba(79,142,247,0.07); }
+.choice-btn:hover:not(:disabled) { border-color:var(–accent); background:rgba(79,142,247,0.07); }
 .choice-btn .choice-letter {
-  min-width:26px; height:26px; border-radius:6px;
-  background:var(--surface); border:1px solid var(--border2);
-  display:flex; align-items:center; justify-content:center;
-  font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600;
-  color:var(--text2); flex-shrink:0; margin-top:1px;
+min-width:26px; height:26px; border-radius:6px;
+background:var(–surface); border:1px solid var(–border2);
+display:flex; align-items:center; justify-content:center;
+font-family:‘JetBrains Mono’,monospace; font-size:12px; font-weight:600;
+color:var(–text2); flex-shrink:0; margin-top:1px;
 }
-.choice-btn.correct { border-color:var(--success); background:rgba(34,208,107,0.09); }
-.choice-btn.correct .choice-letter { background:var(--success); color:#fff; border-color:var(--success); }
-.choice-btn.incorrect { border-color:var(--danger); background:rgba(255,77,109,0.09); }
-.choice-btn.incorrect .choice-letter { background:var(--danger); color:#fff; border-color:var(--danger); }
+.choice-btn.correct { border-color:var(–success); background:rgba(34,208,107,0.09); }
+.choice-btn.correct .choice-letter { background:var(–success); color:#fff; border-color:var(–success); }
+.choice-btn.incorrect { border-color:var(–danger); background:rgba(255,77,109,0.09); }
+.choice-btn.incorrect .choice-letter { background:var(–danger); color:#fff; border-color:var(–danger); }
 .choice-btn:disabled { cursor:not-allowed; }
 
 /* Multi-select */
-.choice-btn.multi-selected { border-color:var(--accent2); background:rgba(124,92,252,0.09); }
-.choice-btn.multi-selected .choice-letter { background:var(--accent2); color:#fff; border-color:var(--accent2); }
+.choice-btn.multi-selected { border-color:var(–accent2); background:rgba(124,92,252,0.09); }
+.choice-btn.multi-selected .choice-letter { background:var(–accent2); color:#fff; border-color:var(–accent2); }
 
 .q-feedback {
-  display:none;
-  margin-top:20px;
+display:none;
+margin-top:20px;
 }
 .q-feedback.show { display:block; }
 
 .feedback-correct {
-  background:rgba(34,208,107,0.09);
-  border:1px solid rgba(34,208,107,0.3);
-  border-radius:12px; padding:20px;
+background:rgba(34,208,107,0.09);
+border:1px solid rgba(34,208,107,0.3);
+border-radius:12px; padding:20px;
 }
 .feedback-incorrect {
-  background:rgba(255,77,109,0.07);
-  border:1px solid rgba(255,77,109,0.25);
-  border-radius:12px; padding:20px;
+background:rgba(255,77,109,0.07);
+border:1px solid rgba(255,77,109,0.25);
+border-radius:12px; padding:20px;
 }
 
 .feedback-title {
-  font-family:'Syne',sans-serif; font-weight:700; font-size:16px;
-  margin-bottom:8px; display:flex; align-items:center; gap:8px;
+font-family:‘Syne’,sans-serif; font-weight:700; font-size:16px;
+margin-bottom:8px; display:flex; align-items:center; gap:8px;
 }
-.feedback-title.good { color:var(--success); }
-.feedback-title.bad { color:var(--danger); }
+.feedback-title.good { color:var(–success); }
+.feedback-title.bad { color:var(–danger); }
 
 .feedback-explain {
-  font-size:13px; line-height:1.7; color:var(--text2);
+font-size:13px; line-height:1.7; color:var(–text2);
 }
-.feedback-explain strong { color:var(--text); }
+.feedback-explain strong { color:var(–text); }
 
 .q-footer {
-  display:flex; justify-content:flex-end; align-items:center;
-  padding:20px 32px;
-  border-top:1px solid var(--border);
-  gap:12px;
+display:flex; justify-content:flex-end; align-items:center;
+padding:20px 32px;
+border-top:1px solid var(–border);
+gap:12px;
 }
 
 /* ──── STATS VIEW ──── */
@@ -611,40 +640,40 @@ tr:nth-child(even) td { background:rgba(255,255,255,0.02); }
 #view-stats.active { display:block; }
 
 .stats-grid {
-  display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap:16px; margin-bottom:32px;
+display:grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap:16px; margin-bottom:32px;
 }
 .stat-card {
-  background:var(--surface); border:1px solid var(--border);
-  border-radius:14px; padding:20px;
+background:var(–surface); border:1px solid var(–border);
+border-radius:14px; padding:20px;
 }
-.stat-card .stat-label { font-size:11px; color:var(--text3); font-family:'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px; }
-.stat-card .stat-value { font-family:'Syne',sans-serif; font-weight:800; font-size:32px; }
-.stat-card .stat-sub { font-size:12px; color:var(--text2); margin-top:4px; }
+.stat-card .stat-label { font-size:11px; color:var(–text3); font-family:‘JetBrains Mono’,monospace; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px; }
+.stat-card .stat-value { font-family:‘Syne’,sans-serif; font-weight:800; font-size:32px; }
+.stat-card .stat-sub { font-size:12px; color:var(–text2); margin-top:4px; }
 
 /* ──── MODALS ──── */
 .modal-overlay {
-  display:none;
-  position:fixed; inset:0; z-index:200;
-  background:rgba(0,0,0,0.7);
-  backdrop-filter:blur(8px);
-  align-items:center; justify-content:center;
+display:none;
+position:fixed; inset:0; z-index:200;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(8px);
+align-items:center; justify-content:center;
 }
 .modal-overlay.open { display:flex; }
 .modal {
-  background:var(--bg2);
-  border:1px solid var(--border2);
-  border-radius:20px;
-  padding:36px;
-  max-width:560px; width:90%;
-  animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+background:var(–bg2);
+border:1px solid var(–border2);
+border-radius:20px;
+padding:36px;
+max-width:560px; width:90%;
+animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
 }
 @keyframes modalIn {
-  from { opacity:0; transform:scale(0.9) translateY(20px); }
-  to { opacity:1; transform:scale(1) translateY(0); }
+from { opacity:0; transform:scale(0.9) translateY(20px); }
+to { opacity:1; transform:scale(1) translateY(0); }
 }
-.modal-title { font-family:'Syne',sans-serif; font-weight:800; font-size:22px; margin-bottom:8px; }
-.modal-sub { color:var(--text2); font-size:14px; line-height:1.6; margin-bottom:24px; }
+.modal-title { font-family:‘Syne’,sans-serif; font-weight:800; font-size:22px; margin-bottom:8px; }
+.modal-sub { color:var(–text2); font-size:14px; line-height:1.6; margin-bottom:24px; }
 .modal-actions { display:flex; gap:12px; justify-content:flex-end; }
 
 /* ──── ANIMATIONS ──── */
@@ -656,30 +685,31 @@ tr:nth-child(even) td { background:rgba(255,255,255,0.02); }
 
 /* ──── SECTION DIVIDER ──── */
 .section-title {
-  font-family:'Syne',sans-serif; font-weight:700; font-size:18px;
-  color:var(--text); margin-bottom:16px;
-  display:flex; align-items:center; gap:10px;
+font-family:‘Syne’,sans-serif; font-weight:700; font-size:18px;
+color:var(–text); margin-bottom:16px;
+display:flex; align-items:center; gap:10px;
 }
 .section-title::after {
-  content:''; flex:1; height:1px; background:var(--border);
+content:’’; flex:1; height:1px; background:var(–border);
 }
 
 /* ──── SCROLLBAR ──── */
 ::-webkit-scrollbar { width:6px; height:6px; }
-::-webkit-scrollbar-track { background:var(--bg2); }
-::-webkit-scrollbar-thumb { background:var(--border2); border-radius:3px; }
+::-webkit-scrollbar-track { background:var(–bg2); }
+::-webkit-scrollbar-thumb { background:var(–border2); border-radius:3px; }
 
 /* ──── RESPONSIVE ──── */
 @media (max-width:768px) {
-  main { padding:16px; }
-  .learn-layout { grid-template-columns:1fr; }
-  .sidebar { position:static; }
-  .prove-modes { grid-template-columns:1fr; }
-  header { padding:12px 16px; }
-  nav { padding:0 16px; }
-  .nav-btn { padding:12px 14px; font-size:13px; }
+main { padding:16px; }
+.learn-layout { grid-template-columns:1fr; }
+.sidebar { position:static; }
+.prove-modes { grid-template-columns:1fr; }
+header { padding:12px 16px; }
+nav { padding:0 16px; }
+.nav-btn { padding:12px 14px; font-size:13px; }
 }
 </style>
+
 </head>
 <body>
 
@@ -705,6 +735,7 @@ tr:nth-child(even) td { background:rgba(255,255,255,0.02); }
   </header>
 
   <!-- NAV -->
+
   <nav>
     <button class="nav-btn active" onclick="showView('home')">🏠 Dashboard</button>
     <button class="nav-btn" onclick="showView('learn')">📖 Learn</button>
@@ -727,96 +758,100 @@ tr:nth-child(even) td { background:rgba(255,255,255,0.02); }
         </div>
       </div>
 
-      <div class="section-title">The 5 Domains</div>
+```
+  <div class="section-title">The 5 Domains</div>
 
-      <div class="domain-grid" id="domain-grid"></div>
+  <div class="domain-grid" id="domain-grid"></div>
 
-      <div class="section-title">Quick Actions</div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap">
-        <button class="btn btn-primary" onclick="showView('learn');selectFirstLesson()">📖 Continue Learning</button>
-        <button class="btn btn-warn" onclick="startProveMode('adaptive')">⚡ Quick Quiz (10Q)</button>
-        <button class="btn btn-secondary" onclick="showView('prove')">🎯 Full Practice Exam</button>
+  <div class="section-title">Quick Actions</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap">
+    <button class="btn btn-primary" onclick="showView('learn');selectFirstLesson()">📖 Continue Learning</button>
+    <button class="btn btn-warn" onclick="startProveMode('adaptive')">⚡ Quick Quiz (10Q)</button>
+    <button class="btn btn-secondary" onclick="showView('prove')">🎯 Full Practice Exam</button>
+  </div>
+</div>
+
+<!-- LEARN -->
+<div id="view-learn">
+  <div class="learn-layout">
+    <div class="sidebar" id="learn-sidebar"></div>
+    <div class="lesson-pane fade-in" id="lesson-content">
+      <div style="display:flex;align-items:center;justify-content:center;height:400px;flex-direction:column;gap:16px;color:var(--text2)">
+        <div style="font-size:48px">📚</div>
+        <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--text)">Select a topic to begin</div>
+        <div style="font-size:14px">Choose a domain and lesson from the sidebar</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROVE -->
+<div id="view-prove">
+  <div class="prove-header">
+    <div>
+      <div class="prove-title">⚡ Prove It</div>
+      <div class="prove-meta">Adaptive quizzing that gets harder as you improve — just like exam day</div>
+    </div>
+  </div>
+
+  <div id="prove-setup">
+    <div class="section-title">Choose Your Mode</div>
+    <div class="prove-modes">
+      <div class="mode-card selected" onclick="selectMode('adaptive')" id="mode-adaptive">
+        <div class="mode-icon">🧠</div>
+        <div class="mode-name">Adaptive Quiz</div>
+        <div class="mode-desc">Starts easy, gets harder. The algorithm tracks your weak spots and targets them ruthlessly.</div>
+      </div>
+      <div class="mode-card" onclick="selectMode('exam')" id="mode-exam">
+        <div class="mode-icon">🎯</div>
+        <div class="mode-name">Full Sim Exam</div>
+        <div class="mode-desc">90 minutes. 90 questions. Mixed multiple-choice and performance-based. Real exam format.</div>
+      </div>
+      <div class="mode-card" onclick="selectMode('domain')" id="mode-domain">
+        <div class="mode-icon">🔬</div>
+        <div class="mode-name">Domain Drill</div>
+        <div class="mode-desc">Hammer one domain until you know it cold. Perfect for targeting weak areas.</div>
       </div>
     </div>
 
-    <!-- LEARN -->
-    <div id="view-learn">
-      <div class="learn-layout">
-        <div class="sidebar" id="learn-sidebar"></div>
-        <div class="lesson-pane fade-in" id="lesson-content">
-          <div style="display:flex;align-items:center;justify-content:center;height:400px;flex-direction:column;gap:16px;color:var(--text2)">
-            <div style="font-size:48px">📚</div>
-            <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--text)">Select a topic to begin</div>
-            <div style="font-size:14px">Choose a domain and lesson from the sidebar</div>
-          </div>
-        </div>
-      </div>
+    <div id="domain-selector" style="display:none;margin-bottom:24px;">
+      <div class="section-title">Select Domain</div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px" id="domain-select-btns"></div>
     </div>
 
-    <!-- PROVE -->
-    <div id="view-prove">
-      <div class="prove-header">
-        <div>
-          <div class="prove-title">⚡ Prove It</div>
-          <div class="prove-meta">Adaptive quizzing that gets harder as you improve — just like exam day</div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <div style="flex:1">
+        <div style="font-size:13px;color:var(--text2);margin-bottom:8px">Questions</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-secondary" id="q10" onclick="setQCount(10)" style="padding:8px 16px;font-size:13px">10</button>
+          <button class="btn btn-secondary active-q" id="q25" onclick="setQCount(25)" style="padding:8px 16px;font-size:13px">25</button>
+          <button class="btn btn-secondary" id="q50" onclick="setQCount(50)" style="padding:8px 16px;font-size:13px">50</button>
+          <button class="btn btn-secondary" id="q90" onclick="setQCount(90)" style="padding:8px 16px;font-size:13px">90 (Exam)</button>
         </div>
       </div>
-
-      <div id="prove-setup">
-        <div class="section-title">Choose Your Mode</div>
-        <div class="prove-modes">
-          <div class="mode-card selected" onclick="selectMode('adaptive')" id="mode-adaptive">
-            <div class="mode-icon">🧠</div>
-            <div class="mode-name">Adaptive Quiz</div>
-            <div class="mode-desc">Starts easy, gets harder. The algorithm tracks your weak spots and targets them ruthlessly.</div>
-          </div>
-          <div class="mode-card" onclick="selectMode('exam')" id="mode-exam">
-            <div class="mode-icon">🎯</div>
-            <div class="mode-name">Full Sim Exam</div>
-            <div class="mode-desc">90 minutes. 90 questions. Mixed multiple-choice and performance-based. Real exam format.</div>
-          </div>
-          <div class="mode-card" onclick="selectMode('domain')" id="mode-domain">
-            <div class="mode-icon">🔬</div>
-            <div class="mode-name">Domain Drill</div>
-            <div class="mode-desc">Hammer one domain until you know it cold. Perfect for targeting weak areas.</div>
-          </div>
-        </div>
-
-        <div id="domain-selector" style="display:none;margin-bottom:24px;">
-          <div class="section-title">Select Domain</div>
-          <div style="display:flex;flex-wrap:wrap;gap:10px" id="domain-select-btns"></div>
-        </div>
-
-        <div style="display:flex;gap:12px;align-items:center">
-          <div style="flex:1">
-            <div style="font-size:13px;color:var(--text2);margin-bottom:8px">Questions</div>
-            <div style="display:flex;gap:8px">
-              <button class="btn btn-secondary" id="q10" onclick="setQCount(10)" style="padding:8px 16px;font-size:13px">10</button>
-              <button class="btn btn-secondary active-q" id="q25" onclick="setQCount(25)" style="padding:8px 16px;font-size:13px">25</button>
-              <button class="btn btn-secondary" id="q50" onclick="setQCount(50)" style="padding:8px 16px;font-size:13px">50</button>
-              <button class="btn btn-secondary" id="q90" onclick="setQCount(90)" style="padding:8px 16px;font-size:13px">90 (Exam)</button>
-            </div>
-          </div>
-          <button class="btn btn-primary" style="margin-top:24px;padding:12px 28px" onclick="startProveMode(currentMode)">
-            Start Session →
-          </button>
-        </div>
-      </div>
-
-      <div id="prove-quiz" style="display:none"></div>
+      <button class="btn btn-primary" style="margin-top:24px;padding:12px 28px" onclick="startProveMode(currentMode)">
+        Start Session →
+      </button>
     </div>
+  </div>
 
-    <!-- STATS -->
-    <div id="view-stats">
-      <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;margin-bottom:24px">📊 Your Progress</div>
-      <div class="stats-grid" id="stats-grid"></div>
-      <div class="section-title">Domain Performance</div>
-      <div id="domain-stats"></div>
-    </div>
+  <div id="prove-quiz" style="display:none"></div>
+</div>
+
+<!-- STATS -->
+<div id="view-stats">
+  <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:28px;margin-bottom:24px">📊 Your Progress</div>
+  <div class="stats-grid" id="stats-grid"></div>
+  <div class="section-title">Domain Performance</div>
+  <div id="domain-stats"></div>
+</div>
+```
+
   </main>
 </div>
 
 <!-- QUIZ COMPLETE MODAL -->
+
 <div class="modal-overlay" id="quiz-done-modal">
   <div class="modal">
     <div id="modal-content"></div>
@@ -2027,6 +2062,375 @@ const LESSONS = {
   ]
 },
 
+'arch-cloud': {
+  title: 'Cloud Architecture & Security',
+  subtitle: 'IaaS/PaaS/SaaS, shared responsibility, IaC, containers, serverless — 3.1',
+  domain: 3, domainName: '3.0 Security Architecture',
+  content: [
+    { type:'analogy', label:'☁️ The cloud is someone else\'s computer — with rules', text:'When you rent an apartment, the landlord maintains the building structure but YOU lock your door and don\'t leave the stove on. Cloud computing works the same way — the shared responsibility model defines exactly who secures what.' },
+    { type:'section', title:'Cloud Service Models', icon:'📦', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Model','Provider Manages','Customer Manages','Example'], rows:[
+          ['IaaS','Physical hardware, hypervisor, networking','OS, middleware, applications, data','AWS EC2, Azure VMs — you manage everything above the hardware'],
+          ['PaaS','Hardware + OS + runtime environment','Applications and data','Google App Engine — you just deploy code'],
+          ['SaaS','Everything — hardware through application','Data governance and access management','Microsoft 365, Salesforce — you just use it'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Shared Responsibility — The Critical Concept', icon:'🤝', bg:'#ff7b39',
+      items:[
+        { type:'definition', label:'What the Customer Always Owns', text:'Regardless of cloud model (IaaS, PaaS, or SaaS), the customer is <strong>always</strong> responsible for: data governance, user access management, and defining who can access what. The provider never controls your data classification or your IAM policies.' },
+        { type:'tip', label:'🎯 Biggest Misconception', text:'"The cloud provider handles security." FALSE. The provider secures the infrastructure. You secure your configuration, your data, and your users. The #1 cause of cloud breaches is customer misconfiguration — not provider failure.' },
+      ]
+    },
+    { type:'section', title:'Modern Cloud Concepts', icon:'⚙️', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Infrastructure as Code (IaC)', text:'Defining and provisioning infrastructure using code files (Terraform, CloudFormation, Ansible) rather than manual configuration. Security benefit: version-controlled, auditable, reproducible. Risk: misconfigured IaC templates deploy misconfigured infrastructure at scale — one bad template affects hundreds of resources.' },
+        { type:'definition', label:'Serverless', text:'Running code without managing servers — the provider handles all infrastructure. Security shift: no OS to patch, but application code and IAM are entirely the customer\'s responsibility. Attack surface moves to the application and identity layers.' },
+        { type:'definition', label:'Containers', text:'Packaging applications with their dependencies (Docker). Containers share the host OS kernel but are isolated from each other. Security considerations: container escape, vulnerable base images, registry security, runtime monitoring.' },
+        { type:'definition', label:'Microservices', text:'Breaking applications into small independent services communicating via APIs. Security concern: massive increase in internal API communication creates a large internal attack surface. Each API endpoint between services is a potential attack vector.' },
+      ]
+    },
+    { type:'section', title:'Cloud Deployment Considerations', icon:'🌐', bg:'#7c5cfc',
+      items:[
+        { type:'table', headers:['Consideration','Security Implication'], rows:[
+          ['Hybrid Cloud','Data flows between on-premises and cloud — secure with VPN/Direct Connect; enforce consistent security policies both sides'],
+          ['Data Sovereignty','Where data physically resides matters for GDPR, HIPAA — ensure data stays in compliant regions'],
+          ['Third-Party Vendors','Cloud marketplaces include third-party software — vet vendors; supply chain risk applies'],
+          ['Scalability','Auto-scaling spins up new instances — security must be baked into the base image or template'],
+        ]}
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A company uses a SaaS email provider. Under the shared responsibility model, which security control is the company ALWAYS responsible for, regardless of cloud model?', choices:['Physical data center security','Hypervisor patching','Application runtime security','User access management and data governance'], answer:3, explain:'Under shared responsibility, <strong>data governance and access management are always the customer\'s responsibility</strong> — even in SaaS. Who has access to your company email, what data you store, how you classify it — the SaaS provider never controls this.' },
+    { q:'A security engineer defines all cloud network infrastructure — VPCs, subnets, security groups — in Terraform config files stored in a Git repository. What practice is this?', choices:['Containerization','Infrastructure as Code (IaC)','Serverless architecture','Virtualization'], answer:1, explain:'<strong>Infrastructure as Code (IaC)</strong> defines infrastructure in code files, enabling version control, peer review, and reproducible deployments. Security benefit: infrastructure changes go through the same review process as application code, catching misconfigurations before deployment.' },
+    { q:'An organization migrates to microservices. The security team notes internal API calls increased from dozens to thousands per day. What is the PRIMARY new security concern?', choices:['Increased patch management burden','Expanded internal attack surface from API communication','Reduced availability due to service dependencies','Loss of data encryption at rest'], answer:1, explain:'Microservices dramatically expand the <strong>internal attack surface</strong> — each API endpoint between services is a potential attack vector. Lateral movement through compromised services, insecure API authentication, and insufficient internal traffic encryption become primary concerns.' },
+  ]
+},
+
+'arch-network': {
+  title: 'Network Architecture & Specialized Systems',
+  subtitle: 'SDN, IoT, ICS/SCADA, embedded systems, high availability concepts — 3.2',
+  domain: 3, domainName: '3.0 Security Architecture',
+  content: [
+    { type:'analogy', label:'🏭 Modern networks are more than just PCs', text:'Your corporate network probably has servers, laptops, phones, printers, building access systems, HVAC controllers, factory equipment, and security cameras — all networked. Each has different security requirements. One-size-fits-all security doesn\'t work.' },
+    { type:'section', title:'Specialized Network Infrastructure', icon:'🌐', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Type','Description','Key Security Challenge'], rows:[
+          ['SDN (Software-Defined Networking)','Network controlled by software/controller rather than individual device configs','Centralized controller = single point of failure and high-value target'],
+          ['IoT (Internet of Things)','Connected devices: cameras, sensors, smart building systems','Often weak/no security; hard to patch; massive attack surface'],
+          ['ICS/SCADA','Industrial control systems managing physical processes — power grids, water treatment, manufacturing','Cannot be patched easily; compromise = physical consequences; often needs air gap'],
+          ['RTOS (Real-Time OS)','OS with strict timing requirements for industrial/medical devices','Limited security features; long lifecycles; hard to update'],
+          ['Embedded Systems','Computers built into devices — cars, medical equipment, appliances','Fixed function; often no security update mechanism'],
+          ['OT (Operational Technology)','Hardware/software controlling physical industrial equipment','Convergence with IT networks increases attack surface significantly'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Network Isolation Methods', icon:'🔀', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Air Gap', text:'Complete physical network isolation — no connection whatsoever. The most secure isolation. Used for nuclear control systems, classified government networks, some ICS/SCADA. Data moves only via physical media. Stuxnet famously crossed an air gap via infected USB drives in Iranian nuclear facilities.' },
+        { type:'definition', label:'Logical Segmentation', text:'Network segments created via software (VLANs, firewalls) without physical separation. More practical than air gapping. Traffic between segments must pass through security controls — firewalls, IPS.' },
+        { type:'definition', label:'Centralized vs. Decentralized Architecture', text:'<strong>Centralized</strong>: security controlled from one point. Efficient but single point of failure. <strong>Decentralized</strong>: security distributed across systems. More resilient but harder to manage consistently. Most enterprises use a hybrid approach.' },
+      ]
+    },
+    { type:'section', title:'Availability & Resilience Concepts', icon:'⚡', bg:'#7c5cfc',
+      items:[
+        { type:'table', headers:['Concept','Definition'], rows:[
+          ['High Availability (HA)','Designing systems to minimize downtime — redundant components, automatic failover'],
+          ['Scalability','Ability to handle increased load — security controls must scale with the system'],
+          ['Resilience','Ability to recover quickly from failures or attacks'],
+          ['Platform Diversity','Using different vendors/platforms so a single vendor outage doesn\'t take everything down'],
+          ['Patch Availability','Whether the vendor still provides updates — EOL = no patches = permanent vulnerability'],
+        ]}
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A power utility\'s grid control systems are completely isolated with no internet or corporate network connection. Data transfers only via encrypted USB drives with strict access controls. What security architecture is this?', choices:['Software-defined networking','Logical segmentation','Air gap','High availability clustering'], answer:2, explain:'An <strong>air gap</strong> is complete physical network isolation — no network connection at all. Power grids, nuclear facilities, and classified government networks use air gaps. Note: Stuxnet proved air gaps aren\'t perfect — they can be crossed via infected removable media.' },
+    { q:'A manufacturing company\'s SCADA systems control robotic assembly lines running software that cannot be updated without shutting down production for weeks. What is the BEST security approach?', choices:['Immediately patch all systems and accept the downtime','Decommission all SCADA and use manual controls','Network segmentation and compensating controls around the unpatched systems','Replace all SCADA systems immediately'], answer:2, explain:'When patching is infeasible, <strong>network segmentation plus compensating controls</strong> is correct — isolate SCADA on its own segment, restrict all communication to only necessary systems, add enhanced monitoring, and document the compensating controls formally. This is the reality of ICS/SCADA security.' },
+  ]
+},
+
+'infra-security': {
+  title: 'Securing Enterprise Infrastructure',
+  subtitle: 'Security zones, jump servers, proxies, load balancers, port security, failure modes — 3.2',
+  domain: 3, domainName: '3.0 Security Architecture',
+  content: [
+    { type:'analogy', label:'🏢 Security zones are like a corporate building\'s access levels', text:'Lobby = public. Badge-required offices = internal. Server room = restricted. CEO suite = highly restricted. Networks have the same zones. Where you place a device determines what attacks it faces and what controls it needs.' },
+    { type:'section', title:'Network Security Zones', icon:'🗺️', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Zone','What Lives Here','Trust Level'], rows:[
+          ['Internet / Untrusted','External traffic','Zero trust — assume hostile'],
+          ['DMZ (Screened Subnet)','Web servers, email gateways, DNS, reverse proxies','Partial — public-facing but isolated from internal'],
+          ['Internal Network','Employee workstations, internal apps','Trusted — Zero Trust challenges this assumption'],
+          ['Restricted Zone','Sensitive data servers, domain controllers, HR systems','High — strict access control required'],
+          ['Management Zone','Out-of-band network for managing network devices','Separate from production — admin access only'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Key Network Appliances', icon:'🖧', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'Jump Server (Bastion Host)', text:'A hardened server that is the ONLY authorized access point to a restricted network segment. Admins connect to the jump server first, then from there to internal systems. Creates a chokepoint for logging and controlling all privileged access. Also called a jump box.' },
+        { type:'definition', label:'Proxy Server', text:'Sits between clients and the internet, making requests on their behalf. <strong>Forward proxy</strong>: internal users accessing the internet (content filtering, anonymity, SSL inspection). <strong>Reverse proxy</strong>: external users accessing internal services (hides internal architecture, load balancing).' },
+        { type:'definition', label:'Load Balancer', text:'Distributes incoming traffic across multiple servers. Security functions: SSL termination, DDoS mitigation, health checking (removes compromised servers from rotation). High availability benefit: if one server fails, load balancer routes to healthy ones.' },
+        { type:'definition', label:'802.1X Port Security', text:'IEEE standard for Network Access Control. Before a device uses a network port, it must authenticate via EAP to a RADIUS server. Prevents unauthorized devices from plugging in. Requires RADIUS infrastructure.' },
+      ]
+    },
+    { type:'section', title:'Failure Modes — Critical Exam Topic', icon:'⚠️', bg:'#ff4d6d',
+      items:[
+        { type:'definition', label:'Fail-Open', text:'When a security device fails, it <strong>allows ALL traffic</strong>. Prioritizes <strong>availability</strong> over security. Used in environments where stopping legitimate traffic is more harmful than a security gap (some healthcare). Dangerous from a security standpoint.' },
+        { type:'definition', label:'Fail-Closed (Fail-Secure)', text:'When a security device fails, it <strong>blocks ALL traffic</strong>. Prioritizes <strong>security</strong> over availability. Default for most security controls — if the firewall crashes, nothing gets through. Causes availability impact but prevents security bypass.' },
+        { type:'tip', label:'🎯 Which Fails Which Way?', text:'<strong>IDS failure</strong> = fail-open (you lose detection but traffic flows — acceptable). <strong>Firewall/IPS failure</strong> = should fail-closed (you lose availability but stay secure). The exam will give you a scenario and ask which failure mode is appropriate.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'An organization wants all administrative access to production servers logged, monitored, and accessible only from a single hardened system. What should they implement?', choices:['A load balancer','A jump server (bastion host)','A reverse proxy','A RADIUS server'], answer:1, explain:'A <strong>jump server (bastion host)</strong> is a hardened system serving as the single authorized gateway for admin access to a restricted network. All admin sessions go through it — providing centralized logging, session recording, and access control for all privileged operations.' },
+    { q:'A critical firewall fails and is configured to allow all traffic through during the failure. What is this called, and what does it prioritize?', choices:['Fail-closed — prioritizes security','Fail-open — prioritizes availability','Fail-secure — prioritizes integrity','High availability — prioritizes resilience'], answer:1, explain:'<strong>Fail-open</strong> allows all traffic when the device fails, prioritizing <strong>availability</strong>. Business operations continue but the security control is bypassed during the failure window. Sometimes necessary in healthcare environments where blocking traffic could be life-threatening.' },
+    { q:'Before a laptop can connect to the corporate network via an ethernet port, it must present valid credentials verified against a policy server. What technology enforces this?', choices:['MAC address filtering','802.1X port-based Network Access Control','Host-based firewall','ACL on the switch'], answer:1, explain:'<strong>802.1X</strong> is the IEEE standard for port-based Network Access Control. Authentication is required before granting network access through a port. It uses EAP for the authentication protocol and a RADIUS server for centralized authentication decisions.' },
+  ]
+},
+
+'firewall-types': {
+  title: 'Firewall Types, VPNs & Network Security',
+  subtitle: 'WAF, NGFW, UTM, IPSec, TLS, SD-WAN, SASE — the full network security toolkit',
+  domain: 3, domainName: '3.0 Security Architecture',
+  content: [
+    { type:'analogy', label:'🚦 Different checkpoints for different roads', text:'A traffic cop checks license plates (stateful firewall). A customs agent inspects your luggage contents (NGFW with deep packet inspection). A specialist who speaks the language of what you\'re carrying (WAF, which understands HTTP). Right tool for the right traffic.' },
+    { type:'section', title:'Firewall Types', icon:'🔥', bg:'#ff4d6d',
+      items:[
+        { type:'table', headers:['Type','What It Inspects','Best For'], rows:[
+          ['Packet Filter (Layer 3/4)','IP addresses, ports, protocols only — fast but limited','Basic perimeter filtering; high-speed environments'],
+          ['Stateful Inspection','Tracks connection state — knows if a packet belongs to an established session','Standard enterprise perimeter — most common firewall type'],
+          ['Next-Generation Firewall (NGFW)','Deep packet inspection, application awareness, user identity, built-in IPS, SSL inspection','Modern enterprise — understands applications, not just ports'],
+          ['Web Application Firewall (WAF)','HTTP/HTTPS specifically — blocks SQLi, XSS, CSRF, OWASP Top 10','Protecting web applications — sits in front of web servers'],
+          ['Unified Threat Management (UTM)','All-in-one: firewall + IPS + antivirus + content filter + VPN','Small/medium businesses — convenience over raw performance'],
+        ]}
+      ]
+    },
+    { type:'section', title:'VPN & Encrypted Tunneling', icon:'🔒', bg:'#4f8ef7',
+      items:[
+        { type:'definition', label:'VPN (Virtual Private Network)', text:'Creates an encrypted tunnel over the public internet. <strong>Site-to-site</strong>: connects two offices permanently. <strong>Remote access</strong>: individual users connect to corporate network. <strong>Split tunnel</strong>: only corporate-destined traffic goes through VPN. <strong>Full tunnel</strong>: ALL traffic goes through VPN.' },
+        { type:'definition', label:'IPSec', text:'Network-layer encryption protocol suite used in VPNs. Two modes: <strong>Transport mode</strong> — encrypts payload only, used for host-to-host. <strong>Tunnel mode</strong> — encrypts entire packet including headers, used in VPN gateways. Components: AH (Authentication Header) and ESP (Encapsulating Security Payload).' },
+        { type:'definition', label:'TLS (Transport Layer Security)', text:'The cryptographic protocol securing most internet communication — HTTPS, email, VoIP. TLS 1.3 is current. TLS 1.0/1.1 are deprecated and should not be used. Provides authentication (certificates), confidentiality (encryption), and integrity (MAC). SSL is broken — never use SSL terminology as if it\'s current.' },
+      ]
+    },
+    { type:'section', title:'Modern Network Security Architectures', icon:'🌐', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'SD-WAN', text:'Software-Defined Wide Area Network — manages and optimizes WAN connections across multiple internet links via software. Automatically routes traffic over best-performing links. Can include encryption and security policy enforcement.' },
+        { type:'definition', label:'SASE (Secure Access Service Edge)', text:'Cloud-delivered framework combining networking (SD-WAN) and security (firewall, CASB, Zero Trust) into one cloud service. Security and connectivity delivered from the cloud edge, close to users wherever they are. The modern answer to securing a distributed workforce.' },
+        { type:'tip', label:'🎯 WAF vs. NGFW', text:'A <strong>WAF</strong> understands HTTP — it inspects the content of web requests and blocks SQLi, XSS, CSRF. A <strong>NGFW</strong> understands applications broadly — it knows if traffic is Facebook vs. Salesforce vs. BitTorrent. For protecting a web app, WAF. For enterprise traffic control, NGFW.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A company\'s web application is being attacked with SQL injection and XSS. Which security control BEST protects specifically against these application-layer attacks?', choices:['Next-Generation Firewall (NGFW)','Unified Threat Management (UTM)','Web Application Firewall (WAF)','Stateful inspection firewall'], answer:2, explain:'A <strong>WAF</strong> specifically understands HTTP/HTTPS and the OWASP Top 10 — SQLi, XSS, CSRF. A standard firewall sees these as valid web traffic (correct port/protocol) and passes them through. Only the WAF inspects the actual content of web requests.' },
+    { q:'A company configures IPSec VPN between two offices. The configuration encrypts the entire original IP packet (headers + payload) and wraps it in a new outer IP packet. Which IPSec mode is this?', choices:['Transport mode','Tunnel mode','AH-only mode','ESP transport mode'], answer:1, explain:'<strong>Tunnel mode</strong> encrypts the entire original IP packet and wraps it in a new outer packet — used for VPN gateways connecting networks. Transport mode only encrypts the payload and is used for host-to-host communication within a network.' },
+    { q:'An organization wants to deliver firewall, CASB, Zero Trust access, and SD-WAN as a single cloud-based service for remote employees. What architecture does this describe?', choices:['UTM appliance','VPN concentrator','SASE (Secure Access Service Edge)','DMZ architecture'], answer:2, explain:'<strong>SASE</strong> converges networking (SD-WAN) and security (firewall, CASB, Zero Trust) into a single cloud-delivered service. It\'s designed for the distributed workforce — security is applied at the cloud edge, close to users wherever they connect from.' },
+  ]
+},
+
+'secure-comms': {
+  title: 'Secure Communication Protocols',
+  subtitle: 'Replace insecure protocols with secure ones — know the ports cold',
+  domain: 3, domainName: '3.0 Security Architecture',
+  content: [
+    { type:'analogy', label:'📮 Protocols are like postal rules', text:'Regular mail is readable by anyone who intercepts it. A sealed registered diplomatic pouch is encrypted and authenticated. Secure protocols are the "diplomatic pouch" of network communication — same information, completely protected.' },
+    { type:'section', title:'Insecure → Secure Protocol Replacements', icon:'🔄', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Insecure Protocol','Secure Replacement','What It Secures','Port Change'], rows:[
+          ['HTTP','HTTPS (HTTP + TLS)','Web traffic','80 → 443'],
+          ['FTP','SFTP or FTPS','File transfer','21 → 22 (SFTP) or 990 (FTPS)'],
+          ['Telnet','SSH','Remote administration','23 → 22'],
+          ['SMTP (plain)','SMTPS / STARTTLS','Email transmission','25 → 465 or 587'],
+          ['SNMP v1/v2','SNMPv3','Network device monitoring','161 (v3 adds encryption + auth)'],
+          ['LDAP','LDAPS','Directory services','389 → 636'],
+          ['RDP (no NLA)','RDP with NLA + TLS','Remote desktop','3389 (add NLA + TLS)'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Remote Access Security', icon:'🔑', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'SSH (Secure Shell)', text:'Encrypted replacement for Telnet. Provides encrypted terminal sessions, secure file transfer (SFTP/SCP), and port forwarding. Authentication via password or public key — key-based is more secure since no password is transmitted. Port 22.' },
+        { type:'definition', label:'RDP Security Best Practices', text:'Remote Desktop Protocol (port 3389) must be secured with: <strong>Network Level Authentication (NLA)</strong> — forces authentication before full connection. <strong>TLS encryption</strong>. <strong>MFA</strong>. Exposed RDP is one of the most attacked internet-facing services — always require VPN or jump server first.' },
+      ]
+    },
+    { type:'tip', label:'🎯 Port Numbers to Memorize', text:'SSH=22, SMTP=25, DNS=53, HTTP=80, HTTPS=443, SMB=445, RDP=3389, LDAP=389, LDAPS=636, SNMP=161. The exam describes a service and asks what port to allow/block or what secure protocol to use. Know these cold.' },
+  ],
+  quiz: [
+    { q:'Network administrators are using Telnet to manage routers remotely. What is the primary security risk and what should replace it?', choices:['Telnet uses too much bandwidth — replace with SNMP','Telnet transmits credentials in plaintext — replace with SSH','Telnet uses an insecure port — replace with RDP','Telnet lacks logging — replace with HTTPS'], answer:1, explain:'<strong>Telnet transmits everything in plaintext</strong> — usernames, passwords, all commands. Anyone with network access can capture credentials with a packet sniffer. <strong>SSH</strong> (port 22) encrypts the entire session and should always replace Telnet (port 23).' },
+    { q:'A firewall policy should allow encrypted web traffic while blocking unencrypted web traffic. Which ports should be allowed and blocked?', choices:['Allow 443, block 8080','Allow 80, block 443','Allow 443, block 80','Allow 8443, block 443'], answer:2, explain:'<strong>HTTPS runs on port 443</strong> (encrypted) and <strong>HTTP runs on port 80</strong> (unencrypted). To force encrypted web traffic, allow 443 and block 80. Some environments redirect port 80 to 443 rather than blocking it to provide a better user experience.' },
+    { q:'A company uses LDAP for internal directory services. The security team finds user credentials are transmitted in cleartext during LDAP queries. What is the fix?', choices:['Upgrade to LDAP v3','Switch to LDAPS on port 636','Enable SNMPv3','Use SAML instead'], answer:1, explain:'<strong>LDAPS</strong> (LDAP over TLS/SSL) runs on port 636 and encrypts all directory service communication including credentials. Standard LDAP on port 389 transmits in plaintext. LDAPS is the direct secure replacement.' },
+  ]
+},
+
+'data-types': {
+  title: 'Data Types & Classification',
+  subtitle: 'Regulated, trade secret, PII, PHI — understanding what you have and how to protect it',
+  domain: 3, domainName: '3.0 Security Architecture',
+  content: [
+    { type:'analogy', label:'📁 Not all files are equal', text:'Your grocery list and your Social Security number are both "documents" — but they need completely different protection. Data classification assigns the appropriate security level so protection matches sensitivity. You wouldn\'t store your passport in the same drawer as a magazine.' },
+    { type:'section', title:'Data Types You Must Know', icon:'📋', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Data Type','Description','Examples','Governing Regulation'], rows:[
+          ['PII','Personally Identifiable Information — identifies a specific individual','Name+address, SSN, email, biometrics','GDPR, CCPA, state privacy laws'],
+          ['PHI','Protected Health Information — health data tied to an individual','Medical records, diagnoses, treatment history','HIPAA'],
+          ['Financial Data','Payment and financial information','Credit cards, bank accounts, financial statements','PCI DSS, SOX, GLBA'],
+          ['Intellectual Property','Proprietary business information with competitive value','Source code, patents, product designs, trade secrets','Trade secret law, NDAs'],
+          ['Legal Information','Attorney-client communications and legal strategy','Litigation documents, legal opinions','Attorney-client privilege'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Data Classification Levels', icon:'🏷️', bg:'#22d06b',
+      items:[
+        { type:'table', headers:['Level','Description','Example'], rows:[
+          ['Public','Can be freely shared — no harm from disclosure','Marketing materials, press releases'],
+          ['Internal/Private','For employees only — not catastrophic if leaked','Internal memos, org charts'],
+          ['Confidential','Sensitive — damage if disclosed — limited to specific roles','Customer PII, business strategies, employee records'],
+          ['Restricted/Critical','Most sensitive — severe damage if disclosed','Trade secrets, encryption keys, classified government data'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Data States & Sovereignty', icon:'🌍', bg:'#7c5cfc',
+      items:[
+        { type:'definition', label:'Data at Rest', text:'Stored data — on hard drives, databases, backups. Protected by: encryption (FDE, database encryption), access controls, physical security.' },
+        { type:'definition', label:'Data in Transit', text:'Moving across networks. Protected by: TLS, IPSec, VPN, SFTP. Never transmit sensitive data over unencrypted channels.' },
+        { type:'definition', label:'Data in Use', text:'Actively being processed in RAM or CPU. Hardest to protect. Risks: memory scraping, cold boot attacks. Secure enclaves (Intel SGX, ARM TrustZone) provide hardware-level protection.' },
+        { type:'definition', label:'Data Sovereignty', text:'Data is subject to the laws of the country where it physically resides. EU citizens\' data stored on a US server is subject to both GDPR and US law. Cloud providers offer region selection for compliance.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A hospital stores patient medical records including diagnoses, medications, and treatment histories linked to patient names and insurance IDs. What type of data is this and what regulation governs it?', choices:['PII — governed by GDPR','PHI — governed by HIPAA','Financial data — governed by PCI DSS','Regulated data — governed by SOX'], answer:1, explain:'Patient medical records linked to individual identities are <strong>PHI (Protected Health Information)</strong>, governed by <strong>HIPAA</strong>. HIPAA requires specific technical (encryption, access controls), administrative (policies, training), and physical safeguards for all PHI.' },
+    { q:'A company\'s proprietary trading algorithm source code is stolen by a former employee. What type of data was compromised?', choices:['Regulated data','PII','Intellectual property / Trade secret','PHI'], answer:2, explain:'Source code for a proprietary algorithm is <strong>intellectual property and a trade secret</strong>. It derives value from being kept confidential. Exposure to a competitor could destroy competitive advantage. Protected under trade secret law and NDAs.' },
+    { q:'A European company uses a US-based cloud provider. The security team must ensure EU customer data never leaves European data centers. What concept drives this?', choices:['Data sovereignty','Data at rest protection','Geolocation filtering','Classification policy'], answer:0, explain:'<strong>Data sovereignty</strong> — data is subject to the laws of the country where it physically resides. GDPR restricts transfer of EU personal data outside the EU unless specific protections are in place. Cloud region selection is the primary technical control.' },
+  ]
+},
+
+'data-security': {
+  title: 'Methods to Secure Data',
+  subtitle: 'Encryption, masking, tokenization, DLP, segmentation — protecting data at every layer',
+  domain: 3, domainName: '3.0 Security Architecture',
+  content: [
+    { type:'analogy', label:'🛡️ Multiple shields, multiple angles', text:'A medieval knight didn\'t rely on just one piece of armor. Helmet + chainmail + breastplate + shield = layered protection. Data security works the same: classify it, encrypt it, restrict access, control where it can go, and log everything.' },
+    { type:'section', title:'Data Security Methods Compared', icon:'🔒', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Method','How It Works','Best For'], rows:[
+          ['Encryption','Math scrambles data — unreadable without the key. Reversible.','All sensitive data at rest and in transit'],
+          ['Hashing','One-way fingerprint — verifies integrity, can\'t reverse to original','Password storage (with salt), file integrity, digital signatures'],
+          ['Masking','Replaces real data with realistic fake data. Original NOT preserved.','Dev/test environments needing realistic data without real PII'],
+          ['Tokenization','Replaces sensitive data with a non-sensitive token. Original stored securely elsewhere. Reversible.','Payment processing (PCI DSS), reducing compliance scope'],
+          ['Obfuscation','Makes data harder to understand without encrypting it','Code obfuscation; not a primary security control'],
+          ['Segmentation','Isolates sensitive data on separate systems/networks','Limiting blast radius; restricting access to PHI or financial data servers'],
+          ['Permission Restrictions','ACLs and RBAC controlling read/write/delete access','Enforce need-to-know; least privilege for data access'],
+          ['Geographic Restrictions','Prevent data access from/to specific countries or regions','Compliance with data sovereignty laws (GDPR)'],
+        ]}
+      ]
+    },
+    { type:'section', title:'DLP — Data Loss Prevention', icon:'🚫', bg:'#ff7b39',
+      items:[
+        { type:'definition', label:'What DLP Does', text:'Monitors, detects, and blocks unauthorized transmission of sensitive data. Can detect if someone emails a file containing 100+ Social Security numbers and automatically block it or alert the security team.' },
+        { type:'table', headers:['DLP Type','Where It Operates'], rows:[
+          ['Network DLP','Monitors network traffic for sensitive data in transit — emails, uploads, web posts'],
+          ['Endpoint DLP','Agent on devices — monitors copy/paste, USB transfers, printing of sensitive data'],
+          ['Cloud DLP','Monitors data stored in and transferred through cloud services'],
+        ]}
+      ]
+    },
+    { type:'tip', label:'🎯 Masking vs. Tokenization vs. Encryption', text:'<strong>Masking</strong>: fake data replaces real — original GONE, not reversible. Good for dev environments. <strong>Tokenization</strong>: token replaces real data, original preserved in a secure vault — reversible by authorized systems. Preferred for PCI DSS. <strong>Encryption</strong>: math scrambles data, reversible with key. All three protect data differently.' },
+  ],
+  quiz: [
+    { q:'A development team needs realistic customer data for testing. The security team provides a database where all names, emails, and SSNs have been replaced with realistic-looking but entirely fake values. The original data is not recoverable from this database. What technique was used?', choices:['Tokenization','Encryption','Data masking','Obfuscation'], answer:2, explain:'<strong>Data masking</strong> replaces real sensitive data with realistic but fake data — the original is NOT preserved. This is used in development and test environments that need realistic data formats without exposing real PII. Unlike tokenization, there is no vault storing the originals.' },
+    { q:'An employee attempts to email a spreadsheet containing 500 customer SSNs to their personal Gmail. The system automatically detects the SSNs in the attachment and blocks the email. What technology did this?', choices:['Firewall','DLP (Data Loss Prevention)','IDS','Email gateway antivirus'], answer:1, explain:'<strong>DLP</strong> monitors for sensitive data patterns (SSNs, credit card numbers) and enforces policies to prevent unauthorized transmission. It detected the SSN pattern in the attachment and blocked the outbound email before it left the organization.' },
+    { q:'A retailer processes credit cards but stores a random string instead of the actual card number. When a customer returns, the retailer uses this string to reference the original transaction. The actual card number is stored with their payment processor. What technique is this?', choices:['Encryption','Data masking','Tokenization','Hashing'], answer:2, explain:'<strong>Tokenization</strong> replaces sensitive data (card number) with a non-sensitive token (random string). The original is stored securely by the payment processor — not the retailer. This reduces PCI DSS scope dramatically since the retailer never handles real card numbers.' },
+  ]
+},
+
+'ha-bcdr': {
+  title: 'High Availability, BC & DR',
+  subtitle: 'Hot/warm/cold sites, clustering, RTO/RPO, business continuity planning — 3.4',
+  domain: 3, domainName: '3.0 Security Architecture',
+  content: [
+    { type:'analogy', label:'✈️ Airlines plan for everything that can go wrong', text:'Airlines have backup planes, alternate airports, detailed emergency procedures, and crew trained for every scenario. They don\'t hope the plane works — they plan for when it doesn\'t. Your IT infrastructure needs the same level of resilience planning.' },
+    { type:'section', title:'High Availability Concepts', icon:'⚡', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Concept','Description','Example'], rows:[
+          ['Load Balancing','Distributes traffic across multiple servers — one fails, others absorb load','Web farm: 3 servers behind a load balancer'],
+          ['Clustering','Multiple servers act as one logical system — shared storage, automatic failover','Database cluster where secondary instantly takes over if primary fails'],
+          ['Redundancy','Duplicate critical components — single failure doesn\'t cause outage','Dual power supplies, RAID disks, redundant network links'],
+          ['Failover','Automatic or manual switch to backup when primary fails','DNS failover to secondary data center'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Alternate Site Types', icon:'🏢', bg:'#22d06b',
+      items:[
+        { type:'table', headers:['Site Type','What\'s Ready','RTO','Cost'], rows:[
+          ['Hot Site','Fully operational — hardware, software, live data replication. Ready in minutes.','Minutes to hours','Very High'],
+          ['Warm Site','Hardware and software ready, but data must be loaded from backup','Hours to days','Moderate'],
+          ['Cold Site','Physical space only — power and cooling. Nothing else.','Days to weeks','Low'],
+          ['Geographic Dispersion','Sites in different regions protect against regional disasters','Varies','High'],
+        ]}
+      ]
+    },
+    { type:'section', title:'BC & DR Planning', icon:'📋', bg:'#7c5cfc',
+      items:[
+        { type:'definition', label:'Business Continuity Planning (BCP)', text:'How the organization maintains BUSINESS OPERATIONS during a disruption — not just IT. Includes manual workarounds, alternate staffing, communication plans. Broader scope than DR.' },
+        { type:'definition', label:'Disaster Recovery (DR)', text:'Specifically how IT SYSTEMS are restored after a major incident. Focused on technology recovery. A subset of BCP.' },
+        { type:'definition', label:'Capacity Planning', text:'Ensuring you have enough people, technology, and infrastructure during disaster recovery. If your DR plan requires 50 staff at the alternate site, do you actually have 50 staff available?' },
+        { type:'tip', label:'🎯 RTO vs. RPO — Memorize These', text:'<strong>RTO (Recovery Time Objective)</strong>: maximum acceptable downtime — how long until systems are back. Site type determines RTO (hot=minutes, cold=weeks). <strong>RPO (Recovery Point Objective)</strong>: maximum acceptable data loss — backup frequency determines RPO (hourly backup = max 1hr RPO).' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A financial services company requires its trading platform be recoverable within 15 minutes of any failure, with no more than 5 minutes of data loss. Which combination BEST meets these requirements?', choices:['Cold site with daily backups','Warm site with hourly backups','Hot site with real-time data replication','Warm site with real-time replication'], answer:2, explain:'A 15-minute RTO requires near-instant failover — only a <strong>hot site</strong> can achieve this. A 5-minute RPO requires near-real-time data replication. Only a hot site with continuous replication meets both requirements. Cost is high but justified for a trading platform.' },
+    { q:'What is the key difference between load balancing and clustering?', choices:['Load balancing is for databases; clustering is for web servers','Load balancing distributes traffic across independent servers; clustering makes multiple servers act as one logical system with shared failover','Load balancing requires more servers','Clustering only works in cloud environments'], answer:1, explain:'<strong>Load balancing</strong> distributes traffic across independent servers for performance and basic availability. <strong>Clustering</strong> makes multiple servers act as a single logical unit with shared resources and automatic failover — if one node fails, the cluster continues seamlessly with stronger HA guarantees.' },
+    { q:'A company\'s RPO is 4 hours. What backup strategy ensures they meet this requirement?', choices:['Daily full backups','Weekly full with daily differential','Backups performed at least every 4 hours','Real-time replication only'], answer:2, explain:'<strong>RPO = maximum acceptable data loss</strong>. A 4-hour RPO means the company can afford to lose at most 4 hours of data. To guarantee this, backups must be performed at least every 4 hours. If backups run every 8 hours, a failure could mean up to 8 hours of data loss — violating the RPO.' },
+  ]
+},
+
+'backups-power': {
+  title: 'Backups, Recovery & Power Resilience',
+  subtitle: 'Full/incremental/differential, 3-2-1 rule, UPS, generators — the last line of defense',
+  domain: 3, domainName: '3.0 Security Architecture',
+  content: [
+    { type:'analogy', label:'💾 Backups are your time machine', text:'When everything goes wrong — ransomware, hardware failure, accidental deletion, natural disaster — backups are what bring you back. But a backup you\'ve never tested is just hope, not a plan. And a backup stored next to the original is no backup at all.' },
+    { type:'section', title:'Backup Types Compared', icon:'💾', bg:'#4f8ef7',
+      items:[
+        { type:'table', headers:['Type','What Gets Backed Up','Restore Speed','Storage Use','Restore Process'], rows:[
+          ['Full','Everything — complete copy of all data','Fastest (one set)','Largest','Restore from one full backup'],
+          ['Incremental','Only changes since LAST backup (full OR incremental)','Slowest','Smallest','Full + every incremental in sequence'],
+          ['Differential','Only changes since LAST FULL backup','Medium','Medium (grows over time)','Full + most recent differential only'],
+          ['Snapshot','Point-in-time copy of VM or volume state using copy-on-write','Fast','Efficient for VMs','Restore single snapshot'],
+        ]}
+      ]
+    },
+    { type:'section', title:'Backup Best Practices', icon:'📋', bg:'#22d06b',
+      items:[
+        { type:'definition', label:'3-2-1 Backup Rule', text:'<strong>3</strong> copies of data, on <strong>2</strong> different media types, with <strong>1</strong> copy offsite. Protects against: hardware failure (multiple copies), media failure (different types), site disaster (offsite copy). Ransomware encrypting local systems cannot reach properly maintained offsite cloud backups.' },
+        { type:'definition', label:'Backup Encryption', text:'Backups must be encrypted — they contain copies of ALL sensitive data. An unencrypted backup tape is a breach waiting to happen. Encryption ensures stolen backups are useless without the key.' },
+        { type:'definition', label:'Replication vs. Backup', text:'<strong>Replication</strong>: real-time copy to secondary system — near-zero RPO but also replicates ransomware/corruption instantly. <strong>Backup</strong>: periodic point-in-time snapshot — can restore to a clean state from before the attack. You need BOTH.' },
+        { type:'definition', label:'Testing Backups', text:'An untested backup is not a real backup. Regularly test restores — many organizations discover their backups are corrupt or incomplete only during an actual disaster. Schedule quarterly restore tests minimum.' },
+      ]
+    },
+    { type:'section', title:'Power Resilience', icon:'⚡', bg:'#ff7b39',
+      items:[
+        { type:'table', headers:['Solution','What It Does','Handles'], rows:[
+          ['UPS (Uninterruptible Power Supply)','Battery backup — provides instant power during outages','Short outages (minutes); bridges gap until generator starts'],
+          ['Generator','Fuel-powered backup providing long-term power','Extended outages — hours to days; needs fuel supply'],
+          ['PDU (Power Distribution Unit)','Manages and distributes power to rack equipment with monitoring','Intelligent power distribution in data centers'],
+        ]},
+        { type:'tip', label:'🎯 UPS + Generator = Continuous Power', text:'UPS provides <strong>instant</strong> power (milliseconds) while the generator spins up (30-60 seconds). Together: UPS bridges the gap, generator sustains. Security devices (firewalls, SIEM) must be on UPS — a power event cannot create a security gap.' },
+      ]
+    },
+  ],
+  quiz: [
+    { q:'A company performs full backups every Sunday and incremental backups every weekday night. The system fails Thursday afternoon. Which backups are needed to fully restore?', choices:['Thursday\'s incremental only','Sunday\'s full + Monday, Tuesday, Wednesday incrementals','Sunday\'s full + Wednesday\'s incremental only','Sunday\'s full backup only'], answer:1, explain:'<strong>Incremental restore</strong> requires the last full backup PLUS every incremental since that full in sequence: Sunday full + Monday incremental + Tuesday incremental + Wednesday incremental. Each incremental only contains changes from the previous day, so all are needed.' },
+    { q:'A company\'s primary data center loses power. UPS activates immediately but the outage may last 6+ hours. What additional solution is needed?', choices:['More UPS batteries','A diesel generator','A warm site activation','PDU failover'], answer:1, explain:'UPS systems provide short-term power (typically minutes to an hour). For extended outages of 6+ hours, a <strong>generator</strong> is required. The UPS bridges the gap while the generator starts up (30-60 seconds), then the generator provides sustained power as long as fuel is available.' },
+    { q:'A company stores backups on local NAS, copies to a second NAS in the same building, and sends encrypted copies to cloud storage weekly. Does this meet the 3-2-1 rule?', choices:['Yes — 3 copies, 2 media types, 1 offsite','No — both local copies are on NAS (same media type), and offsite is only weekly','Yes — cloud counts as both offsite and a different media type','No — cloud storage is not an approved backup medium'], answer:1, explain:'This setup has issues: both local copies use the same media type (NAS), and the offsite copy is only weekly (creating a large RPO gap). A true <strong>3-2-1 setup</strong> requires 2 genuinely different media types (e.g., NAS + tape, or disk + cloud) and the offsite copy frequency must match your RPO requirements.' },
+  ]
+},
+
 'siem-monitoring': {
   title: 'SIEM and Security Monitoring',
   subtitle: 'The tools and processes that detect threats in real time — 4.4',
@@ -2379,15 +2783,20 @@ function renderLearnSidebar(){
           <span class="chevron ${openDomainId===d.id?'open':''}">▶</span>
         </div>
         <div class="sidebar-topics ${openDomainId===d.id?'open':''}" id="dt-${d.id}">
-          ${d.topics.map(t=>t.lessons.map(lid=>{
-            const lesson = LESSONS[lid];
-            const name = lesson ? lesson.title : lid;
-            const done = state.lessonsCompleted.includes(lid);
-            return `<div class="sidebar-topic ${state.currentLesson===lid?'active':''} ${done?'done':''}" onclick="loadLesson('${lid}')">
-              <div class="check">${done?'✓':''}</div>
-              <span>${name.length>35?name.slice(0,35)+'…':name}</span>
-            </div>`;
-          }).join('')).join('')}
+          ${d.topics.map(t=>{
+            const showHeader = d.id<=3;
+            const header = showHeader ? `<div class="sidebar-topic-header"><span class="topic-obj-id">${t.id}</span><span class="topic-obj-name">${t.name}</span></div>` : '';
+            const items = t.lessons.map(lid=>{
+              const lesson = LESSONS[lid];
+              const name = lesson ? lesson.title : lid;
+              const done = state.lessonsCompleted.includes(lid);
+              return `<div class="sidebar-topic ${showHeader?'indented':''} ${state.currentLesson===lid?'active':''} ${done?'done':''}" onclick="loadLesson('${lid}')">
+                <div class="check">${done?'✓':''}</div>
+                <span>${name.length>35?name.slice(0,35)+'…':name}</span>
+              </div>`;
+            }).join('');
+            return header + items;
+          }).join('')}
         </div>
       </div>
     `).join('');
@@ -2813,5 +3222,6 @@ if(state.lastDate !== today){
 }
 
 </script>
+
 </body>
 </html>
